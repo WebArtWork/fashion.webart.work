@@ -54,6 +54,28 @@
 			class="inline-flex items-center max-md:hidden"
 		>
 			<app-nav-icon
+				routerLink="/events"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Events')()"
+				[ariaLabel]="translateService.translate('Events')()"
+				icon="calendar"
+			/>
+		</li>
+
+		<li
+			class="inline-flex items-center max-md:hidden"
+		>
+			<app-nav-icon
+				routerLink="/models"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Models')()"
+				[ariaLabel]="translateService.translate('Models')()"
+				icon="users"
+			/>
+		</li>
+
+		<li
+			class="inline-flex items-center max-md:hidden"
+		>
+			<app-nav-icon
 				routerLink="/brands"
 				[name]="viewport() === 'mobile' ? '' : translateService.translate('Brands')()"
 				[ariaLabel]="translateService.translate('Brands')()"

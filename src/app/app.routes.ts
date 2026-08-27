@@ -258,6 +258,36 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'events',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Події',
+						description:
+							'Перегляньте всі події Fashion та рішення клієнтів, прийняті для них.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/events/events.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'models',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Моделі',
+						description:
+							'Перегляньте всіх моделей, представлених у Fashion.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/models/models.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'explore',
 				canActivate: [MetaGuard],
 				data: {
@@ -329,6 +359,36 @@ export const routes: Routes = [
 				},
 				loadChildren: () =>
 					import('./pages/user/decisions/decisions.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'event/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Подія',
+						description:
+							'Подія у Fashion: клієнт, стиліст, обрані речі, моделі та рішення, прийняті для неї.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/event/event.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'model/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Модель',
+						description:
+							'Профіль моделі у Fashion: параметри, портфоліо та події.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/model/model.routes').then(
 						(m) => m.routes,
 					),
 			},

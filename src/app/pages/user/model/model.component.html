@@ -1,0 +1,15 @@
+<section class="item">
+
+	@if (entity(); as model) {
+	@let rel = relations();
+	<app-model-view
+		[entity]="model"
+		[events]="rel?.events ?? []"
+		[items]="rel?.items ?? []"
+	/>
+	} @else {
+	<p-card class="item__not-found">
+		<p>Модель не знайдено.</p>
+	</p-card>
+	}
+</section>

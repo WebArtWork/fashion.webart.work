@@ -1,0 +1,34 @@
+[
+	{
+		"_id": "model-1",
+		"userId": null,
+		"name": "Anya Petrov",
+		"photo": "https://assets.neryxomka.com/models/anya-petrov.jpg",
+		"bio": "Runway and editorial model based in Vaelmont, walked for Solvara for three consecutive seasons.",
+		"country": "Draecia",
+		"city": "Vaelmont",
+		"agencyId": null,
+		"measurements": { "heightCm": 178, "bust": 84, "waist": 61, "hips": 89, "shoeSize": 39 },
+		"portfolio": ["https://assets.neryxomka.com/models/anya-petrov-1.jpg", "https://assets.neryxomka.com/models/anya-petrov-2.jpg"],
+		"eventIds": ["event-3"],
+		"itemIds": ["item-1"],
+		"contactEmail": "anya.petrov@example.com",
+		"contactPhone": "+1-555-0301"
+	},
+	{
+		"_id": "model-2",
+		"userId": null,
+		"name": "Marco Delacroix",
+		"photo": "https://assets.neryxomka.com/models/marco-delacroix.jpg",
+		"bio": "Menswear runway model, regularly booked for Vaelmont Fashion Week.",
+		"country": "Draecia",
+		"city": "Vaelmont",
+		"agencyId": null,
+		"measurements": { "heightCm": 188, "bust": null, "waist": 81, "hips": null, "shoeSize": 44 },
+		"portfolio": ["https://assets.neryxomka.com/models/marco-delacroix-1.jpg"],
+		"eventIds": ["event-3"],
+		"itemIds": [],
+		"contactEmail": "marco.delacroix@example.com",
+		"contactPhone": "+1-555-0302"
+	}
+]

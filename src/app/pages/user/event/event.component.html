@@ -1,0 +1,17 @@
+<section class="item">
+
+	@if (entity(); as event) {
+	@let rel = relations();
+	<app-event-view
+		[entity]="event"
+		[client]="rel?.client"
+		[items]="rel?.items ?? []"
+		[models]="rel?.models ?? []"
+		[decisions]="rel?.decisions ?? []"
+	/>
+	} @else {
+	<p-card class="item__not-found">
+		<p>Подію не знайдено.</p>
+	</p-card>
+	}
+</section>

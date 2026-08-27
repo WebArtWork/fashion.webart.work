@@ -1,0 +1,35 @@
+<section class="events">
+	<header class="events__header">
+		<h2 class="events__title">Події</h2>
+		<span class="events__hint">Перегляньте всі події Fashion та рішення, прийняті для них</span>
+	</header>
+
+	<p-card class="events__filters">
+		<div class="events__field">
+			<label for="events-search">Пошук</label>
+			<input
+				id="events-search"
+				pInputText
+				type="text"
+				placeholder="Назва, місто або місце проведення"
+				[fluid]="true"
+				[ngModel]="searchTerm()"
+				(ngModelChange)="searchTerm.set($event)"
+			/>
+		</div>
+	</p-card>
+
+	<div class="events__results">
+		<span class="events__count">Знайдено подій: {{ results().length }}</span>
+
+		<div class="events__grid">
+			@for (item of results(); track item._id) {
+			<div class="events__row" (click)="view(item)">
+				<app-event-short [entity]="item" />
+			</div>
+			} @empty {
+			<p class="events__empty">За заданим запитом подій не знайдено.</p>
+			}
+		</div>
+	</div>
+</section>

@@ -4,6 +4,11 @@
 			<app-item-short [entity]="item" />
 		</div>
 	}
+	@if (event) {
+		<div class="card__list-item" (click)="viewEvent()">
+			<app-event-short [entity]="event" />
+		</div>
+	}
 
 	<h2 class="card__title">{{ entity.title }}</h2>
 

@@ -9,13 +9,15 @@ import {
 } from '../../../decision/decision-labels';
 import { Item } from '../../../item/item.interface';
 import { User } from '../../../user/user.interface';
+import { Event } from '../../../event/event.interface';
 import { ItemShortComponent } from '../../item/item-short/item-short.component';
 import { UserIconComponent } from '../../user/user-icon/user-icon.component';
+import { EventShortComponent } from '../../event/event-short/event-short.component';
 
 @Component({
 	selector: 'app-decision-view',
 	standalone: true,
-	imports: [CommonModule, ItemShortComponent, UserIconComponent],
+	imports: [CommonModule, ItemShortComponent, UserIconComponent, EventShortComponent],
 	templateUrl: './decision-view.component.html',
 	styleUrl: './decision-view.component.scss',
 })
@@ -24,6 +26,7 @@ export class DecisionViewComponent {
 
 	@Input() entity!: ItemDecision;
 	@Input() item?: Item | null;
+	@Input() event?: Event | null;
 	@Input() author?: User | null;
 	@Input() involvedUsers: User[] = [];
 
@@ -33,6 +36,10 @@ export class DecisionViewComponent {
 
 	viewItem(): void {
 		if (this.item) this._router.navigate(['/item', this.item._id]);
+	}
+
+	viewEvent(): void {
+		if (this.event) this._router.navigate(['/event', this.event._id]);
 	}
 
 	viewUser(user: User): void {

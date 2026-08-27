@@ -1,4 +1,4 @@
-# Neryxomka Roadmap
+# Fashion Roadmap
 
 Status: APPROVED. Scope: static investor-facing demo only. Nothing beyond
 this is planned yet.
@@ -30,6 +30,11 @@ in components.
 - [x] `request` — a few buyer/tenant requests
 - [x] `user` — public profile view
 - [x] `comment` — comments/reviews on a few entities
+- [x] `event` — the occasion a decision is made for (wedding, gala,
+      photoshoot, runway show), linking client, stylist, items, models,
+      and decisions together
+- [x] `model` — a person who wears items at events professionally,
+      distinct from a client
 
 ### Components per entity (`*-view`, `*-short`, `*-icon`, `*-form`)
 
@@ -43,6 +48,8 @@ in components.
 - [x] request: view, short, icon, form
 - [x] user: view, short, icon, form
 - [x] comment: comments-view, comment-short, comment-form
+- [x] event: view, short (no icon/form yet)
+- [x] model: view, short (no icon/form yet)
 
 ### Pages
 
@@ -59,6 +66,10 @@ in components.
 - [x] boutique — dedicated detail page
 - [x] stylist — dedicated detail page
 - [x] client — dedicated detail page (replaces generic user-facing Entity view)
+- [x] events — list page with search
+- [x] event — dedicated detail page
+- [x] models — list page with search
+- [x] model — dedicated detail page
 
 Removed: Sign, Workspace (already covered by existing template pages),
 Investment (not needed yet). Workspace's role is replaced by Explore.

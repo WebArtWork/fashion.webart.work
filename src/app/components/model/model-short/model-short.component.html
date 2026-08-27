@@ -1,0 +1,13 @@
+<article class="short">
+	<img
+		class="short__thumb"
+		[src]="entity.photo"
+		[alt]="entity.name"
+		loading="lazy"
+	/>
+
+	<div class="short__body">
+		<h3 class="short__title">{{ entity.name }}</h3>
+		<span class="short__meta">{{ entity.city }}, {{ entity.country }}</span>
+	</div>
+</article>

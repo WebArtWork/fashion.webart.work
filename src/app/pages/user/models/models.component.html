@@ -1,0 +1,35 @@
+<section class="models">
+	<header class="models__header">
+		<h2 class="models__title">Моделі</h2>
+		<span class="models__hint">Перегляньте всіх моделей, представлених у Fashion</span>
+	</header>
+
+	<p-card class="models__filters">
+		<div class="models__field">
+			<label for="models-search">Пошук</label>
+			<input
+				id="models-search"
+				pInputText
+				type="text"
+				placeholder="Ім'я, місто або країна"
+				[fluid]="true"
+				[ngModel]="searchTerm()"
+				(ngModelChange)="searchTerm.set($event)"
+			/>
+		</div>
+	</p-card>
+
+	<div class="models__results">
+		<span class="models__count">Знайдено моделей: {{ results().length }}</span>
+
+		<div class="models__grid">
+			@for (item of results(); track item._id) {
+			<div class="models__row" (click)="view(item)">
+				<app-model-short [entity]="item" />
+			</div>
+			} @empty {
+			<p class="models__empty">За заданим запитом моделей не знайдено.</p>
+			}
+		</div>
+	</div>
+</section>

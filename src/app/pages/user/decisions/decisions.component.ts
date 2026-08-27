@@ -10,9 +10,12 @@ import { Item } from '../../../item/item.interface';
 import { items } from '../../../item/item.data';
 import { User } from '../../../user/user.interface';
 import { users } from '../../../user/user.data';
+import { Event } from '../../../event/event.interface';
+import { events } from '../../../event/event.data';
 
 const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
 const _userById = new Map<string, User>(users.map((u) => [u._id, u]));
+const _eventById = new Map<string, Event>(events.map((e) => [e._id, e]));
 
 @Component({
 	imports: [DecisionViewComponent, CardModule],
@@ -34,6 +37,11 @@ export class DecisionsComponent {
 	readonly item = computed<Item | null>(() => {
 		const decision = this.entity();
 		return decision ? (_itemById.get(decision.itemId) ?? null) : null;
+	});
+
+	readonly event = computed<Event | null>(() => {
+		const decision = this.entity();
+		return decision?.eventId ? (_eventById.get(decision.eventId) ?? null) : null;
 	});
 
 	readonly author = computed<User | null>(() => {
