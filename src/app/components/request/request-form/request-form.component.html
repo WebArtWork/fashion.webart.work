@@ -53,13 +53,13 @@
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="preferredSizeSqm" translate>Бажана площа (м²)</label>
-			<p-inputnumber id="preferredSizeSqm" formControlName="preferredSizeSqm" [min]="0" [invalid]="form.get('preferredSizeSqm')?.invalid && form.get('preferredSizeSqm')?.touched" />
+			<label class="form__label" for="preferredSize" translate>Бажаний розмір</label>
+			<p-inputnumber id="preferredSize" formControlName="preferredSize" [min]="0" [invalid]="form.get('preferredSize')?.invalid && form.get('preferredSize')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="roomRequirements" translate>Вимоги до кімнат</label>
-			<p-inputnumber id="roomRequirements" formControlName="roomRequirements" [min]="0" [invalid]="form.get('roomRequirements')?.invalid && form.get('roomRequirements')?.touched" />
+			<label class="form__label" for="quantityRequired" translate>Кількість</label>
+			<p-inputnumber id="quantityRequired" formControlName="quantityRequired" [min]="0" [invalid]="form.get('quantityRequired')?.invalid && form.get('quantityRequired')?.touched" />
 
 		</div>
 		<div class="form__field">
@@ -68,8 +68,8 @@
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="constructionPreferences" translate>Побажання щодо будівництва</label>
-			<input id="constructionPreferences" pInputText class="form__control" type="text" [formControlName]="'constructionPreferences'" [class._invalid]="form.get('constructionPreferences')?.invalid && form.get('constructionPreferences')?.touched" />
+			<label class="form__label" for="stylePreferences" translate>Стильові побажання</label>
+			<input id="stylePreferences" pInputText class="form__control" type="text" [formControlName]="'stylePreferences'" [class._invalid]="form.get('stylePreferences')?.invalid && form.get('stylePreferences')?.touched" />
 
 		</div>
 		<div class="form__field">

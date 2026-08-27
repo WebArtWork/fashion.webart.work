@@ -1,0 +1,40 @@
+<article class="short">
+	@if (entity.photos.length) {
+		<img class="short__thumb" [src]="entity.photos[0]" [alt]="entity.title" loading="lazy" />
+	}
+
+	<div class="short__body">
+		<h3 class="short__title">{{ entity.title }}</h3>
+		<p class="short__address">{{ entity.publicLocation }}</p>
+
+		<div class="short__meta">
+			<span>{{ entity.price }} {{ entity.currency }}</span>
+			<span>{{ entity.offeringType }}</span>
+			<span>{{ entity.status }}</span>
+		</div>
+
+		@if (stylist || boutique || brand || collection) {
+			<div class="short__relations">
+				@if (stylist) {
+					<button type="button" class="short__relation" (click)="onRelationClick($event, 'stylist', stylist._id)">
+						<app-stylist-icon [entity]="stylist" />
+					</button>
+				}
+				@if (boutique) {
+					<button type="button" class="short__relation" (click)="onRelationClick($event, 'boutique', boutique._id)">
+						<app-boutique-icon [entity]="boutique" />
+					</button>
+				} @else if (brand) {
+					<button type="button" class="short__relation" (click)="onRelationClick($event, 'brand', brand._id)">
+						<app-brand-icon [entity]="brand" />
+					</button>
+				}
+				@if (collection) {
+					<button type="button" class="short__relation" (click)="onRelationClick($event, 'collection', collection._id)">
+						<app-collection-icon [entity]="collection" />
+					</button>
+				}
+			</div>
+		}
+	</div>
+</article>

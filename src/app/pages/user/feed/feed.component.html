@@ -5,8 +5,8 @@
 
 	@if (items.length) {
 		<div class="feed__scroll">
-			@for (row of items; track row.listing._id) {
-				@let item = row.listing;
+			@for (row of items; track row.offering._id) {
+				@let item = row.offering;
 				<section class="feed__section">
 					<img
 						class="feed__img"
@@ -20,7 +20,7 @@
 					<div class="feed__info">
 						<div class="feed__chips">
 							<span class="feed__chip">{{ item.price }} {{ item.currency }}</span>
-							<span class="feed__chip">{{ item.listingType }}</span>
+							<span class="feed__chip">{{ item.offeringType }}</span>
 							<span class="feed__chip">{{ item.status }}</span>
 						</div>
 
@@ -39,20 +39,20 @@
 							<span class="feed__location-text">{{ item.publicLocation }}</span>
 						</div>
 
-						@if (row.relations.agent || row.relations.agency || row.relations.developer) {
+						@if (row.relations.stylist || row.relations.boutique || row.relations.brand) {
 							<div class="feed__relations">
-								@if (row.relations.agent; as agent) {
-									<button type="button" class="feed__relation" (click)="viewRelation($event, 'agent', agent._id)">
-										<app-agent-icon [entity]="agent" />
+								@if (row.relations.stylist; as stylist) {
+									<button type="button" class="feed__relation" (click)="viewRelation($event, 'stylist', stylist._id)">
+										<app-stylist-icon [entity]="stylist" />
 									</button>
 								}
-								@if (row.relations.agency; as agency) {
-									<button type="button" class="feed__relation" (click)="viewRelation($event, 'agency', agency._id)">
-										<app-agency-icon [entity]="agency" />
+								@if (row.relations.boutique; as boutique) {
+									<button type="button" class="feed__relation" (click)="viewRelation($event, 'boutique', boutique._id)">
+										<app-boutique-icon [entity]="boutique" />
 									</button>
-								} @else if (row.relations.developer; as developer) {
-									<button type="button" class="feed__relation" (click)="viewRelation($event, 'developer', developer._id)">
-										<app-developer-icon [entity]="developer" />
+								} @else if (row.relations.brand; as brand) {
+									<button type="button" class="feed__relation" (click)="viewRelation($event, 'brand', brand._id)">
+										<app-brand-icon [entity]="brand" />
 									</button>
 								}
 							</div>

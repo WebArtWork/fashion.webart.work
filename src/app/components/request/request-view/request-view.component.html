@@ -7,17 +7,17 @@
 
 		<div class="card__row"><dt>Region</dt><dd>{{ entity.region }}</dd></div>
 		<div class="card__row"><dt>Budget</dt><dd>{{ entity.minPrice }} - {{ entity.maxPrice }} {{ entity.currency }}</dd></div>
-		<div class="card__row"><dt>Preferred size</dt><dd>{{ entity.preferredSizeSqm }} m²</dd></div>
-		<div class="card__row"><dt>Rooms</dt><dd>{{ entity.roomRequirements }}</dd></div>
+		<div class="card__row"><dt>Preferred size</dt><dd>{{ entity.preferredSize }}</dd></div>
+		<div class="card__row"><dt>Quantity</dt><dd>{{ entity.quantityRequired }}</dd></div>
 		<div class="card__row"><dt>Condition</dt><dd>{{ entity.conditionRequirements }}</dd></div>
-		<div class="card__row"><dt>Construction</dt><dd>{{ entity.constructionPreferences }}</dd></div>
+		<div class="card__row"><dt>Style</dt><dd>{{ entity.stylePreferences }}</dd></div>
 		<div class="card__row"><dt>Map area</dt><dd>{{ entity.mapArea.lat }}, {{ entity.mapArea.lng }} (radius {{ entity.mapArea.radiusKm }} km)</dd></div>
 		<div class="card__row"><dt>Preferred move date</dt><dd>{{ entity.preferredMoveDate }}</dd></div>
 		<div class="card__row"><dt>Expires</dt><dd>{{ entity.expirationDate }}</dd></div>
 
-	@if (entity.propertyTypes.length) {
+	@if (entity.itemTypes.length) {
 		<div class="card__meta">
-			@for (t of entity.propertyTypes; track t) {
+			@for (t of entity.itemTypes; track t) {
 				<span class="card__badge">{{ t }}</span>
 			}
 		</div>

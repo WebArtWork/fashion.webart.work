@@ -7,20 +7,20 @@ import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { SelectModule } from '@wawjs/ngx-prime/select';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-import { PropertyRequest } from '../../../request/request.interface';
+import { ItemRequest } from '../../../request/request.interface';
 
-const TRANSACTION_TYPE_OPTIONS: { value: PropertyRequest['transactionType']; label: string }[] = [
+const TRANSACTION_TYPE_OPTIONS: { value: ItemRequest['transactionType']; label: string }[] = [
 	{ value: 'buy', label: 'Купівля' },
 	{ value: 'rent', label: 'Оренда' },
-	{ value: 'lease', label: 'Лізинг' },
+	{ value: 'custom-order', label: 'Індивідуальне замовлення' },
 	{ value: 'find', label: 'Пошук' },
 ];
 
-const VISIBILITY_OPTIONS: { value: PropertyRequest['visibility']; label: string }[] = [
+const VISIBILITY_OPTIONS: { value: ItemRequest['visibility']; label: string }[] = [
 	{ value: 'public', label: 'Публічний' },
 	{ value: 'private', label: 'Приватний' },
-	{ value: 'shared-with-selected-agents', label: 'Спільний з обраними агентами' },
-	{ value: 'shared-with-agencies', label: 'Спільний з агенціями' },
+	{ value: 'shared-with-selected-stylists', label: 'Спільний з обраними агентами' },
+	{ value: 'shared-with-boutiques', label: 'Спільний з агенціями' },
 ];
 
 @Component({
@@ -39,7 +39,7 @@ const VISIBILITY_OPTIONS: { value: PropertyRequest['visibility']; label: string 
 	styleUrl: './request-form.component.scss',
 })
 export class RequestFormComponent {
-	@Input() entity?: PropertyRequest;
+	@Input() entity?: ItemRequest;
 
 	readonly form: FormGroup;
 	readonly transactionTypeOptions = TRANSACTION_TYPE_OPTIONS;
@@ -54,10 +54,10 @@ export class RequestFormComponent {
 			minPrice: [0, [Validators.required, Validators.min(0)]],
 			maxPrice: [0, [Validators.required, Validators.min(0)]],
 			currency: ['USD', Validators.required],
-			preferredSizeSqm: [0, Validators.min(0)],
-			roomRequirements: [0, Validators.min(0)],
+			preferredSize: [0, Validators.min(0)],
+			quantityRequired: [0, Validators.min(0)],
 			conditionRequirements: [''],
-			constructionPreferences: [''],
+			stylePreferences: [''],
 			preferredMoveDate: [''],
 			expirationDate: ['', Validators.required],
 			visibility: ['public', Validators.required],

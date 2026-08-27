@@ -4,22 +4,22 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { SelectButtonModule } from '@wawjs/ngx-prime/selectbutton';
-import { AgencyFormComponent } from '../../../components/agency/agency-form/agency-form.component';
-import { AgentFormComponent } from '../../../components/agent/agent-form/agent-form.component';
-import { ComplexFormComponent } from '../../../components/complex/complex-form/complex-form.component';
-import { DeveloperFormComponent } from '../../../components/developer/developer-form/developer-form.component';
-import { ListingFormComponent } from '../../../components/listing/listing-form/listing-form.component';
-import { PropertyFormComponent } from '../../../components/property/property-form/property-form.component';
-import { RecordFormComponent } from '../../../components/record/record-form/record-form.component';
+import { BoutiqueFormComponent } from '../../../components/boutique/boutique-form/boutique-form.component';
+import { StylistFormComponent } from '../../../components/stylist/stylist-form/stylist-form.component';
+import { CollectionFormComponent } from '../../../components/collection/collection-form/collection-form.component';
+import { BrandFormComponent } from '../../../components/brand/brand-form/brand-form.component';
+import { OfferingFormComponent } from '../../../components/offering/offering-form/offering-form.component';
+import { ItemFormComponent } from '../../../components/item/item-form/item-form.component';
+import { DecisionFormComponent } from '../../../components/decision/decision-form/decision-form.component';
 
 type EntityType =
-	| 'property'
-	| 'listing'
-	| 'record'
-	| 'complex'
-	| 'developer'
-	| 'agency'
-	| 'agent';
+	| 'item'
+	| 'offering'
+	| 'decision'
+	| 'collection'
+	| 'brand'
+	| 'boutique'
+	| 'stylist';
 
 interface EntityOption {
 	label: string;
@@ -32,13 +32,13 @@ interface EntityOption {
 		ButtonModule,
 		CardModule,
 		SelectButtonModule,
-		PropertyFormComponent,
-		ListingFormComponent,
-		RecordFormComponent,
-		ComplexFormComponent,
-		DeveloperFormComponent,
-		AgencyFormComponent,
-		AgentFormComponent,
+		ItemFormComponent,
+		OfferingFormComponent,
+		DecisionFormComponent,
+		CollectionFormComponent,
+		BrandFormComponent,
+		BoutiqueFormComponent,
+		StylistFormComponent,
 	],
 	templateUrl: './editor.component.html',
 	styleUrl: './editor.component.scss',
@@ -47,41 +47,41 @@ export class EditorComponent {
 	private readonly _messageService = inject(MessageService);
 
 	readonly options: EntityOption[] = [
-		{ label: 'Об’єкт', value: 'property' },
-		{ label: 'Оголошення', value: 'listing' },
-		{ label: 'Запис історії', value: 'record' },
-		{ label: 'Комплекс', value: 'complex' },
-		{ label: 'Забудовник', value: 'developer' },
-		{ label: 'Агентство', value: 'agency' },
-		{ label: 'Агент', value: 'agent' },
+		{ label: 'Об’єкт', value: 'item' },
+		{ label: 'Оголошення', value: 'offering' },
+		{ label: 'Запис історії', value: 'decision' },
+		{ label: 'Комплекс', value: 'collection' },
+		{ label: 'Забудовник', value: 'brand' },
+		{ label: 'Агентство', value: 'boutique' },
+		{ label: 'Агент', value: 'stylist' },
 	];
 
-	readonly selectedType = signal<EntityType>('property');
+	readonly selectedType = signal<EntityType>('item');
 
-	private readonly _propertyForm = viewChild(PropertyFormComponent);
-	private readonly _listingForm = viewChild(ListingFormComponent);
-	private readonly _recordForm = viewChild(RecordFormComponent);
-	private readonly _complexForm = viewChild(ComplexFormComponent);
-	private readonly _developerForm = viewChild(DeveloperFormComponent);
-	private readonly _agencyForm = viewChild(AgencyFormComponent);
-	private readonly _agentForm = viewChild(AgentFormComponent);
+	private readonly _itemForm = viewChild(ItemFormComponent);
+	private readonly _offeringForm = viewChild(OfferingFormComponent);
+	private readonly _decisionForm = viewChild(DecisionFormComponent);
+	private readonly _collectionForm = viewChild(CollectionFormComponent);
+	private readonly _brandForm = viewChild(BrandFormComponent);
+	private readonly _boutiqueForm = viewChild(BoutiqueFormComponent);
+	private readonly _stylistForm = viewChild(StylistFormComponent);
 
 	private readonly _activeForm = computed(() => {
 		switch (this.selectedType()) {
-			case 'property':
-				return this._propertyForm()?.form;
-			case 'listing':
-				return this._listingForm()?.form;
-			case 'record':
-				return this._recordForm()?.form;
-			case 'complex':
-				return this._complexForm()?.form;
-			case 'developer':
-				return this._developerForm()?.form;
-			case 'agency':
-				return this._agencyForm()?.form;
-			case 'agent':
-				return this._agentForm()?.form;
+			case 'item':
+				return this._itemForm()?.form;
+			case 'offering':
+				return this._offeringForm()?.form;
+			case 'decision':
+				return this._decisionForm()?.form;
+			case 'collection':
+				return this._collectionForm()?.form;
+			case 'brand':
+				return this._brandForm()?.form;
+			case 'boutique':
+				return this._boutiqueForm()?.form;
+			case 'stylist':
+				return this._stylistForm()?.form;
 			default:
 				return undefined;
 		}

@@ -1,0 +1,15 @@
+<section class="decisions">
+
+	@if (entity(); as decision) {
+	<app-decision-view
+		[entity]="decision"
+		[item]="item()"
+		[author]="author()"
+		[involvedUsers]="involvedUsers()"
+	/>
+	} @else {
+	<p-card class="decisions__not-found">
+		<p>Рішення не знайдено.</p>
+	</p-card>
+	}
+</section>

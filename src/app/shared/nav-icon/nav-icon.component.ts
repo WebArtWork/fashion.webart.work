@@ -6,7 +6,7 @@ import { TranslateDirective } from '@wawjs/ngx-translate';
  * App-owned replacement for `@wawjs/ngx-ui`'s `material-icon`, scoped to what
  * this app actually used it for: a PrimeIcons icon plus an optional label,
  * either as a router link or a clickable action. Reuses the same `.mi` BEM
- * class names and `--c-*`/`--sp-*`/`--radius-*` custom properties the
+ * class names and `--c-*`/`--sp-*`/`--radius-*` custom items the
  * original rendered with, so no other styling needs to change.
  */
 @Component({

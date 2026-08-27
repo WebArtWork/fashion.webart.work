@@ -1,0 +1,24 @@
+[
+	{
+		"_id": "collection-1",
+		"name": "Solvara Fall 2026",
+		"description": "A ready-to-wear and made-to-order collection from Solvara, built around silk chiffon eveningwear and structured leather accessories.",
+		"brandId": "brand-1",
+		"country": "Draecia",
+		"city": "Vaelmont",
+		"address": "14 Riverside Boulevard, Vaelmont",
+		"coordinates": { "lat": 47.1721, "lng": 19.3452 },
+		"status": "in-production",
+		"productionProgressPercent": 68,
+		"lookbook": [
+			{ "name": "Eveningwear", "pieceCount": 12 },
+			{ "name": "Accessories", "pieceCount": 8 },
+			{ "name": "Outerwear", "pieceCount": 6 }
+		],
+		"productionPartners": ["Vaelmont Silk Mill", "Northbridge Leather Works"],
+		"itemIds": ["item-1", "item-2"],
+		"offeringIds": ["offering-1", "offering-2"],
+		"decisionIds": ["decision-4"],
+		"coverImage": "https://assets.neryxomka.com/collections/solvara-fall-2026-cover.jpg"
+	}
+]

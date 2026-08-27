@@ -1,0 +1,20 @@
+<section class="item">
+
+	@if (entity(); as item) {
+	@let rel = relations();
+	<app-item-view
+		[entity]="item"
+		[collection]="rel?.collection"
+		[brand]="rel?.brand"
+		[boutique]="rel?.boutique"
+		[stylist]="rel?.stylist"
+		[offerings]="rel?.offerings ?? []"
+		[decisions]="rel?.decisions ?? []"
+		[comments]="rel?.comments ?? []"
+	/>
+	} @else {
+	<p-card class="item__not-found">
+		<p>Об'єкт нерухомості не знайдено.</p>
+	</p-card>
+	}
+</section>

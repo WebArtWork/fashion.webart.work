@@ -1,0 +1,16 @@
+<section class="brand">
+
+	@if (entity(); as item) {
+	<div class="brand__actions">
+		<button pButton type="button" severity="secondary" size="small" (click)="share()">
+			<i class="pi pi-share-alt"></i>
+			{{ translateService.translate('Поділитися')() }}
+		</button>
+	</div>
+	<app-brand-view [entity]="item" />
+	} @else {
+	<p-card class="brand__not-found">
+		<p>Забудовника не знайдено.</p>
+	</p-card>
+	}
+</section>

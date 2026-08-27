@@ -1,6 +1,6 @@
-export type RequestTransactionType = 'buy' | 'rent' | 'lease' | 'find';
+export type RequestTransactionType = 'buy' | 'rent' | 'custom-order' | 'find';
 
-export type RequestVisibility = 'public' | 'private' | 'shared-with-selected-agents' | 'shared-with-agencies';
+export type RequestVisibility = 'public' | 'private' | 'shared-with-selected-stylists' | 'shared-with-boutiques';
 
 export interface RequestMapArea {
 	lat: number;
@@ -8,11 +8,11 @@ export interface RequestMapArea {
 	radiusKm: number;
 }
 
-export interface PropertyRequest {
+export interface ItemRequest {
 	_id: string;
 	userId: string;
 	transactionType: RequestTransactionType;
-	propertyTypes: string[];
+	itemTypes: string[];
 	country: string;
 	region: string;
 	city: string;
@@ -20,10 +20,10 @@ export interface PropertyRequest {
 	minPrice: number;
 	maxPrice: number;
 	currency: string;
-	preferredSizeSqm: number;
-	roomRequirements: number;
+	preferredSize: number;
+	quantityRequired: number;
 	conditionRequirements: string;
-	constructionPreferences: string;
+	stylePreferences: string;
 	requiredFeatures: string[];
 	preferredMoveDate: string;
 	contactOptions: string[];

@@ -1,0 +1,51 @@
+<article class="card">
+	<img class="card__photo" style="width:96px;height:96px" [src]="entity.logo || '/default-boutique.png'" alt="" />
+
+	<h2 class="card__title">{{ entity.name }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">Засновано у {{ entity.foundedYear }}</span>
+		<span class="card__badge">★ {{ entity.averageRating }} ({{ entity.reviewCount }})</span>
+	</div>
+
+	<p>{{ entity.description }}</p>
+
+		<div class="card__row"><dt>Розташування</dt><dd>{{ entity.city }}, {{ entity.country }}</dd></div>
+		<div class="card__row"><dt>Телефон</dt><dd>{{ entity.contact.phone }}</dd></div>
+		<div class="card__row"><dt>Ел. пошта</dt><dd>{{ entity.contact.email }}</dd></div>
+		<div class="card__row"><dt>Веб-сайт</dt><dd>{{ entity.contact.website }}</dd></div>
+		<div class="card__row"><dt>Адреса</dt><dd>{{ entity.contact.address }}</dd></div>
+
+	@if (relatedStylists().length) {
+		<h3 class="card__section-title">Агенти</h3>
+		<div class="card__list">
+			@for (stylist of relatedStylists(); track stylist._id) {
+				<button type="button" class="card__list-item" (click)="viewStylist(stylist)">
+					<app-stylist-short [entity]="stylist" />
+				</button>
+			}
+		</div>
+	}
+
+	@if (relatedItems().length) {
+		<h3 class="card__section-title">Представлені об'єкти</h3>
+		<div class="card__list">
+			@for (item of relatedItems(); track item._id) {
+				<button type="button" class="card__list-item" (click)="viewItem(item)">
+					<app-item-short [entity]="item" />
+				</button>
+			}
+		</div>
+	}
+
+	@if (relatedOfferings().length) {
+		<h3 class="card__section-title">Оголошення</h3>
+		<div class="card__list">
+			@for (offering of relatedOfferings(); track offering._id) {
+				<button type="button" class="card__list-item" (click)="viewOffering(offering)">
+					<app-offering-short [entity]="offering" />
+				</button>
+			}
+		</div>
+	}
+</article>

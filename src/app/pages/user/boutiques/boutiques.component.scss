@@ -1,0 +1,53 @@
+.boutiques {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-4);
+}
+
+.boutiques__header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-1);
+}
+
+.boutiques__title {
+	margin: 0;
+	color: var(--c-text-secondary);
+}
+
+.boutiques__hint {
+	font-size: 0.85rem;
+	color: var(--c-text-muted);
+}
+
+.boutiques__field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-1);
+}
+
+.boutiques__results {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-3);
+}
+
+.boutiques__count {
+	font-size: 0.85rem;
+	color: var(--c-text-muted);
+}
+
+.boutiques__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--sp-4);
+}
+
+.boutiques__row {
+	cursor: pointer;
+}
+
+.boutiques__empty {
+	text-align: center;
+	color: var(--c-text-muted);
+}

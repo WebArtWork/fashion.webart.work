@@ -26,7 +26,7 @@
 			}
 		</div>
 
-		@if (selected(); as property) {
+		@if (selected(); as item) {
 		<p-card class="map-page__panel">
 			<div class="map-page__panel-header">
 				<span class="map-page__panel-title">Обраний об'єкт</span>
@@ -39,14 +39,14 @@
 				/>
 			</div>
 
-			<app-property-short [entity]="property" />
+			<app-item-short [entity]="item" />
 
 			<p-button
 				class="map-page__panel-action"
 				label="Переглянути об'єкт"
 				icon="pi pi-arrow-right"
 				iconPos="right"
-				(onClick)="view(property)"
+				(onClick)="view(item)"
 			/>
 		</p-card>
 		}

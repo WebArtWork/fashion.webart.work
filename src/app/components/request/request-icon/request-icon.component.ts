@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Input } from '@angular/core';
-import { PropertyRequest } from '../../../request/request.interface';
+import { ItemRequest } from '../../../request/request.interface';
 
 @Component({
 	selector: 'app-request-icon',
@@ -11,5 +11,5 @@ import { PropertyRequest } from '../../../request/request.interface';
 	styleUrl: './request-icon.component.scss',
 })
 export class RequestIconComponent {
-	@Input() entity!: PropertyRequest;
+	@Input() entity!: ItemRequest;
 }

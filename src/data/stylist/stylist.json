@@ -1,0 +1,40 @@
+[
+	{
+		"_id": "stylist-1",
+		"userId": "user-2",
+		"boutiqueId": "boutique-1",
+		"displayName": "Ilya Marchenko",
+		"photo": "https://assets.neryxomka.com/stylists/ilya-marchenko.jpg",
+		"bio": "Eveningwear specialist focused on gala and wedding styling for clients across Vaelmont.",
+		"country": "Draecia",
+		"city": "Vaelmont",
+		"serviceAreas": ["Riverside District", "Downtown Vaelmont"],
+		"specializations": ["eveningwear", "bridal"],
+		"yearsExperience": 9,
+		"offeringIds": ["offering-3"],
+		"representedItemIds": ["item-3"],
+		"contactPhone": "+1-555-0141",
+		"contactEmail": "ilya.marchenko@maison-ferelle.example",
+		"averageRating": 4.8,
+		"reviewCount": 21
+	},
+	{
+		"_id": "stylist-2",
+		"userId": "user-3",
+		"boutiqueId": "boutique-1",
+		"displayName": "Sofia Renner",
+		"photo": "https://assets.neryxomka.com/stylists/sofia-renner.jpg",
+		"bio": "Menswear stylist handling tailoring and corporate event styling across Vaelmont's business district.",
+		"country": "Draecia",
+		"city": "Vaelmont",
+		"serviceAreas": ["Business District"],
+		"specializations": ["menswear", "tailoring"],
+		"yearsExperience": 6,
+		"offeringIds": ["offering-4"],
+		"representedItemIds": ["item-4"],
+		"contactPhone": "+1-555-0142",
+		"contactEmail": "sofia.renner@maison-ferelle.example",
+		"averageRating": 4.5,
+		"reviewCount": 14
+	}
+]

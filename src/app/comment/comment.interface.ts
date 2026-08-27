@@ -1,8 +1,8 @@
-export type CommentEntityType = 'property' | 'listing' | 'complex' | 'developer' | 'agency' | 'agent' | 'user';
+export type CommentEntityType = 'item' | 'offering' | 'collection' | 'brand' | 'boutique' | 'stylist' | 'user';
 
 export type CommentModerationStatus = 'pending' | 'approved' | 'rejected' | 'flagged';
 
-export type VerifiedReviewerStatus = 'verified-resident' | 'verified-tenant' | 'verified-buyer' | 'verified-owner' | null;
+export type VerifiedReviewerStatus = 'verified-client' | 'verified-model' | 'verified-buyer' | 'verified-owner' | null;
 
 export interface EntityComment {
 	_id: string;

@@ -1,0 +1,29 @@
+<section class="items">
+	<div class="items__filters">
+		<input
+			id="items-search"
+			pInputText
+			type="text"
+			placeholder="Адреса, місто або країна"
+			class="items__search"
+			[ngModel]="searchTerm()"
+			(ngModelChange)="searchTerm.set($event)"
+		/>
+
+		<a pButton routerLink="/map" severity="secondary" size="small" class="items__map-link">
+			Мапа
+		</a>
+	</div>
+
+	<div class="items__results">
+		<div class="items__grid">
+			@for (item of results(); track item._id) {
+			<div class="items__row" (click)="view(item)">
+				<app-item-short [entity]="item" />
+			</div>
+			} @empty {
+			<p class="items__empty">За заданим запитом об’єктів не знайдено.</p>
+			}
+		</div>
+	</div>
+</section>

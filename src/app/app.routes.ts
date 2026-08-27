@@ -156,7 +156,7 @@ export const routes: Routes = [
 					),
 			},
 			{
-				path: 'for-agents',
+				path: 'for-stylists',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -165,12 +165,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/for-agents/for-agents.routes').then(
+					import('./pages/user/for-stylists/for-stylists.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'for-developers',
+				path: 'for-brands',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -179,12 +179,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/for-developers/for-developers.routes').then(
+					import('./pages/user/for-brands/for-brands.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'for-agencies',
+				path: 'for-boutiques',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -193,7 +193,7 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/for-agencies/for-agencies.routes').then(
+					import('./pages/user/for-boutiques/for-boutiques.routes').then(
 						(m) => m.routes,
 					),
 			},
@@ -213,7 +213,7 @@ export const routes: Routes = [
 					),
 			},
 			{
-				path: 'properties',
+				path: 'items',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -223,12 +223,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/properties/properties.routes').then(
+					import('./pages/user/items/items.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'agencies',
+				path: 'boutiques',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -238,12 +238,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/agencies/agencies.routes').then(
+					import('./pages/user/boutiques/boutiques.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'developers',
+				path: 'brands',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -253,7 +253,7 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/developers/developers.routes').then(
+					import('./pages/user/brands/brands.routes').then(
 						(m) => m.routes,
 					),
 			},
@@ -288,7 +288,7 @@ export const routes: Routes = [
 					),
 			},
 			{
-				path: 'property/:id',
+				path: 'item/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -298,12 +298,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/property/property.routes').then(
+					import('./pages/user/item/item.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'listing/:id',
+				path: 'offering/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -313,12 +313,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/listing/listing.routes').then(
+					import('./pages/user/offering/offering.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'records/:id',
+				path: 'decisions/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -328,12 +328,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/records/records.routes').then(
+					import('./pages/user/decisions/decisions.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'complex/:id',
+				path: 'collection/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -343,12 +343,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/complex/complex.routes').then(
+					import('./pages/user/collection/collection.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'developer/:id',
+				path: 'brand/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -358,12 +358,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/developer/developer.routes').then(
+					import('./pages/user/brand/brand.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'agency/:id',
+				path: 'boutique/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -373,12 +373,12 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/agency/agency.routes').then(
+					import('./pages/user/boutique/boutique.routes').then(
 						(m) => m.routes,
 					),
 			},
 			{
-				path: 'agent/:id',
+				path: 'stylist/:id',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
@@ -388,7 +388,7 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/agent/agent.routes').then(
+					import('./pages/user/stylist/stylist.routes').then(
 						(m) => m.routes,
 					),
 			},

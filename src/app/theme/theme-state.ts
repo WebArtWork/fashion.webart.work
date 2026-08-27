@@ -24,7 +24,7 @@ interface PersistedTheme {
  * App-owned replacement for `@wawjs/ngx-ui`'s `ThemeService`. Toggles the same
  * `data-mode`/`data-density`/`data-radius` attributes on `<html>` that
  * `src/styles/_theme.scss` already reacts to, so none of the app's existing
- * `--c-*`/`--sp-*`/`--radius-*` custom-property styling needs to change.
+ * `--c-*`/`--sp-*`/`--radius-*` custom-item styling needs to change.
  *
  * `data-mode` doubles as ngx-prime's own dark-mode selector
  * (`darkModeSelector: "[data-mode='dark']"` in `app.config.ts`), so toggling

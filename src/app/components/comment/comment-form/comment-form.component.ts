@@ -10,12 +10,12 @@ import { TranslateDirective } from '@wawjs/ngx-translate';
 import { CommentEntityType, EntityComment } from '../../../comment/comment.interface';
 
 const ENTITY_TYPE_OPTIONS: { value: CommentEntityType; label: string }[] = [
-	{ value: 'property', label: 'Об’єкт нерухомості' },
-	{ value: 'listing', label: 'Оголошення' },
-	{ value: 'complex', label: 'Комплекс' },
-	{ value: 'developer', label: 'Забудовник' },
-	{ value: 'agency', label: 'Агентство' },
-	{ value: 'agent', label: 'Агент' },
+	{ value: 'item', label: 'Об’єкт нерухомості' },
+	{ value: 'offering', label: 'Оголошення' },
+	{ value: 'collection', label: 'Комплекс' },
+	{ value: 'brand', label: 'Забудовник' },
+	{ value: 'boutique', label: 'Агентство' },
+	{ value: 'stylist', label: 'Агент' },
 	{ value: 'user', label: 'Користувач' },
 ];
 
@@ -34,7 +34,7 @@ export class CommentFormComponent {
 
 	constructor(private readonly fb: FormBuilder) {
 		this.form = this.fb.group({
-			entityType: ['property', Validators.required],
+			entityType: ['item', Validators.required],
 			rating: [null, [Validators.min(1), Validators.max(5)]],
 			text: ['', [Validators.required, Validators.maxLength(2000)]],
 		});

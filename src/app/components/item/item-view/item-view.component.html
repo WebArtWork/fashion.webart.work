@@ -1,0 +1,90 @@
+<article class="card">
+	<h2 class="card__title">{{ typeLabels[entity.type] }} · {{ entity.city }}, {{ entity.country }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">{{ statusLabels[entity.status] }}</span>
+		<span class="card__badge">{{ visibilityLabels[entity.visibility] }}</span>
+	</div>
+
+	<div class="card__photos">
+		@for (photo of photos; track photo) {
+			<img class="card__photo" [src]="photo" alt="" (error)="onPhotoError($event)" />
+		}
+	</div>
+
+		<div class="card__row"><dt>Адреса</dt><dd>{{ entity.address }}</dd></div>
+		<div class="card__row"><dt>Розташування в бутіку</dt><dd>{{ entity.boutiqueLocationInfo }}</dd></div>
+		<div class="card__row"><dt>Артикул (SKU)</dt><dd>{{ entity.sku }}</dd></div>
+		<div class="card__row"><dt>Розмір</dt><dd>{{ entity.characteristics.sizeCategory }}@if (entity.characteristics.sizeEu !== null) { (EU {{ entity.characteristics.sizeEu }}) }</dd></div>
+		<div class="card__row"><dt>Колір</dt><dd>{{ entity.characteristics.color }}</dd></div>
+		<div class="card__row"><dt>Матеріал</dt><dd>{{ entity.characteristics.material }}</dd></div>
+		@if (entity.characteristics.season) {
+			<div class="card__row"><dt>Сезон</dt><dd>{{ entity.characteristics.season }}</dd></div>
+		}
+		@if (entity.characteristics.fit) {
+			<div class="card__row"><dt>Крій</dt><dd>{{ entity.characteristics.fit }}</dd></div>
+		}
+		@if (collection) {
+			<div class="card__row">
+				<dt>Колекція</dt>
+				<dd><button type="button" class="card__relation" (click)="viewCollection()"><app-collection-icon [entity]="collection" /></button></dd>
+			</div>
+		}
+		@if (brand) {
+			<div class="card__row">
+				<dt>Бренд</dt>
+				<dd><button type="button" class="card__relation" (click)="viewBrand()"><app-brand-icon [entity]="brand" /></button></dd>
+			</div>
+		}
+		@if (boutique) {
+			<div class="card__row">
+				<dt>Бутік</dt>
+				<dd><button type="button" class="card__relation" (click)="viewBoutique()"><app-boutique-icon [entity]="boutique" /></button></dd>
+			</div>
+		}
+		@if (stylist) {
+			<div class="card__row">
+				<dt>Стиліст</dt>
+				<dd><button type="button" class="card__relation" (click)="viewStylist()"><app-stylist-icon [entity]="stylist" /></button></dd>
+			</div>
+		}
+
+	@if (entity.access.length) {
+		<div class="card__meta">
+			@for (a of entity.access; track a.userId) {
+				<span class="card__badge">{{ a.role }}: {{ a.userId }}</span>
+			}
+		</div>
+	}
+
+	@if (offerings.length) {
+		<h3 class="card__section-title">Пропозиції</h3>
+		<div class="card__list">
+			@for (offering of offerings; track offering._id) {
+				<div class="card__list-item" (click)="viewOffering(offering)">
+					<app-offering-short [entity]="offering" />
+				</div>
+			}
+		</div>
+	}
+
+	@if (decisions.length) {
+		<h3 class="card__section-title">Історія рішень</h3>
+		<div class="card__list">
+			@for (decision of decisions; track decision._id) {
+				<div class="card__list-item" (click)="viewDecision(decision)">
+					<app-decision-short [entity]="decision" />
+				</div>
+			}
+		</div>
+	}
+
+	@if (comments.length) {
+		<h3 class="card__section-title">Відгуки</h3>
+		<div class="card__list">
+			@for (comment of comments; track comment._id) {
+				<app-comment-short [entity]="comment" />
+			}
+		</div>
+	}
+</article>

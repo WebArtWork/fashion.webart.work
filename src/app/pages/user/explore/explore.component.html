@@ -14,32 +14,32 @@
 		<p-multiSelect
 			appendTo="body"
 			scrollHeight="auto"
-			[options]="propertyTypeOptions"
+			[options]="itemTypeOptions"
 			optionLabel="label"
 			optionValue="value"
 			placeholder="Тип нерухомості"
 			class="explore__filter"
-			[ngModel]="selectedPropertyTypes()"
-			(ngModelChange)="selectedPropertyTypes.set($event)"
+			[ngModel]="selectedItemTypes()"
+			(ngModelChange)="selectedItemTypes.set($event)"
 		/>
 
 		<p-select
 			appendTo="body"
 			scrollHeight="auto"
-			[options]="listingTypeOptions"
+			[options]="offeringTypeOptions"
 			optionLabel="label"
 			optionValue="value"
 			placeholder="Тип угоди"
 			[showClear]="true"
 			class="explore__filter"
-			[ngModel]="selectedListingType()"
-			(ngModelChange)="selectedListingType.set($event)"
+			[ngModel]="selectedOfferingType()"
+			(ngModelChange)="selectedOfferingType.set($event)"
 		/>
 
 		<p-select
 			appendTo="body"
 			scrollHeight="auto"
-			[options]="listingStatusOptions"
+			[options]="offeringStatusOptions"
 			optionLabel="label"
 			optionValue="value"
 			placeholder="Статус"
@@ -53,14 +53,14 @@
 	</div>
 
 	<div class="explore__grid">
-		@for (row of results(); track row.listing._id) {
-		<div class="explore__row" (click)="view(row.listing)">
-			<app-listing-short
-				[entity]="row.listing"
-				[agent]="row.relations.agent"
-				[agency]="row.relations.agency"
-				[developer]="row.relations.developer"
-				[complex]="row.relations.complex"
+		@for (row of results(); track row.offering._id) {
+		<div class="explore__row" (click)="view(row.offering)">
+			<app-offering-short
+				[entity]="row.offering"
+				[stylist]="row.relations.stylist"
+				[boutique]="row.relations.boutique"
+				[brand]="row.relations.brand"
+				[collection]="row.relations.collection"
 				(relationClick)="viewRelation($event)"
 			/>
 		</div>

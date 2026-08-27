@@ -5,43 +5,43 @@ import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { MultiSelectModule } from '@wawjs/ngx-prime/multiselect';
 import { SelectModule } from '@wawjs/ngx-prime/select';
-import { ListingRelationType, ListingShortComponent } from '../../../components/listing/listing-short/listing-short.component';
-import { Listing, ListingStatus, ListingType } from '../../../listing/listing.interface';
-import { listings } from '../../../listing/listing.data';
-import { ListingRelations, propertyForListing, relationsForListing } from '../../../listing/listing-relations';
-import { PropertyType } from '../../../property/property.interface';
+import { OfferingRelationType, OfferingShortComponent } from '../../../components/offering/offering-short/offering-short.component';
+import { Offering, OfferingStatus, OfferingType } from '../../../offering/offering.interface';
+import { offerings } from '../../../offering/offering.data';
+import { OfferingRelations, itemForOffering, relationsForOffering } from '../../../offering/offering-relations';
+import { ItemType } from '../../../item/item.interface';
 
 interface SelectOption<T> {
 	label: string;
 	value: T;
 }
 
-const PROPERTY_TYPE_LABELS: Record<PropertyType, string> = {
-	apartment: 'Квартира',
-	house: 'Будинок',
-	room: 'Кімната',
-	land: 'Земельна ділянка',
-	office: 'Офіс',
-	'retail-space': 'Торгове приміщення',
-	warehouse: 'Склад',
-	garage: 'Гараж',
-	'parking-space': 'Паркомісце',
-	'commercial-building': 'Комерційна будівля',
-	'industrial-property': 'Промислова нерухомість',
-	'agricultural-property': 'Сільськогосподарська нерухомість',
-	'unfinished-construction': 'Незавершене будівництво',
+const ITEM_TYPE_LABELS: Record<ItemType, string> = {
+	dress: 'Сукня',
+	gown: 'Вечірня сукня',
+	suit: 'Костюм',
+	bag: 'Сумка',
+	shoes: 'Взуття',
+	accessory: 'Аксесуар',
+	jewelry: 'Прикраси',
+	outerwear: 'Верхній одяг',
+	'suiting-set': 'Комплект',
+	headpiece: 'Головний убір',
+	lingerie: 'Білизна',
+	menswear: 'Чоловічий одяг',
+	'made-to-measure': 'Пошив на замовлення',
 };
 
-const LISTING_TYPE_LABELS: Record<ListingType, string> = {
+const OFFERING_TYPE_LABELS: Record<OfferingType, string> = {
 	sale: 'Продаж',
-	'long-term-rent': 'Довгострокова оренда',
-	'short-term-rent': 'Короткострокова оренда',
-	'commercial-lease': 'Комерційна оренда',
-	'land-sale': 'Продаж землі',
+	rental: 'Оренда',
+	'try-on-appointment': 'Запис на примірку',
+	'custom-order': 'Індивідуальне замовлення',
+	consignment: 'Комісія',
 	other: 'Інше',
 };
 
-const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
+const OFFERING_STATUS_LABELS: Record<OfferingStatus, string> = {
 	draft: 'Чернетка',
 	'pending-review': 'На розгляді',
 	active: 'Активне',
@@ -56,7 +56,7 @@ const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
 
 @Component({
 	imports: [
-		ListingShortComponent,
+		OfferingShortComponent,
 		FormsModule,
 		RouterLink,
 		ButtonModule,
@@ -70,39 +70,39 @@ const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
 export class ExploreComponent {
 	private readonly _router = inject(Router);
 
-	readonly propertyTypeOptions: SelectOption<PropertyType>[] = Object.entries(
-		PROPERTY_TYPE_LABELS,
-	).map(([value, label]) => ({ value: value as PropertyType, label }));
+	readonly itemTypeOptions: SelectOption<ItemType>[] = Object.entries(
+		ITEM_TYPE_LABELS,
+	).map(([value, label]) => ({ value: value as ItemType, label }));
 
-	readonly listingTypeOptions: SelectOption<ListingType>[] = Object.entries(
-		LISTING_TYPE_LABELS,
-	).map(([value, label]) => ({ value: value as ListingType, label }));
+	readonly offeringTypeOptions: SelectOption<OfferingType>[] = Object.entries(
+		OFFERING_TYPE_LABELS,
+	).map(([value, label]) => ({ value: value as OfferingType, label }));
 
-	readonly listingStatusOptions: SelectOption<ListingStatus>[] = Object.entries(
-		LISTING_STATUS_LABELS,
-	).map(([value, label]) => ({ value: value as ListingStatus, label }));
+	readonly offeringStatusOptions: SelectOption<OfferingStatus>[] = Object.entries(
+		OFFERING_STATUS_LABELS,
+	).map(([value, label]) => ({ value: value as OfferingStatus, label }));
 
 	readonly searchTerm = signal('');
-	readonly selectedPropertyTypes = signal<PropertyType[]>([]);
-	readonly selectedListingType = signal<ListingType | null>(null);
-	readonly selectedStatus = signal<ListingStatus | null>(null);
+	readonly selectedItemTypes = signal<ItemType[]>([]);
+	readonly selectedOfferingType = signal<OfferingType | null>(null);
+	readonly selectedStatus = signal<OfferingStatus | null>(null);
 
-	readonly results = computed<{ listing: Listing; relations: ListingRelations }[]>(() => {
+	readonly results = computed<{ offering: Offering; relations: OfferingRelations }[]>(() => {
 		const term = this.searchTerm().trim().toLowerCase();
-		const types = this.selectedPropertyTypes();
-		const listingType = this.selectedListingType();
+		const types = this.selectedItemTypes();
+		const offeringType = this.selectedOfferingType();
 		const status = this.selectedStatus();
 
-		return listings
-			.filter((item) => {
-				const property = propertyForListing(item);
+		return offerings
+			.filter((offering) => {
+				const item = itemForOffering(offering);
 
 				if (term) {
 					const haystack = [
-						item.title,
-						item.publicLocation,
-						property?.city,
-						property?.address,
+						offering.title,
+						offering.publicLocation,
+						item?.city,
+						item?.address,
 					]
 						.filter(Boolean)
 						.join(' ')
@@ -112,28 +112,28 @@ export class ExploreComponent {
 					}
 				}
 
-				if (types.length && (!property || !types.includes(property.type))) {
+				if (types.length && (!item || !types.includes(item.type))) {
 					return false;
 				}
 
-				if (listingType && item.listingType !== listingType) {
+				if (offeringType && offering.offeringType !== offeringType) {
 					return false;
 				}
 
-				if (status && item.status !== status) {
+				if (status && offering.status !== status) {
 					return false;
 				}
 
 				return true;
 			})
-			.map((listing) => ({ listing, relations: relationsForListing(listing) }));
+			.map((offering) => ({ offering, relations: relationsForOffering(offering) }));
 	});
 
-	view(item: Listing): void {
-		this._router.navigate(['/listing', item._id]);
+	view(item: Offering): void {
+		this._router.navigate(['/offering', item._id]);
 	}
 
-	viewRelation(relation: { type: ListingRelationType; id: string }): void {
+	viewRelation(relation: { type: OfferingRelationType; id: string }): void {
 		this._router.navigate(['/', relation.type, relation.id]);
 	}
 }

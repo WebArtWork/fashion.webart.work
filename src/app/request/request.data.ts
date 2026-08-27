@@ -1,4 +1,4 @@
 import requestData from '../../data/request/request.json';
-import { PropertyRequest } from './request.interface';
+import { ItemRequest } from './request.interface';
 
-export const requests: PropertyRequest[] = requestData as PropertyRequest[];
+export const requests: ItemRequest[] = requestData as ItemRequest[];

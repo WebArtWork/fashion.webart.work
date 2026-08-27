@@ -18,28 +18,28 @@ in components.
 
 ### Entities (static JSON data, realistic content)
 
-- [x] `property` — a few properties across different types (apartment,
+- [x] `item` — a few items across different types (apartment,
       house, land, etc.)
-- [x] `listing` — sale + rental listings tied to those properties
-- [x] `record` — property history entries (renovation, repair, utility) —
+- [x] `offering` — sale + rental offerings tied to those items
+- [x] `decision` — item history entries (renovation, repair, utility) —
       this is the "digital passport" differentiator
-- [x] `complex` — a few developments
-- [x] `developer` — a few developer profiles
-- [x] `agency` — a few agencies
-- [x] `agent` — a few agents, linked to agencies
+- [x] `collection` — a few developments
+- [x] `brand` — a few brand profiles
+- [x] `boutique` — a few boutiques
+- [x] `stylist` — a few stylists, linked to boutiques
 - [x] `request` — a few buyer/tenant requests
 - [x] `user` — public profile view
 - [x] `comment` — comments/reviews on a few entities
 
 ### Components per entity (`*-view`, `*-short`, `*-icon`, `*-form`)
 
-- [x] property: view, short, icon, form
-- [x] listing: view, short, icon, form
-- [x] record: view, short, form (no icon per README)
-- [x] complex: view, short, icon, form
-- [x] developer: view, short, icon, form
-- [x] agency: view, short, icon, form
-- [x] agent: view, short, icon, form
+- [x] item: view, short, icon, form
+- [x] offering: view, short, icon, form
+- [x] decision: view, short, form (no icon per README)
+- [x] collection: view, short, icon, form
+- [x] brand: view, short, icon, form
+- [x] boutique: view, short, icon, form
+- [x] stylist: view, short, icon, form
 - [x] request: view, short, icon, form
 - [x] user: view, short, icon, form
 - [x] comment: comments-view, comment-short, comment-form
@@ -51,13 +51,13 @@ in components.
 - [x] Explore — search/filter UI against the static dataset
 - [x] Map — pins for entities, static coordinates in fixtures
 - [x] Editor — forms render and validate, no persistence
-- [x] property — dedicated detail page (replaces generic Entity page)
-- [x] listing — dedicated detail page
-- [x] records — dedicated detail page
-- [x] complex — dedicated detail page
-- [x] developer — dedicated detail page
-- [x] agency — dedicated detail page
-- [x] agent — dedicated detail page
+- [x] item — dedicated detail page (replaces generic Entity page)
+- [x] offering — dedicated detail page
+- [x] decisions — dedicated detail page
+- [x] collection — dedicated detail page
+- [x] brand — dedicated detail page
+- [x] boutique — dedicated detail page
+- [x] stylist — dedicated detail page
 - [x] client — dedicated detail page (replaces generic user-facing Entity view)
 
 Removed: Sign, Workspace (already covered by existing template pages),

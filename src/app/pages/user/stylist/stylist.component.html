@@ -1,0 +1,16 @@
+<section class="stylist">
+
+	@if (entity(); as item) {
+	<div class="stylist__actions">
+		<button pButton type="button" severity="secondary" size="small" (click)="share()">
+			<i class="pi pi-share-alt"></i>
+			{{ translateService.translate('Поділитися')() }}
+		</button>
+	</div>
+	<app-stylist-view [entity]="item" />
+	} @else {
+	<p-card class="stylist__not-found">
+		<p>Агента не знайдено.</p>
+	</p-card>
+	}
+</section>

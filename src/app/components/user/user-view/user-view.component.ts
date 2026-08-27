@@ -2,38 +2,38 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../user/user.interface';
-import { Agent } from '../../../agent/agent.interface';
-import { agents } from '../../../agent/agent.data';
-import { Agency } from '../../../agency/agency.interface';
-import { agencies } from '../../../agency/agency.data';
-import { Developer } from '../../../developer/developer.interface';
-import { developers } from '../../../developer/developer.data';
-import { Property } from '../../../property/property.interface';
-import { properties } from '../../../property/property.data';
-import { Listing } from '../../../listing/listing.interface';
-import { listings } from '../../../listing/listing.data';
-import { AgentIconComponent } from '../../agent/agent-icon/agent-icon.component';
-import { AgencyIconComponent } from '../../agency/agency-icon/agency-icon.component';
-import { DeveloperIconComponent } from '../../developer/developer-icon/developer-icon.component';
-import { PropertyShortComponent } from '../../property/property-short/property-short.component';
-import { ListingShortComponent } from '../../listing/listing-short/listing-short.component';
+import { Stylist } from '../../../stylist/stylist.interface';
+import { stylists } from '../../../stylist/stylist.data';
+import { Boutique } from '../../../boutique/boutique.interface';
+import { boutiques } from '../../../boutique/boutique.data';
+import { Brand } from '../../../brand/brand.interface';
+import { brands } from '../../../brand/brand.data';
+import { Item } from '../../../item/item.interface';
+import { items } from '../../../item/item.data';
+import { Offering } from '../../../offering/offering.interface';
+import { offerings } from '../../../offering/offering.data';
+import { StylistIconComponent } from '../../stylist/stylist-icon/stylist-icon.component';
+import { BoutiqueIconComponent } from '../../boutique/boutique-icon/boutique-icon.component';
+import { BrandIconComponent } from '../../brand/brand-icon/brand-icon.component';
+import { ItemShortComponent } from '../../item/item-short/item-short.component';
+import { OfferingShortComponent } from '../../offering/offering-short/offering-short.component';
 
-const _agentById = new Map<string, Agent>(agents.map((a) => [a._id, a]));
-const _agencyById = new Map<string, Agency>(agencies.map((a) => [a._id, a]));
-const _developerById = new Map<string, Developer>(developers.map((d) => [d._id, d]));
-const _propertyById = new Map<string, Property>(properties.map((p) => [p._id, p]));
-const _listingById = new Map<string, Listing>(listings.map((l) => [l._id, l]));
+const _stylistById = new Map<string, Stylist>(stylists.map((a) => [a._id, a]));
+const _boutiqueById = new Map<string, Boutique>(boutiques.map((a) => [a._id, a]));
+const _brandById = new Map<string, Brand>(brands.map((d) => [d._id, d]));
+const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
+const _offeringById = new Map<string, Offering>(offerings.map((l) => [l._id, l]));
 
 @Component({
 	selector: 'app-user-view',
 	standalone: true,
 	imports: [
 		CommonModule,
-		AgentIconComponent,
-		AgencyIconComponent,
-		DeveloperIconComponent,
-		PropertyShortComponent,
-		ListingShortComponent,
+		StylistIconComponent,
+		BoutiqueIconComponent,
+		BrandIconComponent,
+		ItemShortComponent,
+		OfferingShortComponent,
 	],
 	templateUrl: './user-view.component.html',
 	styleUrl: './user-view.component.scss',
@@ -43,52 +43,52 @@ export class UserViewComponent {
 
 	@Input() entity!: User;
 
-	readonly agent = computed<Agent | null>(
-		() => (this.entity.agentId ? (_agentById.get(this.entity.agentId) ?? null) : null),
+	readonly stylist = computed<Stylist | null>(
+		() => (this.entity.stylistId ? (_stylistById.get(this.entity.stylistId) ?? null) : null),
 	);
 
-	readonly agency = computed<Agency | null>(
-		() => (this.entity.agencyId ? (_agencyById.get(this.entity.agencyId) ?? null) : null),
+	readonly boutique = computed<Boutique | null>(
+		() => (this.entity.boutiqueId ? (_boutiqueById.get(this.entity.boutiqueId) ?? null) : null),
 	);
 
-	readonly developer = computed<Developer | null>(
-		() => (this.entity.developerId ? (_developerById.get(this.entity.developerId) ?? null) : null),
+	readonly brand = computed<Brand | null>(
+		() => (this.entity.brandId ? (_brandById.get(this.entity.brandId) ?? null) : null),
 	);
 
-	readonly ownedProperties = computed<Property[]>(() =>
-		this.entity.ownedPropertyIds.map((id) => _propertyById.get(id)).filter((p): p is Property => !!p),
+	readonly ownedItems = computed<Item[]>(() =>
+		this.entity.ownedItemIds.map((id) => _itemById.get(id)).filter((p): p is Item => !!p),
 	);
 
-	readonly relatedListings = computed<Listing[]>(() =>
-		this.entity.listingIds.map((id) => _listingById.get(id)).filter((l): l is Listing => !!l),
+	readonly relatedOfferings = computed<Offering[]>(() =>
+		this.entity.offeringIds.map((id) => _offeringById.get(id)).filter((l): l is Offering => !!l),
 	);
 
-	viewAgent(): void {
-		const agent = this.agent();
-		if (agent) {
-			this._router.navigate(['/agent', agent._id]);
+	viewStylist(): void {
+		const stylist = this.stylist();
+		if (stylist) {
+			this._router.navigate(['/stylist', stylist._id]);
 		}
 	}
 
-	viewAgency(): void {
-		const agency = this.agency();
-		if (agency) {
-			this._router.navigate(['/agency', agency._id]);
+	viewBoutique(): void {
+		const boutique = this.boutique();
+		if (boutique) {
+			this._router.navigate(['/boutique', boutique._id]);
 		}
 	}
 
-	viewDeveloper(): void {
-		const developer = this.developer();
-		if (developer) {
-			this._router.navigate(['/developer', developer._id]);
+	viewBrand(): void {
+		const brand = this.brand();
+		if (brand) {
+			this._router.navigate(['/brand', brand._id]);
 		}
 	}
 
-	viewProperty(property: Property): void {
-		this._router.navigate(['/property', property._id]);
+	viewItem(item: Item): void {
+		this._router.navigate(['/item', item._id]);
 	}
 
-	viewListing(listing: Listing): void {
-		this._router.navigate(['/listing', listing._id]);
+	viewOffering(offering: Offering): void {
+		this._router.navigate(['/offering', offering._id]);
 	}
 }

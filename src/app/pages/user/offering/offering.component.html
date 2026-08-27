@@ -1,0 +1,18 @@
+<section class="offering">
+
+	@if (entity(); as item) {
+	@let rel = relations();
+	<app-offering-view
+		[entity]="item"
+		[item]="rel?.item"
+		[collection]="rel?.collection"
+		[brand]="rel?.brand"
+		[boutique]="rel?.boutique"
+		[stylist]="rel?.stylist"
+	/>
+	} @else {
+	<p-card class="offering__not-found">
+		<p>Оголошення не знайдено.</p>
+	</p-card>
+	}
+</section>

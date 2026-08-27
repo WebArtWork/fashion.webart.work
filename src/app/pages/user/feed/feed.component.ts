@@ -1,21 +1,21 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
-import { AgencyIconComponent } from '../../../components/agency/agency-icon/agency-icon.component';
-import { AgentIconComponent } from '../../../components/agent/agent-icon/agent-icon.component';
-import { DeveloperIconComponent } from '../../../components/developer/developer-icon/developer-icon.component';
-import { Listing } from '../../../listing/listing.interface';
-import { listings } from '../../../listing/listing.data';
-import { ListingRelations, relationsForListing } from '../../../listing/listing-relations';
-import { ListingRelationType } from '../../../components/listing/listing-short/listing-short.component';
+import { BoutiqueIconComponent } from '../../../components/boutique/boutique-icon/boutique-icon.component';
+import { StylistIconComponent } from '../../../components/stylist/stylist-icon/stylist-icon.component';
+import { BrandIconComponent } from '../../../components/brand/brand-icon/brand-icon.component';
+import { Offering } from '../../../offering/offering.interface';
+import { offerings } from '../../../offering/offering.data';
+import { OfferingRelations, relationsForOffering } from '../../../offering/offering-relations';
+import { OfferingRelationType } from '../../../components/offering/offering-short/offering-short.component';
 
 type FeedAction = 'favourite' | 'ignore';
 
-/** Fallback image shown when a listing has no photos or its photo fails to load. */
-const DEFAULT_PHOTO = '/property-default.svg';
+/** Fallback image shown when a offering has no photos or its photo fails to load. */
+const DEFAULT_PHOTO = '/item-default.svg';
 
 @Component({
-	imports: [ButtonModule, AgentIconComponent, AgencyIconComponent, DeveloperIconComponent],
+	imports: [ButtonModule, StylistIconComponent, BoutiqueIconComponent, BrandIconComponent],
 	templateUrl: './feed.component.html',
 	styleUrl: './feed.component.scss',
 })
@@ -25,27 +25,27 @@ export class FeedComponent {
 	readonly favouritedIds = signal<Set<string>>(this._restore('favourited'));
 	readonly ignoredIds = signal<Set<string>>(this._restore('ignored'));
 
-	readonly feed = computed<{ listing: Listing; relations: ListingRelations }[]>(() => {
+	readonly feed = computed<{ offering: Offering; relations: OfferingRelations }[]>(() => {
 		const favourited = this.favouritedIds();
 		const ignored = this.ignoredIds();
-		return listings
+		return offerings
 			.filter((item) => !favourited.has(item._id) && !ignored.has(item._id))
-			.map((listing) => ({ listing, relations: relationsForListing(listing) }));
+			.map((offering) => ({ offering, relations: relationsForOffering(offering) }));
 	});
 
-	/** Navigates to the listing's detail page. */
-	view(item: Listing): void {
-		this._router.navigate(['/listing', item._id]);
+	/** Navigates to the offering's detail page. */
+	view(item: Offering): void {
+		this._router.navigate(['/offering', item._id]);
 	}
 
-	/** Navigates to a related entity's detail page without triggering the listing's own click. */
-	viewRelation(event: Event, type: ListingRelationType, id: string): void {
+	/** Navigates to a related entity's detail page without triggering the offering's own click. */
+	viewRelation(event: Event, type: OfferingRelationType, id: string): void {
 		event.stopPropagation();
 		this._router.navigate(['/', type, id]);
 	}
 
-	/** Marks a listing as favourited or ignored, persisting the choice to localStorage. */
-	act(item: Listing, action: FeedAction): void {
+	/** Marks a offering as favourited or ignored, persisting the choice to localStorage. */
+	act(item: Offering, action: FeedAction): void {
 		if (action === 'favourite') {
 			this._update('favourited', this.favouritedIds, item._id);
 		} else {
@@ -53,12 +53,12 @@ export class FeedComponent {
 		}
 	}
 
-	/** Returns the listing's first photo, falling back to the shared default image. */
-	photo(item: Listing): string {
+	/** Returns the offering's first photo, falling back to the shared default image. */
+	photo(item: Offering): string {
 		return item.photos[0] || DEFAULT_PHOTO;
 	}
 
-	/** Swaps in the default photo when the listing's image fails to load. */
+	/** Swaps in the default photo when the offering's image fails to load. */
 	onPhotoError(event: Event): void {
 		(event.target as HTMLImageElement).src = DEFAULT_PHOTO;
 	}
