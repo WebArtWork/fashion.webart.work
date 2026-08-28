@@ -16,7 +16,7 @@
 		"itemIds": ["item-3"],
 		"decisionIds": ["decision-1", "decision-2"],
 		"status": "confirmed",
-		"coverImage": "https://assets.neryxomka.com/events/event-1-cover.jpg"
+		"coverImage": "https://assets.fashion.webart.work/events/event-1-cover.jpg"
 	},
 	{
 		"_id": "event-2",
@@ -35,7 +35,7 @@
 		"itemIds": ["item-4"],
 		"decisionIds": ["decision-3"],
 		"status": "completed",
-		"coverImage": "https://assets.neryxomka.com/events/event-2-cover.jpg"
+		"coverImage": "https://assets.fashion.webart.work/events/event-2-cover.jpg"
 	},
 	{
 		"_id": "event-3",
@@ -54,6 +54,6 @@
 		"itemIds": ["item-1"],
 		"decisionIds": ["decision-4"],
 		"status": "completed",
-		"coverImage": "https://assets.neryxomka.com/events/event-3-cover.jpg"
+		"coverImage": "https://assets.fashion.webart.work/events/event-3-cover.jpg"
 	}
 ]

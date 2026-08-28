@@ -16,7 +16,7 @@
 		"quantity": 1,
 		"units": "unit",
 		"status": "completed",
-		"attachments": [{ "type": "receipt", "url": "https://assets.neryxomka.com/decisions/decision-1-receipt.pdf" }],
+		"attachments": [{ "type": "receipt", "url": "https://assets.fashion.webart.work/decisions/decision-1-receipt.pdf" }],
 		"locationInsideItem": "Bodice",
 		"visibility": "shared-with-owners-tenants",
 		"verified": true
@@ -60,7 +60,7 @@
 		"quantity": 1,
 		"units": "consultation",
 		"status": "completed",
-		"attachments": [{ "type": "document", "url": "https://assets.neryxomka.com/decisions/decision-3-report.pdf" }],
+		"attachments": [{ "type": "document", "url": "https://assets.fashion.webart.work/decisions/decision-3-report.pdf" }],
 		"locationInsideItem": null,
 		"visibility": "public-summary-private-details",
 		"verified": true
@@ -82,7 +82,7 @@
 		"quantity": null,
 		"units": null,
 		"status": "completed",
-		"attachments": [{ "type": "photo", "url": "https://assets.neryxomka.com/decisions/decision-4-progress.jpg" }],
+		"attachments": [{ "type": "photo", "url": "https://assets.fashion.webart.work/decisions/decision-4-progress.jpg" }],
 		"locationInsideItem": null,
 		"visibility": "public",
 		"verified": true
@@ -104,7 +104,7 @@
 		"quantity": null,
 		"units": null,
 		"status": "completed",
-		"attachments": [{ "type": "document", "url": "https://assets.neryxomka.com/decisions/decision-5-valuation.pdf" }],
+		"attachments": [{ "type": "document", "url": "https://assets.fashion.webart.work/decisions/decision-5-valuation.pdf" }],
 		"locationInsideItem": null,
 		"visibility": "private",
 		"verified": true

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Boutique } from '../../../boutique/boutique.interface';
@@ -41,8 +41,9 @@ const DEFAULT_PHOTO = '/item-default.svg';
 	templateUrl: './item-view.component.html',
 	styleUrl: './item-view.component.scss',
 })
-export class ItemViewComponent {
+export class ItemViewComponent implements OnChanges {
 	private readonly _router = inject(Router);
+	private readonly _failedPhotos = new Set<string>();
 
 	@Input() entity!: Item;
 	@Input() collection?: Collection | null;
@@ -59,11 +60,18 @@ export class ItemViewComponent {
 	readonly visibilityLabels = ITEM_VISIBILITY_LABELS;
 
 	get photos(): string[] {
-		return this.entity.photos.length ? this.entity.photos : [DEFAULT_PHOTO];
+		const uniquePhotos = [...new Set(this.entity.photos)];
+		if (!uniquePhotos.length) return [DEFAULT_PHOTO];
+		return uniquePhotos.every((photo) => this._failedPhotos.has(photo)) ? [DEFAULT_PHOTO] : uniquePhotos;
 	}
 
-	onPhotoError(event: Event): void {
+	onPhotoError(event: Event, photo: string): void {
+		this._failedPhotos.add(photo);
 		(event.target as HTMLImageElement).src = DEFAULT_PHOTO;
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes['entity']) this._failedPhotos.clear();
 	}
 
 	viewCollection(): void {

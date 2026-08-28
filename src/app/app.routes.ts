@@ -13,9 +13,9 @@ export const routes: Routes = [
 			),
 		data: {
 			meta: {
-				title: 'Neryxomka — цифровий паспорт нерухомості',
+				title: 'Fashion — цифровий паспорт рішень клієнта',
 				description:
-					'Neryxomka показує повну історію об’єкта нерухомості — ремонти, обслуговування, комунікації — поруч з оголошеннями, картою та профілями агентств.',
+					'Fashion показує повну історію рішень клієнта про одяг — примірки, резервації, покупки — поруч із подіями, для яких вони приймались, та профілями брендів і бутіків.',
 			},
 		},
 		loadChildren: () =>
@@ -36,7 +36,7 @@ export const routes: Routes = [
 					meta: {
 						title: 'Вхід',
 						description:
-							'Увійдіть або зареєструйтесь у Neryxomka, щоб переглядати цифрові паспорти об’єктів, стрічку пропозицій і керувати профілем.',
+							'Увійдіть або зареєструйтесь у Fashion, щоб переглядати рішення клієнтів, стрічку пропозицій і керувати профілем.',
 					},
 				},
 				loadChildren: () =>
@@ -61,7 +61,7 @@ export const routes: Routes = [
 					meta: {
 						title: 'Мій профіль',
 						description:
-							'Керуйте особистими даними профілю Neryxomka: ім’я, телефон, фото та коротка інформація про себе.',
+							'Керуйте особистими даними профілю Fashion: ім’я, телефон, фото та коротка інформація про себе.',
 					},
 				},
 				loadChildren: () =>
@@ -76,7 +76,7 @@ export const routes: Routes = [
 					meta: {
 						title: 'Редактор',
 						description:
-							'Перевірте форми додавання об’єктів, оголошень, комплексів, агентств та агентів у Neryxomka.',
+							'Перевірте форми додавання речей, пропозицій, колекцій, бутіків та стилістів у Fashion.',
 						index: false,
 					},
 				},
@@ -92,7 +92,7 @@ export const routes: Routes = [
 					shareKind: 'profile',
 					meta: {
 						title: 'Поділитися профілем',
-						description: 'Відскануйте QR-код, щоб відкрити мій профіль Neryxomka.',
+						description: 'Відскануйте QR-код, щоб відкрити мій профіль Fashion.',
 						index: false,
 					},
 				},
@@ -117,7 +117,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Мої налаштування',
-						description: 'Налаштування облікового запису Neryxomka.',
+						description: 'Налаштування облікового запису Fashion.',
 						index: false,
 					},
 				},
@@ -132,8 +132,8 @@ export const routes: Routes = [
 				data: {
 					shareKind: 'app',
 					meta: {
-						title: 'Поділитися Neryxomka',
-						description: 'Відскануйте QR-код, щоб приєднатися до Neryxomka за кілька секунд.',
+						title: 'Поділитися Fashion',
+						description: 'Відскануйте QR-код, щоб приєднатися до Fashion за кілька секунд.',
 					},
 				},
 				loadChildren: () =>
@@ -146,8 +146,8 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Для користувачів',
-						description: 'Знаходьте житло без переплат посередникам разом з Neryxomka.',
+						title: 'Для клієнтів',
+						description: 'Знаходьте ідеальний образ для вашої події разом з Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -160,8 +160,8 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Для агентів',
-						description: 'Розвивайте свою практику агента нерухомості з Neryxomka.',
+						title: 'Для стилістів',
+						description: 'Розвивайте свою практику стиліста разом з Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -174,8 +174,8 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Для забудовників',
-						description: 'Покажіть свої житлові комплекси покупцям на Neryxomka.',
+						title: 'Для брендів',
+						description: 'Покажіть свої колекції клієнтам на Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -188,8 +188,8 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Для агентств',
-						description: 'Розвивайте агентство нерухомості разом з Neryxomka.',
+						title: 'Для бутіків',
+						description: 'Розвивайте свій бутік моди разом з Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -204,7 +204,7 @@ export const routes: Routes = [
 					meta: {
 						title: 'Стрічка',
 						description:
-							'Перегортайте стрічку об’єктів нерухомості Neryxomka — відкладайте цікаве в обране, пропускайте зайве.',
+							'Перегортайте стрічку пропозицій Fashion — відкладайте цікаве в обране, пропускайте зайве.',
 					},
 				},
 				loadChildren: () =>
@@ -217,9 +217,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Об’єкти',
+						title: 'Речі',
 						description:
-							'Перегляньте всі об’єкти нерухомості в цифровому паспорті Neryxomka.',
+							'Перегляньте всі речі в цифровому паспорті рішень клієнтів Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -232,9 +232,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Агентства',
+						title: 'Бутіки',
 						description:
-							'Перегляньте всі агентства нерухомості, представлені в Neryxomka.',
+							'Перегляньте всі бутіки, представлені в Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -247,9 +247,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Забудовники',
+						title: 'Бренди',
 						description:
-							'Перегляньте всіх забудовників, представлених у Neryxomka.',
+							'Перегляньте всі бренди, представлені у Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -294,7 +294,7 @@ export const routes: Routes = [
 					meta: {
 						title: 'Пошук',
 						description:
-							'Шукайте й фільтруйте оголошення нерухомості Neryxomka за типом, ціною, статусом і розташуванням.',
+							'Шукайте й фільтруйте пропозиції Fashion за типом, ціною, статусом і брендом.',
 					},
 				},
 				loadChildren: () =>
@@ -309,7 +309,7 @@ export const routes: Routes = [
 					meta: {
 						title: 'Карта',
 						description:
-							'Знаходьте об’єкти нерухомості на карті Neryxomka за їхнім реальним розташуванням.',
+							'Знаходьте бутіки та речі на карті Fashion за їхнім реальним розташуванням.',
 					},
 				},
 				loadChildren: () =>
@@ -322,9 +322,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Об’єкт нерухомості',
+						title: 'Річ',
 						description:
-							'Цифровий паспорт об’єкта нерухомості: характеристики, повна історія ремонтів і обслуговування, пов’язані оголошення.',
+							'Цифровий паспорт речі: характеристики, повна історія рішень клієнтів, пов’язані пропозиції.',
 					},
 				},
 				loadChildren: () =>
@@ -337,9 +337,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Оголошення',
+						title: 'Пропозиція',
 						description:
-							'Деталі оголошення про продаж або оренду нерухомості в Neryxomka.',
+							'Деталі пропозиції про продаж, оренду або індивідуальне замовлення в Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -352,9 +352,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Запис історії об’єкта',
+						title: 'Рішення клієнта',
 						description:
-							'Запис з цифрового паспорта об’єкта: ремонт, заміна комунікацій або обслуговування.',
+							'Запис з цифрового паспорта речі: примірка, резервація, покупка або оренда для конкретної події.',
 					},
 				},
 				loadChildren: () =>
@@ -397,9 +397,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Житловий комплекс',
+						title: 'Колекція',
 						description:
-							'Житловий комплекс у Neryxomka: об’єкти, забудовник і деталі проєкту.',
+							'Колекція у Fashion: речі, бренд і деталі виробництва.',
 					},
 				},
 				loadChildren: () =>
@@ -412,9 +412,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Забудовник',
+						title: 'Бренд',
 						description:
-							'Профіль забудовника в Neryxomka: реалізовані комплекси та об’єкти.',
+							'Профіль бренду у Fashion: випущені колекції та речі.',
 					},
 				},
 				loadChildren: () =>
@@ -427,9 +427,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Агентство',
+						title: 'Бутік',
 						description:
-							'Профіль агентства нерухомості в Neryxomka: агенти, об’єкти й оголошення.',
+							'Профіль бутіку у Fashion: стилісти, речі й пропозиції.',
 					},
 				},
 				loadChildren: () =>
@@ -442,9 +442,9 @@ export const routes: Routes = [
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
-						title: 'Агент',
+						title: 'Стиліст',
 						description:
-							'Профіль агента нерухомості в Neryxomka: контакти, агентство та об’єкти в роботі.',
+							'Профіль стиліста у Fashion: контакти, бутік та речі в роботі.',
 					},
 				},
 				loadChildren: () =>
@@ -458,7 +458,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Профіль користувача',
-						description: 'Публічний профіль користувача Neryxomka.',
+						description: 'Публічний профіль користувача Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -482,7 +482,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Користувачі',
-						description: 'Адміністрування користувачів Neryxomka.',
+						description: 'Адміністрування користувачів Fashion.',
 						index: false,
 					},
 				},
@@ -495,7 +495,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Клієнти',
-						description: 'Адміністрування клієнтів Neryxomka.',
+						description: 'Адміністрування клієнтів Fashion.',
 						index: false,
 					},
 				},
@@ -508,7 +508,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Форми',
-						description: 'Адміністрування динамічних форм Neryxomka.',
+						description: 'Адміністрування динамічних форм Fashion.',
 						index: false,
 					},
 				},
@@ -521,7 +521,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Форми',
-						description: 'Редагування динамічної форми Neryxomka.',
+						description: 'Редагування динамічної форми Fashion.',
 						index: false,
 					},
 				},

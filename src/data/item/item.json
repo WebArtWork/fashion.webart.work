@@ -19,7 +19,7 @@
 		"offeringIds": ["offering-1"],
 		"decisionIds": ["decision-4"],
 		"commentIds": ["comment-1"],
-		"photos": ["https://assets.neryxomka.com/items/item-1-1.jpg", "https://assets.neryxomka.com/items/item-1-2.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-1-1.jpg", "https://assets.fashion.webart.work/items/item-1-2.jpg"]
 	},
 	{
 		"_id": "item-2",
@@ -41,7 +41,7 @@
 		"offeringIds": ["offering-2"],
 		"decisionIds": [],
 		"commentIds": [],
-		"photos": ["https://assets.neryxomka.com/items/item-2-1.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-2-1.jpg"]
 	},
 	{
 		"_id": "item-3",
@@ -63,7 +63,7 @@
 		"offeringIds": ["offering-3"],
 		"decisionIds": ["decision-1", "decision-2"],
 		"commentIds": ["comment-2"],
-		"photos": ["https://assets.neryxomka.com/items/item-3-1.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-3-1.jpg"]
 	},
 	{
 		"_id": "item-4",
@@ -85,7 +85,7 @@
 		"offeringIds": ["offering-4"],
 		"decisionIds": ["decision-3"],
 		"commentIds": [],
-		"photos": ["https://assets.neryxomka.com/items/item-4-1.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-4-1.jpg"]
 	},
 	{
 		"_id": "item-5",
@@ -107,7 +107,7 @@
 		"offeringIds": [],
 		"decisionIds": ["decision-5"],
 		"commentIds": [],
-		"photos": ["https://assets.neryxomka.com/items/item-5-1.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-5-1.jpg"]
 	},
 	{
 		"_id": "item-6",
@@ -129,7 +129,7 @@
 		"offeringIds": [],
 		"decisionIds": [],
 		"commentIds": [],
-		"photos": ["https://assets.neryxomka.com/items/item-6-1.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-6-1.jpg"]
 	},
 	{
 		"_id": "item-7",
@@ -151,6 +151,6 @@
 		"offeringIds": [],
 		"decisionIds": [],
 		"commentIds": [],
-		"photos": ["https://assets.neryxomka.com/items/item-7-1.jpg"]
+		"photos": ["https://assets.fashion.webart.work/items/item-7-1.jpg"]
 	}
 ]

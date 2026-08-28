@@ -39,13 +39,13 @@ export class SharePageComponent {
 	readonly title = computed(() =>
 		this.kind() === 'profile'
 			? this.translateService.translate('Поділитися профілем')()
-			: this.translateService.translate('Поділитися Neryxomka')(),
+			: this.translateService.translate('Поділитися Fashion')(),
 	);
 
 	readonly description = computed(() =>
 		this.kind() === 'profile'
-			? this.translateService.translate('Дайте людям відсканувати цей код, щоб відкрити мій профіль Neryxomka.')()
-			: this.translateService.translate('Відскануйте код, щоб приєднатися до Neryxomka за кілька секунд.')(),
+			? this.translateService.translate('Дайте людям відсканувати цей код, щоб відкрити мій профіль Fashion.')()
+			: this.translateService.translate('Відскануйте код, щоб приєднатися до Fashion за кілька секунд.')(),
 	);
 
 	copyLink(): void {

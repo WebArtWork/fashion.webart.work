@@ -1,14 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { BoutiqueShortComponent } from '../../../components/boutique/boutique-short/boutique-short.component';
 import { Boutique } from '../../../boutique/boutique.interface';
 import { boutiques } from '../../../boutique/boutique.data';
 
 @Component({
-	imports: [BoutiqueShortComponent, FormsModule, CardModule, InputTextModule],
+	imports: [BoutiqueShortComponent, FormsModule, InputTextModule],
 	templateUrl: './boutiques.component.html',
 	styleUrl: './boutiques.component.scss',
 })

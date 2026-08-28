@@ -2,7 +2,7 @@
 	{
 		"_id": "user-1",
 		"name": "Marta Kowalska",
-		"photo": "https://assets.neryxomka.com/users/marta-kowalska.jpg",
+		"photo": "https://assets.fashion.webart.work/users/marta-kowalska.jpg",
 		"bio": "Item owner consigning two pieces through Maison Ferelle in Vaelmont.",
 		"country": "Draecia",
 		"city": "Vaelmont",
@@ -21,7 +21,7 @@
 	{
 		"_id": "user-2",
 		"name": "Ilya Marchenko",
-		"photo": "https://assets.neryxomka.com/stylists/ilya-marchenko.jpg",
+		"photo": "https://assets.fashion.webart.work/stylists/ilya-marchenko.jpg",
 		"bio": "Professional eveningwear stylist at Maison Ferelle.",
 		"country": "Draecia",
 		"city": "Vaelmont",
@@ -40,7 +40,7 @@
 	{
 		"_id": "user-3",
 		"name": "Sofia Renner",
-		"photo": "https://assets.neryxomka.com/stylists/sofia-renner.jpg",
+		"photo": "https://assets.fashion.webart.work/stylists/sofia-renner.jpg",
 		"bio": "Menswear and tailoring stylist at Maison Ferelle.",
 		"country": "Draecia",
 		"city": "Vaelmont",
@@ -59,7 +59,7 @@
 	{
 		"_id": "user-4",
 		"name": "Daniel Osei",
-		"photo": "https://assets.neryxomka.com/users/daniel-osei.jpg",
+		"photo": "https://assets.fashion.webart.work/users/daniel-osei.jpg",
 		"bio": "Looking for a gown to buy ahead of a gala in the Riverside District.",
 		"country": "Draecia",
 		"city": "Vaelmont",
@@ -78,7 +78,7 @@
 	{
 		"_id": "user-5",
 		"name": "Helena Voss",
-		"photo": "https://assets.neryxomka.com/users/helena-voss.jpg",
+		"photo": "https://assets.fashion.webart.work/users/helena-voss.jpg",
 		"bio": "Client of the Solvara Fall 2026 collection, represents Solvara's atelier front desk.",
 		"country": "Draecia",
 		"city": "Vaelmont",

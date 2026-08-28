@@ -4,37 +4,21 @@
 	gap: var(--sp-4);
 }
 
-.brands__header {
+.brands__filters {
 	display: flex;
-	flex-direction: column;
-	gap: var(--sp-1);
+	align-items: center;
+	gap: var(--sp-2);
 }
 
-.brands__title {
-	margin: 0;
-	color: var(--c-text-secondary);
-}
-
-.brands__hint {
-	font-size: 0.85rem;
-	color: var(--c-text-muted);
-}
-
-.brands__field {
-	display: flex;
-	flex-direction: column;
-	gap: var(--sp-1);
+.brands__search {
+	flex: 0 0 auto;
+	width: 200px;
 }
 
 .brands__results {
 	display: flex;
 	flex-direction: column;
 	gap: var(--sp-3);
-}
-
-.brands__count {
-	font-size: 0.85rem;
-	color: var(--c-text-muted);
 }
 
 .brands__grid {
