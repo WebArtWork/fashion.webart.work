@@ -6,7 +6,10 @@ import { CardModule } from '@wawjs/ngx-prime/card';
 import { OfferingViewComponent } from '../../../components/offering/offering-view/offering-view.component';
 import { Offering } from '../../../offering/offering.interface';
 import { offerings } from '../../../offering/offering.data';
-import { OfferingRelations, relationsForOffering } from '../../../offering/offering-relations';
+import {
+	OfferingRelations,
+	relationsForOffering,
+} from '../../../offering/offering-relations';
 
 @Component({
 	imports: [OfferingViewComponent, CardModule],
@@ -29,5 +32,4 @@ export class OfferingComponent {
 		const offering = this.entity();
 		return offering ? relationsForOffering(offering) : null;
 	});
-
 }

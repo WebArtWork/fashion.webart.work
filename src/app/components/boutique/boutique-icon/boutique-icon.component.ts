@@ -1,15 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, input } from '@angular/core';
+
 import { Boutique } from '../../../boutique/boutique.interface';
 
 @Component({
 	selector: 'app-boutique-icon',
-	standalone: true,
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: './boutique-icon.component.html',
 	styleUrl: './boutique-icon.component.scss',
 })
 export class BoutiqueIconComponent {
-	@Input() entity!: Boutique;
+	readonly entity = input.required<Boutique>();
 }

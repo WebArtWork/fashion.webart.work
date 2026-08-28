@@ -1,4 +1,5 @@
-export type CollectionStatus = 'planned' | 'in-production' | 'released' | 'archived';
+export type CollectionStatus =
+	'planned' | 'in-production' | 'released' | 'archived';
 
 export interface CollectionLookbookEntry {
 	name: string;

@@ -29,13 +29,14 @@ export class BoutiqueComponent {
 		boutiques.find((item) => item._id === this._id()),
 	);
 
-
 	share(): void {
 		const url = `${window.location.origin}/boutique/${this._id()}`;
 		navigator.clipboard?.writeText(url).then(() => {
 			this._messageService.add({
 				severity: 'success',
-				detail: this.translateService.translate('Посилання скопійовано')(),
+				detail: this.translateService.translate(
+					'Посилання скопійовано',
+				)(),
 			});
 		});
 	}

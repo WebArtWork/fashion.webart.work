@@ -29,5 +29,4 @@ export class ItemComponent {
 		const item = this.entity();
 		return item ? relationsForItem(item) : null;
 	});
-
 }

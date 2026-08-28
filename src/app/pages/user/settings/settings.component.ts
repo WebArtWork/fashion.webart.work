@@ -1,10 +1,4 @@
-import {
-	Component,
-	DestroyRef,
-	computed,
-	inject,
-	signal,
-} from '@angular/core';
+import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormField, form, submit } from '@angular/forms/signals';
 import { UserService } from '@wawjs/ngx-bos';
@@ -21,7 +15,13 @@ import { SecurityModel } from './settings.interface';
 import { securitySchema } from './settings.schema';
 
 @Component({
-	imports: [FormField, ButtonModule, PasswordModule, FieldErrorComponent, TranslateDirective],
+	imports: [
+		FormField,
+		ButtonModule,
+		PasswordModule,
+		FieldErrorComponent,
+		TranslateDirective,
+	],
 	templateUrl: './settings.component.html',
 	styleUrl: './settings.component.scss',
 })

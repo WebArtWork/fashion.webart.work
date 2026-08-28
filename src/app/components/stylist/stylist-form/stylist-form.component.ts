@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -11,9 +15,7 @@ import { Stylist } from '../../../stylist/stylist.interface';
 
 @Component({
 	selector: 'app-stylist-form',
-	standalone: true,
 	imports: [
-		CommonModule,
 		ReactiveFormsModule,
 		ButtonModule,
 		InputTextModule,
@@ -25,11 +27,13 @@ import { Stylist } from '../../../stylist/stylist.interface';
 	styleUrl: './stylist-form.component.scss',
 })
 export class StylistFormComponent {
-	@Input() entity?: Stylist;
+	private readonly fb = inject(FormBuilder);
+
+	readonly entity = input<Stylist>();
 
 	readonly form: FormGroup;
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor() {
 		this.form = this.fb.group({
 			displayName: ['', Validators.required],
 			photo: [''],
@@ -43,8 +47,9 @@ export class StylistFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue(this.entity);
+		const entity = this.entity();
+		if (entity) {
+			this.form.patchValue(entity);
 		}
 	}
 }

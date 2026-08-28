@@ -1,15 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ItemRequest } from '../../../request/request.interface';
 
 @Component({
 	selector: 'app-request-icon',
-	standalone: true,
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: './request-icon.component.html',
 	styleUrl: './request-icon.component.scss',
 })
 export class RequestIconComponent {
-	@Input() entity!: ItemRequest;
+	readonly entity = input.required<ItemRequest>();
 }

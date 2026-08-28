@@ -1,7 +1,9 @@
 <section class="events">
 	<header class="events__header">
 		<h2 class="events__title">Події</h2>
-		<span class="events__hint">Перегляньте всі події Fashion та рішення, прийняті для них</span>
+		<span class="events__hint"
+			>Перегляньте всі події Fashion та рішення, прийняті для них</span
+		>
 	</header>
 
 	<p-card class="events__filters">
@@ -20,7 +22,9 @@
 	</p-card>
 
 	<div class="events__results">
-		<span class="events__count">Знайдено подій: {{ results().length }}</span>
+		<span class="events__count"
+			>Знайдено подій: {{ results().length }}</span
+		>
 
 		<div class="events__grid">
 			@for (item of results(); track item._id) {

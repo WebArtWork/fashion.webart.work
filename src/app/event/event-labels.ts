@@ -26,6 +26,7 @@ export const EVENT_TYPE_LABELS: Record<EventType, string> = Object.fromEntries(
 	EVENT_TYPE_OPTIONS.map((o) => [o.value, o.label]),
 ) as Record<EventType, string>;
 
-export const EVENT_STATUS_LABELS: Record<EventStatus, string> = Object.fromEntries(
-	EVENT_STATUS_OPTIONS.map((o) => [o.value, o.label]),
-) as Record<EventStatus, string>;
+export const EVENT_STATUS_LABELS: Record<EventStatus, string> =
+	Object.fromEntries(
+		EVENT_STATUS_OPTIONS.map((o) => [o.value, o.label]),
+	) as Record<EventStatus, string>;

@@ -23,5 +23,4 @@ export class ClientComponent {
 	readonly entity = computed<User | undefined>(() =>
 		users.find((item) => item._id === this._id()),
 	);
-
 }

@@ -92,7 +92,8 @@ export const routes: Routes = [
 					shareKind: 'profile',
 					meta: {
 						title: 'Поділитися профілем',
-						description: 'Відскануйте QR-код, щоб відкрити мій профіль Fashion.',
+						description:
+							'Відскануйте QR-код, щоб відкрити мій профіль Fashion.',
 						index: false,
 					},
 				},
@@ -133,7 +134,8 @@ export const routes: Routes = [
 					shareKind: 'app',
 					meta: {
 						title: 'Поділитися Fashion',
-						description: 'Відскануйте QR-код, щоб приєднатися до Fashion за кілька секунд.',
+						description:
+							'Відскануйте QR-код, щоб приєднатися до Fashion за кілька секунд.',
 					},
 				},
 				loadChildren: () =>
@@ -147,7 +149,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Для клієнтів',
-						description: 'Знаходьте ідеальний образ для вашої події разом з Fashion.',
+						description:
+							'Знаходьте ідеальний образ для вашої події разом з Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -161,7 +164,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Для стилістів',
-						description: 'Розвивайте свою практику стиліста разом з Fashion.',
+						description:
+							'Розвивайте свою практику стиліста разом з Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -175,7 +179,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Для брендів',
-						description: 'Покажіть свої колекції клієнтам на Fashion.',
+						description:
+							'Покажіть свої колекції клієнтам на Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -189,7 +194,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Для бутіків',
-						description: 'Розвивайте свій бутік моди разом з Fashion.',
+						description:
+							'Розвивайте свій бутік моди разом з Fashion.',
 					},
 				},
 				loadChildren: () =>
@@ -313,9 +319,7 @@ export const routes: Routes = [
 					},
 				},
 				loadChildren: () =>
-					import('./pages/user/map/map.routes').then(
-						(m) => m.routes,
-					),
+					import('./pages/user/map/map.routes').then((m) => m.routes),
 			},
 			{
 				path: 'item/:id',

@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Model } from '../../../model/model.interface';
 import { Event } from '../../../event/event.interface';
@@ -9,17 +8,16 @@ import { ItemShortComponent } from '../../item/item-short/item-short.component';
 
 @Component({
 	selector: 'app-model-view',
-	standalone: true,
-	imports: [CommonModule, EventShortComponent, ItemShortComponent],
+	imports: [EventShortComponent, ItemShortComponent],
 	templateUrl: './model-view.component.html',
 	styleUrl: './model-view.component.scss',
 })
 export class ModelViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: Model;
-	@Input() events: Event[] = [];
-	@Input() items: Item[] = [];
+	readonly entity = input.required<Model>();
+	readonly events = input<Event[]>([]);
+	readonly items = input<Item[]>([]);
 
 	viewEvent(event: Event): void {
 		this._router.navigate(['/event', event._id]);

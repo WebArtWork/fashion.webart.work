@@ -41,7 +41,9 @@ export class DecisionsComponent {
 
 	readonly event = computed<Event | null>(() => {
 		const decision = this.entity();
-		return decision?.eventId ? (_eventById.get(decision.eventId) ?? null) : null;
+		return decision?.eventId
+			? (_eventById.get(decision.eventId) ?? null)
+			: null;
 	});
 
 	readonly author = computed<User | null>(() => {
@@ -56,5 +58,4 @@ export class DecisionsComponent {
 			.map((id) => _userById.get(id))
 			.filter((u): u is User => !!u);
 	});
-
 }

@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -19,18 +23,27 @@ const STATUS_OPTIONS: { value: string; label: string }[] = [
 
 @Component({
 	selector: 'app-collection-form',
-	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputNumberModule, InputTextModule, SelectModule, TextareaModule, TranslateDirective],
+	imports: [
+		ReactiveFormsModule,
+		ButtonModule,
+		InputNumberModule,
+		InputTextModule,
+		SelectModule,
+		TextareaModule,
+		TranslateDirective,
+	],
 	templateUrl: './collection-form.component.html',
 	styleUrl: './collection-form.component.scss',
 })
 export class CollectionFormComponent {
-	@Input() entity?: Collection;
+	private readonly fb = inject(FormBuilder);
+
+	readonly entity = input<Collection>();
 
 	readonly form: FormGroup;
 	readonly statusOptions = STATUS_OPTIONS;
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor() {
 		this.form = this.fb.group({
 			name: ['', Validators.required],
 			description: ['', Validators.required],
@@ -38,14 +51,18 @@ export class CollectionFormComponent {
 			city: ['', Validators.required],
 			address: ['', Validators.required],
 			status: ['planned', Validators.required],
-			productionProgressPercent: [0, [Validators.min(0), Validators.max(100)]],
+			productionProgressPercent: [
+				0,
+				[Validators.min(0), Validators.max(100)],
+			],
 			coverImage: [''],
 		});
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue(this.entity);
+		const entity = this.entity();
+		if (entity) {
+			this.form.patchValue(entity);
 		}
 	}
 }

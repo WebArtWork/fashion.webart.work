@@ -32,7 +32,10 @@ export const ITEM_STATUS_OPTIONS: { value: ItemStatus; label: string }[] = [
 	{ value: 'unverified', label: 'Не перевірений' },
 ];
 
-export const ITEM_VISIBILITY_OPTIONS: { value: ItemVisibility; label: string }[] = [
+export const ITEM_VISIBILITY_OPTIONS: {
+	value: ItemVisibility;
+	label: string;
+}[] = [
 	{ value: 'public', label: 'Публічний' },
 	{ value: 'offering-only', label: 'Лише в оголошенні' },
 	{ value: 'limited-preview', label: 'Обмежений перегляд' },
@@ -45,10 +48,12 @@ export const ITEM_TYPE_LABELS: Record<ItemType, string> = Object.fromEntries(
 	ITEM_TYPE_OPTIONS.map((o) => [o.value, o.label]),
 ) as Record<ItemType, string>;
 
-export const ITEM_STATUS_LABELS: Record<ItemStatus, string> = Object.fromEntries(
-	ITEM_STATUS_OPTIONS.map((o) => [o.value, o.label]),
-) as Record<ItemStatus, string>;
+export const ITEM_STATUS_LABELS: Record<ItemStatus, string> =
+	Object.fromEntries(
+		ITEM_STATUS_OPTIONS.map((o) => [o.value, o.label]),
+	) as Record<ItemStatus, string>;
 
-export const ITEM_VISIBILITY_LABELS: Record<ItemVisibility, string> = Object.fromEntries(
-	ITEM_VISIBILITY_OPTIONS.map((o) => [o.value, o.label]),
-) as Record<ItemVisibility, string>;
+export const ITEM_VISIBILITY_LABELS: Record<ItemVisibility, string> =
+	Object.fromEntries(
+		ITEM_VISIBILITY_OPTIONS.map((o) => [o.value, o.label]),
+	) as Record<ItemVisibility, string>;

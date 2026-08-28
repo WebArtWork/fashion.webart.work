@@ -6,7 +6,10 @@ import { CardModule } from '@wawjs/ngx-prime/card';
 import { EventViewComponent } from '../../../components/event/event-view/event-view.component';
 import { Event } from '../../../event/event.interface';
 import { events } from '../../../event/event.data';
-import { EventRelations, relationsForEvent } from '../../../event/event-relations';
+import {
+	EventRelations,
+	relationsForEvent,
+} from '../../../event/event-relations';
 
 @Component({
 	imports: [EventViewComponent, CardModule],

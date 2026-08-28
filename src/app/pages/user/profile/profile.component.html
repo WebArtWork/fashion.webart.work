@@ -14,18 +14,43 @@
 			[cropHeight]="512"
 		></ngx-file>
 
-		<form (submit)="wFormSubmit(); $event.preventDefault()" class="profile__form">
-			<input pInputText class="w-full" [placeholder]="translateService.translate('Enter your name...')()" [formField]="profileForm.name" />
-			<input pInputText class="w-full" [placeholder]="translateService.translate('Enter your phone...')()" [formField]="profileForm.phone" type="tel" />
-			<textarea pTextarea class="w-full" [placeholder]="translateService.translate('Enter your bio...')()" [formField]="profileForm.bio"></textarea>
+		<form
+			(submit)="wFormSubmit(); $event.preventDefault()"
+			class="profile__form"
+		>
+			<input
+				pInputText
+				class="w-full"
+				[placeholder]="translateService.translate('Enter your name...')()"
+				[formField]="profileForm.name"
+			/>
+			<input
+				pInputText
+				class="w-full"
+				[placeholder]="translateService.translate('Enter your phone...')()"
+				[formField]="profileForm.phone"
+				type="tel"
+			/>
+			<textarea
+				pTextarea
+				class="w-full"
+				[placeholder]="translateService.translate('Enter your bio...')()"
+				[formField]="profileForm.bio"
+			></textarea>
 
 			<div class="profile__actions">
-				<button pButton type="submit" [disabled]="isSubmitDisabled()"><span translate>Update</span></button>
+				<button pButton type="submit" [disabled]="isSubmitDisabled()">
+					<span translate>Update</span>
+				</button>
 			</div>
 		</form>
 	</div>
 
-	<button type="button" class="profile__logout" (click)="userService.logout()">
+	<button
+		type="button"
+		class="profile__logout"
+		(click)="userService.logout()"
+	>
 		<i class="pi pi-sign-out"></i>
 		<span translate>Logout</span>
 	</button>

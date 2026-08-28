@@ -1,76 +1,89 @@
 <article class="card">
-	@if (entity.coverImage) {
-		<img class="card__photo" style="width:100%;height:auto" [src]="entity.coverImage" alt="" />
+	@if (entity().coverImage) {
+	<img
+		class="card__photo"
+		style="width: 100%; height: auto"
+		[src]="entity().coverImage"
+		alt=""
+	/>
 	}
 
-	<h2 class="card__title">{{ entity.name }}</h2>
+	<h2 class="card__title">{{ entity().name }}</h2>
 
 	<div class="card__meta">
-		<span class="card__badge">{{ statusLabels[entity.status] }}</span>
-		<span class="card__badge">{{ entity.productionProgressPercent }}% готово</span>
+		<span class="card__badge">{{ statusLabels[entity().status] }}</span>
+		<span class="card__badge"
+			>{{ entity().productionProgressPercent }}% готово</span
+		>
 	</div>
 
-	<p>{{ entity.description }}</p>
+	<p>{{ entity().description }}</p>
 
-		<div class="card__row"><dt>Розташування</dt><dd>{{ entity.address }}, {{ entity.city }}, {{ entity.country }}</dd></div>
-		<div class="card__row"><dt>Координати</dt><dd>{{ entity.coordinates.lat }}, {{ entity.coordinates.lng }}</dd></div>
-		@if (brand(); as b) {
-			<div class="card__row">
-				<dt>Бренд</dt>
-				<dd>
-					<button type="button" class="card__relation" (click)="viewBrand()">
-						<app-brand-icon [entity]="b" />
-					</button>
-				</dd>
-			</div>
+	<div class="card__row">
+		<dt>Розташування</dt>
+		<dd>
+			{{ entity().address }}, {{ entity().city }}, {{ entity().country }}
+		</dd>
+	</div>
+	<div class="card__row">
+		<dt>Координати</dt>
+		<dd>{{ entity().coordinates.lat }}, {{ entity().coordinates.lng }}</dd>
+	</div>
+	@if (brand(); as b) {
+	<div class="card__row">
+		<dt>Бренд</dt>
+		<dd>
+			<button type="button" class="card__relation" (click)="viewBrand()">
+				<app-brand-icon [entity]="b" />
+			</button>
+		</dd>
+	</div>
+	} @if (entity().lookbook.length) {
+	<div class="card__meta">
+		@for (l of entity().lookbook; track l.name) {
+		<span class="card__badge">{{ l.name }}: {{ l.pieceCount }} looks</span>
 		}
-
-	@if (entity.lookbook.length) {
-		<div class="card__meta">
-			@for (l of entity.lookbook; track l.name) {
-				<span class="card__badge">{{ l.name }}: {{ l.pieceCount }} looks</span>
-			}
-		</div>
-	}
-
-	@if (entity.productionPartners.length) {
-		<div class="card__meta">
-			@for (f of entity.productionPartners; track f) {
-				<span class="card__badge">{{ f }}</span>
-			}
-		</div>
-	}
-
-	@if (relatedItems().length) {
-		<h3 class="card__section-title">Речі колекції</h3>
-		<div class="card__list">
-			@for (item of relatedItems(); track item._id) {
-				<button type="button" class="card__list-item" (click)="viewItem(item)">
-					<app-item-short [entity]="item" />
-				</button>
-			}
-		</div>
-	}
-
-	@if (relatedOfferings().length) {
-		<h3 class="card__section-title">Оголошення</h3>
-		<div class="card__list">
-			@for (offering of relatedOfferings(); track offering._id) {
-				<button type="button" class="card__list-item" (click)="viewOffering(offering)">
-					<app-offering-short [entity]="offering" />
-				</button>
-			}
-		</div>
-	}
-
-	@if (relatedDecisions().length) {
-		<h3 class="card__section-title">Рішення</h3>
-		<div class="card__list">
-			@for (decision of relatedDecisions(); track decision._id) {
-				<button type="button" class="card__list-item" (click)="viewDecision(decision)">
-					<app-decision-short [entity]="decision" />
-				</button>
-			}
-		</div>
+	</div>
+	} @if (entity().productionPartners.length) {
+	<div class="card__meta">
+		@for (f of entity().productionPartners; track f) {
+		<span class="card__badge">{{ f }}</span>
+		}
+	</div>
+	} @if (relatedItems().length) {
+	<h3 class="card__section-title">Речі колекції</h3>
+	<div class="card__list">
+		@for (item of relatedItems(); track item._id) {
+		<button type="button" class="card__list-item" (click)="viewItem(item)">
+			<app-item-short [entity]="item" />
+		</button>
+		}
+	</div>
+	} @if (relatedOfferings().length) {
+	<h3 class="card__section-title">Оголошення</h3>
+	<div class="card__list">
+		@for (offering of relatedOfferings(); track offering._id) {
+		<button
+			type="button"
+			class="card__list-item"
+			(click)="viewOffering(offering)"
+		>
+			<app-offering-short [entity]="offering" />
+		</button>
+		}
+	</div>
+	} @if (relatedDecisions().length) {
+	<h3 class="card__section-title">Рішення</h3>
+	<div class="card__list">
+		@for (decision of relatedDecisions(); track decision._id) {
+		<button
+			type="button"
+			class="card__list-item"
+			(click)="viewDecision(decision)"
+		>
+			<app-decision-short [entity]="decision" />
+		</button>
+		}
+	</div>
 	}
 </article>

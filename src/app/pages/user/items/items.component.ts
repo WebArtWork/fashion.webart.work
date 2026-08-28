@@ -8,7 +8,13 @@ import { Item } from '../../../item/item.interface';
 import { items } from '../../../item/item.data';
 
 @Component({
-	imports: [ItemShortComponent, FormsModule, RouterLink, ButtonModule, InputTextModule],
+	imports: [
+		ItemShortComponent,
+		FormsModule,
+		RouterLink,
+		ButtonModule,
+		InputTextModule,
+	],
 	templateUrl: './items.component.html',
 	styleUrl: './items.component.scss',
 })

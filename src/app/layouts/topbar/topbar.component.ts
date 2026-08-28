@@ -1,10 +1,4 @@
-import {
-	Component,
-	computed,
-	inject,
-	input,
-	output,
-} from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { CoreService } from '@wawjs/ngx-core';
@@ -46,7 +40,10 @@ export class TopbarComponent {
 	/** Title of the deepest activated route, read from `data.meta.title` (used for the mobile header). */
 	readonly pageTitle = toSignal(
 		this._router.events.pipe(
-			filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+			filter(
+				(event): event is NavigationEnd =>
+					event instanceof NavigationEnd,
+			),
 			map(() => this._readDeepestRouteTitle()),
 			startWith(this._readDeepestRouteTitle()),
 		),

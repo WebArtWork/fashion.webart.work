@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, input } from '@angular/core';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Boutique } from '../../../boutique/boutique.interface';
@@ -27,9 +26,7 @@ const DEFAULT_PHOTO = '/item-default.svg';
 
 @Component({
 	selector: 'app-item-view',
-	standalone: true,
 	imports: [
-		CommonModule,
 		BoutiqueIconComponent,
 		StylistIconComponent,
 		CollectionIconComponent,
@@ -45,14 +42,14 @@ export class ItemViewComponent implements OnChanges {
 	private readonly _router = inject(Router);
 	private readonly _failedPhotos = new Set<string>();
 
-	@Input() entity!: Item;
-	@Input() collection?: Collection | null;
-	@Input() brand?: Brand | null;
-	@Input() boutique?: Boutique | null;
-	@Input() stylist?: Stylist | null;
-	@Input() offerings: Offering[] = [];
-	@Input() decisions: ItemDecision[] = [];
-	@Input() comments: EntityComment[] = [];
+	readonly entity = input.required<Item>();
+	readonly collection = input<Collection | null>();
+	readonly brand = input<Brand | null>();
+	readonly boutique = input<Boutique | null>();
+	readonly stylist = input<Stylist | null>();
+	readonly offerings = input<Offering[]>([]);
+	readonly decisions = input<ItemDecision[]>([]);
+	readonly comments = input<EntityComment[]>([]);
 
 	readonly defaultPhoto = DEFAULT_PHOTO;
 	readonly typeLabels = ITEM_TYPE_LABELS;
@@ -60,9 +57,11 @@ export class ItemViewComponent implements OnChanges {
 	readonly visibilityLabels = ITEM_VISIBILITY_LABELS;
 
 	get photos(): string[] {
-		const uniquePhotos = [...new Set(this.entity.photos)];
+		const uniquePhotos = [...new Set(this.entity().photos)];
 		if (!uniquePhotos.length) return [DEFAULT_PHOTO];
-		return uniquePhotos.every((photo) => this._failedPhotos.has(photo)) ? [DEFAULT_PHOTO] : uniquePhotos;
+		return uniquePhotos.every((photo) => this._failedPhotos.has(photo))
+			? [DEFAULT_PHOTO]
+			: uniquePhotos;
 	}
 
 	onPhotoError(event: Event, photo: string): void {
@@ -75,19 +74,23 @@ export class ItemViewComponent implements OnChanges {
 	}
 
 	viewCollection(): void {
-		if (this.collection) this._router.navigate(['/collection', this.collection._id]);
+		const collection = this.collection();
+		if (collection) this._router.navigate(['/collection', collection._id]);
 	}
 
 	viewBrand(): void {
-		if (this.brand) this._router.navigate(['/brand', this.brand._id]);
+		const brand = this.brand();
+		if (brand) this._router.navigate(['/brand', brand._id]);
 	}
 
 	viewBoutique(): void {
-		if (this.boutique) this._router.navigate(['/boutique', this.boutique._id]);
+		const boutique = this.boutique();
+		if (boutique) this._router.navigate(['/boutique', boutique._id]);
 	}
 
 	viewStylist(): void {
-		if (this.stylist) this._router.navigate(['/stylist', this.stylist._id]);
+		const stylist = this.stylist();
+		if (stylist) this._router.navigate(['/stylist', stylist._id]);
 	}
 
 	viewOffering(offering: Offering): void {

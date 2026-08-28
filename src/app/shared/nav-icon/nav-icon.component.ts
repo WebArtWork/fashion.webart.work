@@ -27,7 +27,9 @@ export class NavIconComponent {
 
 	readonly action = output<void>();
 
-	protected readonly hasRouterLink = computed(() => this.routerLink().trim().length > 0);
+	protected readonly hasRouterLink = computed(
+		() => this.routerLink().trim().length > 0,
+	);
 
 	protected onAction(): void {
 		this.action.emit();

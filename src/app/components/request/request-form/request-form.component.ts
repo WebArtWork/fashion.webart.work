@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, input } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -9,25 +13,32 @@ import { SelectModule } from '@wawjs/ngx-prime/select';
 import { TranslateDirective } from '@wawjs/ngx-translate';
 import { ItemRequest } from '../../../request/request.interface';
 
-const TRANSACTION_TYPE_OPTIONS: { value: ItemRequest['transactionType']; label: string }[] = [
+const TRANSACTION_TYPE_OPTIONS: {
+	value: ItemRequest['transactionType'];
+	label: string;
+}[] = [
 	{ value: 'buy', label: 'Купівля' },
 	{ value: 'rent', label: 'Оренда' },
 	{ value: 'custom-order', label: 'Індивідуальне замовлення' },
 	{ value: 'find', label: 'Пошук' },
 ];
 
-const VISIBILITY_OPTIONS: { value: ItemRequest['visibility']; label: string }[] = [
+const VISIBILITY_OPTIONS: {
+	value: ItemRequest['visibility'];
+	label: string;
+}[] = [
 	{ value: 'public', label: 'Публічний' },
 	{ value: 'private', label: 'Приватний' },
-	{ value: 'shared-with-selected-stylists', label: 'Спільний з обраними агентами' },
+	{
+		value: 'shared-with-selected-stylists',
+		label: 'Спільний з обраними агентами',
+	},
 	{ value: 'shared-with-boutiques', label: 'Спільний з агенціями' },
 ];
 
 @Component({
 	selector: 'app-request-form',
-	standalone: true,
 	imports: [
-		CommonModule,
 		ReactiveFormsModule,
 		ButtonModule,
 		InputTextModule,
@@ -39,13 +50,15 @@ const VISIBILITY_OPTIONS: { value: ItemRequest['visibility']; label: string }[] 
 	styleUrl: './request-form.component.scss',
 })
 export class RequestFormComponent {
-	@Input() entity?: ItemRequest;
+	readonly entity = input<ItemRequest>();
 
 	readonly form: FormGroup;
 	readonly transactionTypeOptions = TRANSACTION_TYPE_OPTIONS;
 	readonly visibilityOptions = VISIBILITY_OPTIONS;
 
-	constructor(private readonly fb: FormBuilder) {
+	private readonly fb = inject(FormBuilder);
+
+	constructor() {
 		this.form = this.fb.group({
 			transactionType: ['buy', Validators.required],
 			country: ['', Validators.required],
@@ -65,8 +78,8 @@ export class RequestFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue(this.entity);
+		if (this.entity()) {
+			this.form.patchValue(this.entity()!);
 		}
 	}
 }

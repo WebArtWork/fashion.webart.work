@@ -17,7 +17,8 @@ export type DecisionType =
 	| 'valuation'
 	| 'note';
 
-export type DecisionStatus = 'planned' | 'in-progress' | 'completed' | 'cancelled';
+export type DecisionStatus =
+	'planned' | 'in-progress' | 'completed' | 'cancelled';
 
 export type DecisionVisibility =
 	| 'public'
@@ -28,7 +29,14 @@ export type DecisionVisibility =
 	| 'shared-with-stylist-boutique-contractor-manager';
 
 export interface DecisionAttachment {
-	type: 'photo' | 'video' | 'invoice' | 'receipt' | 'plan' | 'diagram' | 'document';
+	type:
+		| 'photo'
+		| 'video'
+		| 'invoice'
+		| 'receipt'
+		| 'plan'
+		| 'diagram'
+		| 'document';
 	url: string;
 }
 

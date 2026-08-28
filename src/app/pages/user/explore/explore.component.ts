@@ -5,10 +5,21 @@ import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { MultiSelectModule } from '@wawjs/ngx-prime/multiselect';
 import { SelectModule } from '@wawjs/ngx-prime/select';
-import { OfferingRelationType, OfferingShortComponent } from '../../../components/offering/offering-short/offering-short.component';
-import { Offering, OfferingStatus, OfferingType } from '../../../offering/offering.interface';
+import {
+	OfferingRelationType,
+	OfferingShortComponent,
+} from '../../../components/offering/offering-short/offering-short.component';
+import {
+	Offering,
+	OfferingStatus,
+	OfferingType,
+} from '../../../offering/offering.interface';
 import { offerings } from '../../../offering/offering.data';
-import { OfferingRelations, itemForOffering, relationsForOffering } from '../../../offering/offering-relations';
+import {
+	OfferingRelations,
+	itemForOffering,
+	relationsForOffering,
+} from '../../../offering/offering-relations';
 import { ItemType } from '../../../item/item.interface';
 
 interface SelectOption<T> {
@@ -78,16 +89,20 @@ export class ExploreComponent {
 		OFFERING_TYPE_LABELS,
 	).map(([value, label]) => ({ value: value as OfferingType, label }));
 
-	readonly offeringStatusOptions: SelectOption<OfferingStatus>[] = Object.entries(
-		OFFERING_STATUS_LABELS,
-	).map(([value, label]) => ({ value: value as OfferingStatus, label }));
+	readonly offeringStatusOptions: SelectOption<OfferingStatus>[] =
+		Object.entries(OFFERING_STATUS_LABELS).map(([value, label]) => ({
+			value: value as OfferingStatus,
+			label,
+		}));
 
 	readonly searchTerm = signal('');
 	readonly selectedItemTypes = signal<ItemType[]>([]);
 	readonly selectedOfferingType = signal<OfferingType | null>(null);
 	readonly selectedStatus = signal<OfferingStatus | null>(null);
 
-	readonly results = computed<{ offering: Offering; relations: OfferingRelations }[]>(() => {
+	readonly results = computed<
+		{ offering: Offering; relations: OfferingRelations }[]
+	>(() => {
 		const term = this.searchTerm().trim().toLowerCase();
 		const types = this.selectedItemTypes();
 		const offeringType = this.selectedOfferingType();
@@ -126,7 +141,10 @@ export class ExploreComponent {
 
 				return true;
 			})
-			.map((offering) => ({ offering, relations: relationsForOffering(offering) }));
+			.map((offering) => ({
+				offering,
+				relations: relationsForOffering(offering),
+			}));
 	});
 
 	view(item: Offering): void {

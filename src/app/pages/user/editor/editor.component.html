@@ -10,32 +10,26 @@
 			/>
 		</div>
 
-		@switch (selectedType()) {
-			@case ('item') {
-				<app-item-form />
-			}
-			@case ('offering') {
-				<app-offering-form />
-			}
-			@case ('decision') {
-				<app-decision-form />
-			}
-			@case ('collection') {
-				<app-collection-form />
-			}
-			@case ('brand') {
-				<app-brand-form />
-			}
-			@case ('boutique') {
-				<app-boutique-form />
-			}
-			@case ('stylist') {
-				<app-stylist-form />
-			}
-		}
+		@switch (selectedType()) { @case ('item') {
+		<app-item-form />
+		} @case ('offering') {
+		<app-offering-form />
+		} @case ('decision') {
+		<app-decision-form />
+		} @case ('collection') {
+		<app-collection-form />
+		} @case ('brand') {
+		<app-brand-form />
+		} @case ('boutique') {
+		<app-boutique-form />
+		} @case ('stylist') {
+		<app-stylist-form />
+		} }
 
 		<div class="editor__actions">
-			<button pButton type="button" (click)="wValidate()">Перевірити</button>
+			<button pButton type="button" (click)="wValidate()">
+				Перевірити
+			</button>
 		</div>
 	</p-card>
 </section>

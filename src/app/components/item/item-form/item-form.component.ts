@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -16,9 +20,7 @@ import {
 
 @Component({
 	selector: 'app-item-form',
-	standalone: true,
 	imports: [
-		CommonModule,
 		ReactiveFormsModule,
 		ButtonModule,
 		InputTextModule,
@@ -30,14 +32,16 @@ import {
 	styleUrl: './item-form.component.scss',
 })
 export class ItemFormComponent {
-	@Input() entity?: Item;
+	private readonly fb = inject(FormBuilder);
+
+	readonly entity = input<Item>();
 
 	readonly form: FormGroup;
 	readonly typeOptions = ITEM_TYPE_OPTIONS;
 	readonly statusOptions = ITEM_STATUS_OPTIONS;
 	readonly visibilityOptions = ITEM_VISIBILITY_OPTIONS;
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor() {
 		this.form = this.fb.group({
 			type: ['dress', Validators.required],
 			country: ['', Validators.required],
@@ -57,10 +61,11 @@ export class ItemFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
+		const entity = this.entity();
+		if (entity) {
 			this.form.patchValue({
-				...this.entity,
-				...this.entity.characteristics,
+				...entity,
+				...entity.characteristics,
 			});
 		}
 	}

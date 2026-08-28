@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, computed, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../user/user.interface';
 import { Stylist } from '../../../stylist/stylist.interface';
@@ -19,16 +18,18 @@ import { ItemShortComponent } from '../../item/item-short/item-short.component';
 import { OfferingShortComponent } from '../../offering/offering-short/offering-short.component';
 
 const _stylistById = new Map<string, Stylist>(stylists.map((a) => [a._id, a]));
-const _boutiqueById = new Map<string, Boutique>(boutiques.map((a) => [a._id, a]));
+const _boutiqueById = new Map<string, Boutique>(
+	boutiques.map((a) => [a._id, a]),
+);
 const _brandById = new Map<string, Brand>(brands.map((d) => [d._id, d]));
 const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
-const _offeringById = new Map<string, Offering>(offerings.map((l) => [l._id, l]));
+const _offeringById = new Map<string, Offering>(
+	offerings.map((l) => [l._id, l]),
+);
 
 @Component({
 	selector: 'app-user-view',
-	standalone: true,
 	imports: [
-		CommonModule,
 		StylistIconComponent,
 		BoutiqueIconComponent,
 		BrandIconComponent,
@@ -41,26 +42,37 @@ const _offeringById = new Map<string, Offering>(offerings.map((l) => [l._id, l])
 export class UserViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: User;
+	readonly entity = input.required<User>();
 
-	readonly stylist = computed<Stylist | null>(
-		() => (this.entity.stylistId ? (_stylistById.get(this.entity.stylistId) ?? null) : null),
-	);
+	readonly stylist = computed<Stylist | null>(() => {
+		const entity = this.entity();
+		return entity.stylistId
+			? (_stylistById.get(entity.stylistId) ?? null)
+			: null;
+	});
 
-	readonly boutique = computed<Boutique | null>(
-		() => (this.entity.boutiqueId ? (_boutiqueById.get(this.entity.boutiqueId) ?? null) : null),
-	);
+	readonly boutique = computed<Boutique | null>(() => {
+		const entity = this.entity();
+		return entity.boutiqueId
+			? (_boutiqueById.get(entity.boutiqueId) ?? null)
+			: null;
+	});
 
-	readonly brand = computed<Brand | null>(
-		() => (this.entity.brandId ? (_brandById.get(this.entity.brandId) ?? null) : null),
-	);
+	readonly brand = computed<Brand | null>(() => {
+		const entity = this.entity();
+		return entity.brandId ? (_brandById.get(entity.brandId) ?? null) : null;
+	});
 
 	readonly ownedItems = computed<Item[]>(() =>
-		this.entity.ownedItemIds.map((id) => _itemById.get(id)).filter((p): p is Item => !!p),
+		this.entity()
+			.ownedItemIds.map((id) => _itemById.get(id))
+			.filter((p): p is Item => !!p),
 	);
 
 	readonly relatedOfferings = computed<Offering[]>(() =>
-		this.entity.offeringIds.map((id) => _offeringById.get(id)).filter((l): l is Offering => !!l),
+		this.entity()
+			.offeringIds.map((id) => _offeringById.get(id))
+			.filter((l): l is Offering => !!l),
 	);
 
 	viewStylist(): void {

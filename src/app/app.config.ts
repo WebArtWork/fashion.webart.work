@@ -29,14 +29,17 @@ import { routes } from './app.routes';
 import { tinymceConfig } from './tinymce.config';
 import { wawjsConfig } from './wawjs.config';
 
-registerAceMode('javascript', () =>
-	import('ace-builds/src-noconflict/mode-javascript'),
+registerAceMode(
+	'javascript',
+	() => import('ace-builds/src-noconflict/mode-javascript'),
 );
-registerAceTheme('clouds', () =>
-	import('ace-builds/src-noconflict/theme-clouds'),
+registerAceTheme(
+	'clouds',
+	() => import('ace-builds/src-noconflict/theme-clouds'),
 );
-registerAceTheme('github', () =>
-	import('ace-builds/src-noconflict/theme-github'),
+registerAceTheme(
+	'github',
+	() => import('ace-builds/src-noconflict/theme-github'),
 );
 
 export const appConfig: ApplicationConfig = {
@@ -50,9 +53,11 @@ export const appConfig: ApplicationConfig = {
 				(environment as unknown as { userFields?: string[] })
 					.userFields ?? [],
 			userForm:
-				(environment as unknown as {
-					userForm?: NgxBosConfig['userForm'];
-				}).userForm ?? [],
+				(
+					environment as unknown as {
+						userForm?: NgxBosConfig['userForm'];
+					}
+				).userForm ?? [],
 			defaultUserThumb: 'default.png',
 		}),
 		provideFormComponents(),

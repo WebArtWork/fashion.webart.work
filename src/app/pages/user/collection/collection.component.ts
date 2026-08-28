@@ -23,5 +23,4 @@ export class CollectionComponent {
 	readonly entity = computed<Collection | undefined>(() =>
 		collections.find((item) => item._id === this._id()),
 	);
-
 }

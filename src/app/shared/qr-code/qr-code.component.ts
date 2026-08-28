@@ -1,6 +1,5 @@
 import {
 	AfterViewInit,
-	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	PLATFORM_ID,
@@ -28,11 +27,11 @@ import { isPlatformBrowser } from '@angular/common';
 			}
 		`,
 	],
-	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QrCodeComponent implements AfterViewInit {
 	private readonly _platformId = inject(PLATFORM_ID);
-	private readonly _canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
+	private readonly _canvas =
+		viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
 
 	readonly value = input.required<string>();
 	readonly size = input(220);
@@ -61,11 +60,22 @@ export class QrCodeComponent implements AfterViewInit {
 			// `qrcode` is CommonJS; depending on bundler interop the exports can land
 			// directly on the namespace or under `.default` — handle both.
 			const mod: unknown = await import('qrcode');
-			const toCanvas = (mod as { toCanvas?: typeof import('qrcode').toCanvas; default?: typeof import('qrcode') })
-				.toCanvas ?? (mod as { default?: typeof import('qrcode') }).default?.toCanvas;
-			if (!toCanvas) throw new Error('qrcode module did not expose toCanvas');
+			const toCanvas =
+				(
+					mod as {
+						toCanvas?: typeof import('qrcode').toCanvas;
+						default?: typeof import('qrcode');
+					}
+				).toCanvas ??
+				(mod as { default?: typeof import('qrcode') }).default
+					?.toCanvas;
+			if (!toCanvas)
+				throw new Error('qrcode module did not expose toCanvas');
 
-			await toCanvas(this._canvas().nativeElement, value, { width: size, margin: 1 });
+			await toCanvas(this._canvas().nativeElement, value, {
+				width: size,
+				margin: 1,
+			});
 		} catch (error) {
 			console.error('Failed to render QR code', error);
 		}

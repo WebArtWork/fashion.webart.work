@@ -4,6 +4,8 @@ export const routes: Routes = [
 	{
 		path: '',
 		loadComponent: () =>
-			import('./for-boutiques.component').then((m) => m.ForBoutiquesPageComponent),
+			import('./for-boutiques.component').then(
+				(m) => m.ForBoutiquesPageComponent,
+			),
 	},
 ];

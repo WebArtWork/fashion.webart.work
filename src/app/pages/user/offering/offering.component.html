@@ -1,7 +1,5 @@
 <section class="offering">
-
-	@if (entity(); as item) {
-	@let rel = relations();
+	@if (entity(); as item) { @let rel = relations();
 	<app-offering-view
 		[entity]="item"
 		[item]="rel?.item"

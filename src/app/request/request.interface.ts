@@ -1,6 +1,10 @@
 export type RequestTransactionType = 'buy' | 'rent' | 'custom-order' | 'find';
 
-export type RequestVisibility = 'public' | 'private' | 'shared-with-selected-stylists' | 'shared-with-boutiques';
+export type RequestVisibility =
+	| 'public'
+	| 'private'
+	| 'shared-with-selected-stylists'
+	| 'shared-with-boutiques';
 
 export interface RequestMapArea {
 	lat: number;

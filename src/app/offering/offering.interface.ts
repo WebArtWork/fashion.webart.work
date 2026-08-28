@@ -1,4 +1,10 @@
-export type OfferingType = 'sale' | 'rental' | 'try-on-appointment' | 'custom-order' | 'consignment' | 'other';
+export type OfferingType =
+	| 'sale'
+	| 'rental'
+	| 'try-on-appointment'
+	| 'custom-order'
+	| 'consignment'
+	| 'other';
 
 export type OfferingStatus =
 	| 'draft'
@@ -12,7 +18,13 @@ export type OfferingStatus =
 	| 'rejected'
 	| 'archived';
 
-export type OfferingOwnerRole = 'owner' | 'client' | 'stylist' | 'boutique-rep' | 'brand-rep' | 'fashion-team';
+export type OfferingOwnerRole =
+	| 'owner'
+	| 'client'
+	| 'stylist'
+	| 'boutique-rep'
+	| 'brand-rep'
+	| 'fashion-team';
 
 export interface OfferingOwner {
 	userId: string;

@@ -1,7 +1,5 @@
 <section class="item">
-
-	@if (entity(); as item) {
-	@let rel = relations();
+	@if (entity(); as item) { @let rel = relations();
 	<app-item-view
 		[entity]="item"
 		[collection]="rel?.collection"

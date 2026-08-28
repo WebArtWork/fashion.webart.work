@@ -1,68 +1,86 @@
 <article class="card">
-	@if (entity.photo) {
-		<img class="card__photo" style="width:96px;height:96px;border-radius:50%" [src]="entity.photo" alt="" />
+	@if (entity().photo) {
+	<img
+		class="card__photo"
+		style="width: 96px; height: 96px; border-radius: 50%"
+		[src]="entity().photo"
+		alt=""
+	/>
 	}
 
-	<h2 class="card__title">{{ entity.displayName }}</h2>
+	<h2 class="card__title">{{ entity().displayName }}</h2>
 
 	<div class="card__meta">
-		<span class="card__badge">★ {{ entity.averageRating }} ({{ entity.reviewCount }})</span>
-		<span class="card__badge">{{ entity.yearsExperience }} років досвіду</span>
+		<span class="card__badge"
+			>★ {{ entity().averageRating }} ({{ entity().reviewCount }})</span
+		>
+		<span class="card__badge"
+			>{{ entity().yearsExperience }} років досвіду</span
+		>
 	</div>
 
-	<p>{{ entity.bio }}</p>
+	<p>{{ entity().bio }}</p>
 
-		<div class="card__row"><dt>Розташування</dt><dd>{{ entity.city }}, {{ entity.country }}</dd></div>
-		<div class="card__row"><dt>Телефон</dt><dd>{{ entity.contactPhone }}</dd></div>
-		<div class="card__row"><dt>Ел. пошта</dt><dd>{{ entity.contactEmail }}</dd></div>
-		@if (boutique(); as ag) {
-			<div class="card__row">
-				<dt>Агентство</dt>
-				<dd>
-					<button type="button" class="card__relation" (click)="viewBoutique()">
-						<app-boutique-icon [entity]="ag" />
-					</button>
-				</dd>
-			</div>
+	<div class="card__row">
+		<dt>Розташування</dt>
+		<dd>{{ entity().city }}, {{ entity().country }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Телефон</dt>
+		<dd>{{ entity().contactPhone }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Ел. пошта</dt>
+		<dd>{{ entity().contactEmail }}</dd>
+	</div>
+	@if (boutique(); as ag) {
+	<div class="card__row">
+		<dt>Агентство</dt>
+		<dd>
+			<button
+				type="button"
+				class="card__relation"
+				(click)="viewBoutique()"
+			>
+				<app-boutique-icon [entity]="ag" />
+			</button>
+		</dd>
+	</div>
+	} @if (entity().specializations.length) {
+	<h3 class="card__section-title">Спеціалізації</h3>
+	<div class="card__meta">
+		@for (s of entity().specializations; track s) {
+		<span class="card__badge">{{ s }}</span>
 		}
-
-	@if (entity.specializations.length) {
-		<h3 class="card__section-title">Спеціалізації</h3>
-		<div class="card__meta">
-			@for (s of entity.specializations; track s) {
-				<span class="card__badge">{{ s }}</span>
-			}
-		</div>
-	}
-
-	@if (entity.serviceAreas.length) {
-		<h3 class="card__section-title">Райони обслуговування</h3>
-		<div class="card__meta">
-			@for (a of entity.serviceAreas; track a) {
-				<span class="card__badge">{{ a }}</span>
-			}
-		</div>
-	}
-
-	@if (relatedItems().length) {
-		<h3 class="card__section-title">Представлені об'єкти</h3>
-		<div class="card__list">
-			@for (item of relatedItems(); track item._id) {
-				<button type="button" class="card__list-item" (click)="viewItem(item)">
-					<app-item-short [entity]="item" />
-				</button>
-			}
-		</div>
-	}
-
-	@if (relatedOfferings().length) {
-		<h3 class="card__section-title">Оголошення</h3>
-		<div class="card__list">
-			@for (offering of relatedOfferings(); track offering._id) {
-				<button type="button" class="card__list-item" (click)="viewOffering(offering)">
-					<app-offering-short [entity]="offering" />
-				</button>
-			}
-		</div>
+	</div>
+	} @if (entity().serviceAreas.length) {
+	<h3 class="card__section-title">Райони обслуговування</h3>
+	<div class="card__meta">
+		@for (a of entity().serviceAreas; track a) {
+		<span class="card__badge">{{ a }}</span>
+		}
+	</div>
+	} @if (relatedItems().length) {
+	<h3 class="card__section-title">Представлені об'єкти</h3>
+	<div class="card__list">
+		@for (item of relatedItems(); track item._id) {
+		<button type="button" class="card__list-item" (click)="viewItem(item)">
+			<app-item-short [entity]="item" />
+		</button>
+		}
+	</div>
+	} @if (relatedOfferings().length) {
+	<h3 class="card__section-title">Оголошення</h3>
+	<div class="card__list">
+		@for (offering of relatedOfferings(); track offering._id) {
+		<button
+			type="button"
+			class="card__list-item"
+			(click)="viewOffering(offering)"
+		>
+			<app-offering-short [entity]="offering" />
+		</button>
+		}
+	</div>
 	}
 </article>

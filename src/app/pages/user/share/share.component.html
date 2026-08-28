@@ -10,14 +10,26 @@
 
 	<div class="share-page__link">
 		<code>{{ shareUrl() }}</code>
-		<button pButton type="button" severity="secondary" size="small" (click)="copyLink()">
+		<button
+			pButton
+			type="button"
+			severity="secondary"
+			size="small"
+			(click)="copyLink()"
+		>
 			<i class="pi pi-copy"></i>
 			{{ translateService.translate('Копіювати посилання')() }}
 		</button>
 	</div>
 
 	@if (kind() === 'app') {
-	<a pButton type="button" severity="secondary" size="small" routerLink="/sign">
+	<a
+		pButton
+		type="button"
+		severity="secondary"
+		size="small"
+		routerLink="/sign"
+	>
 		<i class="pi pi-user-plus"></i>
 		{{ translateService.translate('Зареєструватися')() }}
 	</a>

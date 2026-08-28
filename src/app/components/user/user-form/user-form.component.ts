@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, input } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -11,9 +15,7 @@ import { User } from '../../../user/user.interface';
 
 @Component({
 	selector: 'app-user-form',
-	standalone: true,
 	imports: [
-		CommonModule,
 		ReactiveFormsModule,
 		ButtonModule,
 		InputTextModule,
@@ -25,11 +27,13 @@ import { User } from '../../../user/user.interface';
 	styleUrl: './user-form.component.scss',
 })
 export class UserFormComponent {
-	@Input() entity?: User;
+	readonly entity = input<User>();
 
 	readonly form: FormGroup;
 
-	constructor(private readonly fb: FormBuilder) {
+	private readonly fb = inject(FormBuilder);
+
+	constructor() {
 		this.form = this.fb.group({
 			name: ['', Validators.required],
 			photo: [''],
@@ -43,8 +47,11 @@ export class UserFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue({ ...this.entity, ...this.entity.contact });
+		if (this.entity()) {
+			this.form.patchValue({
+				...this.entity()!,
+				...this.entity()!.contact,
+			});
 		}
 	}
 }

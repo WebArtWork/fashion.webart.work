@@ -49,7 +49,14 @@
 			(ngModelChange)="selectedStatus.set($event)"
 		/>
 
-		<a pButton routerLink="/map" severity="secondary" size="small" class="explore__map-link">Карта</a>
+		<a
+			pButton
+			routerLink="/map"
+			severity="secondary"
+			size="small"
+			class="explore__map-link"
+			>Карта</a
+		>
 	</div>
 
 	<div class="explore__grid">
@@ -65,7 +72,9 @@
 			/>
 		</div>
 		} @empty {
-		<p class="explore__empty">За заданими критеріями оголошень не знайдено.</p>
+		<p class="explore__empty">
+			За заданими критеріями оголошень не знайдено.
+		</p>
 		}
 	</div>
 </div>

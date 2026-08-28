@@ -1,91 +1,112 @@
 <article class="card">
-	@if (entity.photo) {
-		<img class="card__photo" style="width:96px;height:96px;border-radius:50%" [src]="entity.photo" alt="" />
+	@if (entity().photo) {
+	<img
+		class="card__photo"
+		style="width: 96px; height: 96px; border-radius: 50%"
+		[src]="entity().photo"
+		alt=""
+	/>
 	}
 
-	<h2 class="card__title">{{ entity.name }}</h2>
+	<h2 class="card__title">{{ entity().name }}</h2>
 
 	<div class="card__meta">
-		@for (role of entity.roles; track role) {
-			<span class="card__badge">{{ role }}</span>
+		@for (role of entity().roles; track role) {
+		<span class="card__badge">{{ role }}</span>
 		}
 	</div>
 
-	<p>{{ entity.bio }}</p>
+	<p>{{ entity().bio }}</p>
 
-		<div class="card__row"><dt>Розташування</dt><dd>{{ entity.city }}, {{ entity.country }}</dd></div>
-		<div class="card__row"><dt>Ел. пошта</dt><dd>{{ entity.contact.email }}</dd></div>
-		<div class="card__row"><dt>Телефон</dt><dd>{{ entity.contact.phone }}</dd></div>
-		<div class="card__row"><dt>Досвід</dt><dd>{{ entity.experienceYears }} років</dd></div>
-		@if (stylist(); as ag) {
-			<div class="card__row">
-				<dt>Агент</dt>
-				<dd>
-					<button type="button" class="card__relation" (click)="viewStylist()">
-						<app-stylist-icon [entity]="ag" />
-					</button>
-				</dd>
-			</div>
+	<div class="card__row">
+		<dt>Розташування</dt>
+		<dd>{{ entity().city }}, {{ entity().country }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Ел. пошта</dt>
+		<dd>{{ entity().contact.email }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Телефон</dt>
+		<dd>{{ entity().contact.phone }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Досвід</dt>
+		<dd>{{ entity().experienceYears }} років</dd>
+	</div>
+	@if (stylist(); as ag) {
+	<div class="card__row">
+		<dt>Агент</dt>
+		<dd>
+			<button
+				type="button"
+				class="card__relation"
+				(click)="viewStylist()"
+			>
+				<app-stylist-icon [entity]="ag" />
+			</button>
+		</dd>
+	</div>
+	} @if (boutique(); as agc) {
+	<div class="card__row">
+		<dt>Агентство</dt>
+		<dd>
+			<button
+				type="button"
+				class="card__relation"
+				(click)="viewBoutique()"
+			>
+				<app-boutique-icon [entity]="agc" />
+			</button>
+		</dd>
+	</div>
+	} @if (brand(); as dev) {
+	<div class="card__row">
+		<dt>Забудовник</dt>
+		<dd>
+			<button type="button" class="card__relation" (click)="viewBrand()">
+				<app-brand-icon [entity]="dev" />
+			</button>
+		</dd>
+	</div>
+	} @if (entity().requestIds.length) {
+	<div class="card__row">
+		<dt>Запити</dt>
+		<dd>{{ entity().requestIds.length }}</dd>
+	</div>
+	} @if (entity().interests.length) {
+	<div class="card__meta">
+		@for (i of entity().interests; track i) {
+		<span class="card__badge">{{ i }}</span>
 		}
-		@if (boutique(); as agc) {
-			<div class="card__row">
-				<dt>Агентство</dt>
-				<dd>
-					<button type="button" class="card__relation" (click)="viewBoutique()">
-						<app-boutique-icon [entity]="agc" />
-					</button>
-				</dd>
-			</div>
+	</div>
+	} @if (entity().preferredItemTypes.length) {
+	<div class="card__meta">
+		@for (t of entity().preferredItemTypes; track t) {
+		<span class="card__badge">{{ t }}</span>
 		}
-		@if (brand(); as dev) {
-			<div class="card__row">
-				<dt>Забудовник</dt>
-				<dd>
-					<button type="button" class="card__relation" (click)="viewBrand()">
-						<app-brand-icon [entity]="dev" />
-					</button>
-				</dd>
-			</div>
+	</div>
+	} @if (ownedItems().length) {
+	<h3 class="card__section-title">Об'єкти у власності</h3>
+	<div class="card__list">
+		@for (item of ownedItems(); track item._id) {
+		<button type="button" class="card__list-item" (click)="viewItem(item)">
+			<app-item-short [entity]="item" />
+		</button>
 		}
-		@if (entity.requestIds.length) {
-			<div class="card__row"><dt>Запити</dt><dd>{{ entity.requestIds.length }}</dd></div>
+	</div>
+	} @if (relatedOfferings().length) {
+	<h3 class="card__section-title">Оголошення</h3>
+	<div class="card__list">
+		@for (offering of relatedOfferings(); track offering._id) {
+		<button
+			type="button"
+			class="card__list-item"
+			(click)="viewOffering(offering)"
+		>
+			<app-offering-short [entity]="offering" />
+		</button>
 		}
-
-	@if (entity.interests.length) {
-		<div class="card__meta">
-			@for (i of entity.interests; track i) {
-				<span class="card__badge">{{ i }}</span>
-			}
-		</div>
-	}
-
-	@if (entity.preferredItemTypes.length) {
-		<div class="card__meta">
-			@for (t of entity.preferredItemTypes; track t) {
-				<span class="card__badge">{{ t }}</span>
-			}
-		</div>
-	}
-
-	@if (ownedItems().length) {
-		<h3 class="card__section-title">Об'єкти у власності</h3>
-		<div class="card__list">
-			@for (item of ownedItems(); track item._id) {
-				<button type="button" class="card__list-item" (click)="viewItem(item)">
-					<app-item-short [entity]="item" />
-				</button>
-			}
-		</div>
-	}
-
-	@if (relatedOfferings().length) {
-		<h3 class="card__section-title">Оголошення</h3>
-		<div class="card__list">
-			@for (offering of relatedOfferings(); track offering._id) {
-				<button type="button" class="card__list-item" (click)="viewOffering(offering)">
-					<app-offering-short [entity]="offering" />
-				</button>
-			}
-		</div>
+	</div>
 	}
 </article>

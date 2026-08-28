@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { AccordionModule } from '@wawjs/ngx-prime/accordion';
 import { TranslateService } from '@wawjs/ngx-translate';
@@ -9,7 +9,6 @@ import { LeadFormComponent } from '../../../shared/lead-form/lead-form.component
 	imports: [ButtonModule, AccordionModule, LeadFormComponent],
 	templateUrl: './for-users.component.html',
 	styleUrl: './for-users.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ForUsersPageComponent {
 	readonly translateService = inject(TranslateService);

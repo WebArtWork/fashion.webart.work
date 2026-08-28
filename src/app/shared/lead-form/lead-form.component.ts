@@ -1,4 +1,12 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, inject, input, signal, viewChild } from '@angular/core';
+import {
+	afterNextRender,
+	Component,
+	ElementRef,
+	inject,
+	input,
+	signal,
+	viewChild,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { TextareaModule } from '@wawjs/ngx-prime/textarea';
@@ -21,7 +29,6 @@ const KIND_LABELS: Record<LeadFormKind, string> = {
 	imports: [FormsModule, InputTextModule, TextareaModule, ButtonModule],
 	templateUrl: './lead-form.component.html',
 	styleUrl: './lead-form.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeadFormComponent {
 	private readonly _contactService = inject(ContactService);
@@ -30,12 +37,15 @@ export class LeadFormComponent {
 	readonly kind = input.required<LeadFormKind>();
 	readonly submitLabel = input('');
 
-	private readonly _nameInput = viewChild<ElementRef<HTMLInputElement>>('nameInput');
+	private readonly _nameInput =
+		viewChild<ElementRef<HTMLInputElement>>('nameInput');
 
 	protected readonly name = signal('');
 	protected readonly contact = signal('');
 	protected readonly message = signal('');
-	protected readonly status = signal<'idle' | 'sending' | 'success' | 'error'>('idle');
+	protected readonly status = signal<
+		'idle' | 'sending' | 'success' | 'error'
+	>('idle');
 
 	constructor() {
 		afterNextRender(() => this._nameInput()?.nativeElement.focus());

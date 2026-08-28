@@ -1,9 +1,4 @@
-import {
-	Component,
-	computed,
-	inject,
-	signal,
-} from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import {
 	FormField,
 	form,
@@ -133,33 +128,49 @@ export class SignComponent {
 	}
 
 	private _request(payload: SignModel) {
-		this._httpService.post('/api/user/request', payload, () => {
-			this.isSubmitting.set(false);
-			this.showCode.set(true);
+		this._httpService.post(
+			'/api/user/request',
+			payload,
+			() => {
+				this.isSubmitting.set(false);
+				this.showCode.set(true);
 
-			this._messageService.add({
-				severity: 'info',
-				detail: this.translateService.translate('Лист буде надіслано на ваш email')(),
-			});
-		}, this._handleRequestError.bind(this));
+				this._messageService.add({
+					severity: 'info',
+					detail: this.translateService.translate(
+						'Лист буде надіслано на ваш email',
+					)(),
+				});
+			},
+			this._handleRequestError.bind(this),
+		);
 	}
 
 	private _change(payload: SignModel) {
-		this._httpService.post('/api/user/change', payload, (resp: boolean) => {
-			if (resp) {
-				this._messageService.add({
-					severity: 'info',
-					detail: this.translateService.translate('Пароль успішно змінено')(),
-				});
-			} else {
-				this._messageService.add({
-					severity: 'error',
-					detail: this.translateService.translate('Неправильний код')(),
-				});
-			}
+		this._httpService.post(
+			'/api/user/change',
+			payload,
+			(resp: boolean) => {
+				if (resp) {
+					this._messageService.add({
+						severity: 'info',
+						detail: this.translateService.translate(
+							'Пароль успішно змінено',
+						)(),
+					});
+				} else {
+					this._messageService.add({
+						severity: 'error',
+						detail: this.translateService.translate(
+							'Неправильний код',
+						)(),
+					});
+				}
 
-			this._login(payload);
-		}, this._handleRequestError.bind(this));
+				this._login(payload);
+			},
+			this._handleRequestError.bind(this),
+		);
 	}
 
 	private _set(user: User) {

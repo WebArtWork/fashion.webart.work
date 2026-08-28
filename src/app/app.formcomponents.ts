@@ -19,11 +19,8 @@ export const FORM_COMPONENTS = [
 ];
 
 export const FORM_COMPONENT_FORM = (key: string): FormInterface => {
-	return (
-		{
-			/* addComponentForms */
-		}[key] || NGX_BOS_FORM_COMPONENT_FORM(key)
-	) as FormInterface;
+	return ({/* addComponentForms */}[key] ||
+		NGX_BOS_FORM_COMPONENT_FORM(key)) as FormInterface;
 };
 
 export const FORM_TEMPLATE_COMPONENTS: Record<string, Type<unknown>> = {

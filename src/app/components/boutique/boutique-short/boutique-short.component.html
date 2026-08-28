@@ -2,17 +2,19 @@
 	<img
 		class="short__thumb"
 		[src]="photo"
-		[alt]="entity.name"
+		[alt]="entity().name"
 		loading="lazy"
 		(error)="onPhotoError($event)"
 	/>
 
 	<div class="short__body">
-		<h3 class="short__title">{{ entity.name }}</h3>
-		<p class="short__address">{{ entity.city }}, {{ entity.country }}</p>
+		<h3 class="short__title">{{ entity().name }}</h3>
+		<p class="short__address">
+			{{ entity().city }}, {{ entity().country }}
+		</p>
 
 		<div class="short__meta">
-			<span>★ {{ entity.averageRating }}</span>
+			<span>★ {{ entity().averageRating }}</span>
 		</div>
 	</div>
 </article>

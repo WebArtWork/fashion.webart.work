@@ -1,7 +1,5 @@
 <section class="item">
-
-	@if (entity(); as event) {
-	@let rel = relations();
+	@if (entity(); as event) { @let rel = relations();
 	<app-event-view
 		[entity]="event"
 		[client]="rel?.client"

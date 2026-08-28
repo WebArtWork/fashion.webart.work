@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -17,9 +21,7 @@ import {
 
 @Component({
 	selector: 'app-decision-form',
-	standalone: true,
 	imports: [
-		CommonModule,
 		ReactiveFormsModule,
 		ButtonModule,
 		InputTextModule,
@@ -32,14 +34,16 @@ import {
 	styleUrl: './decision-form.component.scss',
 })
 export class DecisionFormComponent {
-	@Input() entity?: ItemDecision;
+	private readonly fb = inject(FormBuilder);
+
+	readonly entity = input<ItemDecision>();
 
 	readonly form: FormGroup;
 	readonly decisionTypeOptions = DECISION_TYPE_OPTIONS;
 	readonly statusOptions = DECISION_STATUS_OPTIONS;
 	readonly visibilityOptions = DECISION_VISIBILITY_OPTIONS;
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor() {
 		this.form = this.fb.group({
 			decisionType: ['maintenance', Validators.required],
 			title: ['', Validators.required],
@@ -57,8 +61,9 @@ export class DecisionFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue(this.entity);
+		const entity = this.entity();
+		if (entity) {
+			this.form.patchValue(entity);
 		}
 	}
 }

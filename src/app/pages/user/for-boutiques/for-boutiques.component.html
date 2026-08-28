@@ -1,48 +1,83 @@
 @if (showForm()) {
-	<div class="landing-page">
-		<header class="landing-page__hero">
-			<h1>{{ translateService.translate('Стати партнером Fashion')() }}</h1>
-		</header>
+<div class="landing-page">
+	<header class="landing-page__hero">
+		<h1>{{ translateService.translate('Стати партнером Fashion')() }}</h1>
+	</header>
 
-		<app-lead-form kind="boutique" [submitLabel]="translateService.translate('Надіслати заявку')()" />
-	</div>
+	<app-lead-form
+		kind="boutique"
+		[submitLabel]="translateService.translate('Надіслати заявку')()"
+	/>
+</div>
 } @else {
-	<div class="landing-page">
-		<header class="landing-page__hero">
-			<h1>{{ translateService.translate('Розвивайте бутік разом з Fashion')() }}</h1>
-			<p>{{ translateService.translate('Профіль бутіку, профілі ваших стилістів та всі пропозиції в одному перевіреному місці.')() }}</p>
-			<button pButton type="button" (click)="showForm.set(true)">{{ translateService.translate('Стати партнером')() }}</button>
-		</header>
+<div class="landing-page">
+	<header class="landing-page__hero">
+		<h1>
+			{{ translateService.translate('Розвивайте бутік разом з Fashion')()
+			}}
+		</h1>
+		<p>
+			{{ translateService.translate('Профіль бутіку, профілі ваших
+			стилістів та всі пропозиції в одному перевіреному місці.')() }}
+		</p>
+		<button pButton type="button" (click)="showForm.set(true)">
+			{{ translateService.translate('Стати партнером')() }}
+		</button>
+	</header>
 
-		<section class="landing-page__section">
-			<h2>{{ translateService.translate('Як це працює')() }}</h2>
-			<ul class="landing-page__list">
-				<li>{{ translateService.translate('Профіль бутіку з’являється в пошуку Fashion.')() }}</li>
-				<li>{{ translateService.translate('Кожен ваш стиліст отримує власний публічний профіль.')() }}</li>
-				<li>{{ translateService.translate('Клієнти бачать усі активні пропозиції бутіку в одному місці.')() }}</li>
-				<li>{{ translateService.translate('Діліться посиланням на профіль в один клік.')() }}</li>
-			</ul>
-		</section>
+	<section class="landing-page__section">
+		<h2>{{ translateService.translate('Як це працює')() }}</h2>
+		<ul class="landing-page__list">
+			<li>
+				{{ translateService.translate('Профіль бутіку з’являється в
+				пошуку Fashion.')() }}
+			</li>
+			<li>
+				{{ translateService.translate('Кожен ваш стиліст отримує власний
+				публічний профіль.')() }}
+			</li>
+			<li>
+				{{ translateService.translate('Клієнти бачать усі активні
+				пропозиції бутіку в одному місці.')() }}
+			</li>
+			<li>
+				{{ translateService.translate('Діліться посиланням на профіль в
+				один клік.')() }}
+			</li>
+		</ul>
+	</section>
 
-		<section class="landing-page__section">
-			<h2>{{ translateService.translate('Чому Fashion')() }}</h2>
-			<p>{{ translateService.translate('Ми будуємо довіру через прозорість: перевірені профілі та цифрові паспорти рішень допомагають клієнтам обирати саме вас.')() }}</p>
-		</section>
+	<section class="landing-page__section">
+		<h2>{{ translateService.translate('Чому Fashion')() }}</h2>
+		<p>
+			{{ translateService.translate('Ми будуємо довіру через прозорість:
+			перевірені профілі та цифрові паспорти рішень допомагають клієнтам
+			обирати саме вас.')() }}
+		</p>
+	</section>
 
-		<section class="landing-page__section">
-			<h2>{{ translateService.translate('Питання')() }}</h2>
-			<p-accordion [multiple]="true">
-				@for (item of faq; track item.question) {
-					<p-accordionpanel [value]="item.question">
-						<p-accordionheader>{{ translateService.translate(item.question)() }}</p-accordionheader>
-						<p-accordioncontent>{{ translateService.translate(item.answer)() }}</p-accordioncontent>
-					</p-accordionpanel>
-				}
-			</p-accordion>
-		</section>
+	<section class="landing-page__section">
+		<h2>{{ translateService.translate('Питання')() }}</h2>
+		<p-accordion [multiple]="true">
+			@for (item of faq; track item.question) {
+			<p-accordionpanel [value]="item.question">
+				<p-accordionheader
+					>{{ translateService.translate(item.question)()
+					}}</p-accordionheader
+				>
+				<p-accordioncontent
+					>{{ translateService.translate(item.answer)()
+					}}</p-accordioncontent
+				>
+			</p-accordionpanel>
+			}
+		</p-accordion>
+	</section>
 
-		<footer class="landing-page__cta">
-			<button pButton type="button" (click)="showForm.set(true)">{{ translateService.translate('Стати партнером')() }}</button>
-		</footer>
-	</div>
+	<footer class="landing-page__cta">
+		<button pButton type="button" (click)="showForm.set(true)">
+			{{ translateService.translate('Стати партнером')() }}
+		</button>
+	</footer>
+</div>
 }

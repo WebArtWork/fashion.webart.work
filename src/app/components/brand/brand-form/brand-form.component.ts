@@ -1,7 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
@@ -11,17 +15,25 @@ import { Brand } from '../../../brand/brand.interface';
 
 @Component({
 	selector: 'app-brand-form',
-	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputNumberModule, InputTextModule, TextareaModule, TranslateDirective],
+	imports: [
+		ReactiveFormsModule,
+		ButtonModule,
+		InputNumberModule,
+		InputTextModule,
+		TextareaModule,
+		TranslateDirective,
+	],
 	templateUrl: './brand-form.component.html',
 	styleUrl: './brand-form.component.scss',
 })
 export class BrandFormComponent {
-	@Input() entity?: Brand;
+	private readonly fb = inject(FormBuilder);
+
+	readonly entity = input<Brand>();
 
 	readonly form: FormGroup;
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor() {
 		this.form = this.fb.group({
 			name: ['', Validators.required],
 			description: ['', Validators.required],
@@ -37,8 +49,9 @@ export class BrandFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue({ ...this.entity, ...this.entity.contact });
+		const entity = this.entity();
+		if (entity) {
+			this.form.patchValue({ ...entity, ...entity.contact });
 		}
 	}
 }

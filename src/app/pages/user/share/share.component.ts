@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
@@ -15,7 +15,6 @@ export type ShareKind = 'app' | 'profile';
 	imports: [ButtonModule, QrCodeComponent, RouterLink],
 	templateUrl: './share.component.html',
 	styleUrl: './share.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SharePageComponent {
 	private readonly _messageService = inject(MessageService);
@@ -23,9 +22,14 @@ export class SharePageComponent {
 	readonly translateService = inject(TranslateService);
 
 	readonly kind = toSignal(
-		this._activatedRoute.data.pipe(map((data) => (data['shareKind'] as ShareKind) ?? 'app')),
+		this._activatedRoute.data.pipe(
+			map((data) => (data['shareKind'] as ShareKind) ?? 'app'),
+		),
 		{
-			initialValue: (this._activatedRoute.snapshot.data['shareKind'] as ShareKind) ?? 'app',
+			initialValue:
+				(this._activatedRoute.snapshot.data[
+					'shareKind'
+				] as ShareKind) ?? 'app',
 		},
 	);
 
@@ -44,15 +48,21 @@ export class SharePageComponent {
 
 	readonly description = computed(() =>
 		this.kind() === 'profile'
-			? this.translateService.translate('Дайте людям відсканувати цей код, щоб відкрити мій профіль Fashion.')()
-			: this.translateService.translate('Відскануйте код, щоб приєднатися до Fashion за кілька секунд.')(),
+			? this.translateService.translate(
+					'Дайте людям відсканувати цей код, щоб відкрити мій профіль Fashion.',
+				)()
+			: this.translateService.translate(
+					'Відскануйте код, щоб приєднатися до Fashion за кілька секунд.',
+				)(),
 	);
 
 	copyLink(): void {
 		navigator.clipboard?.writeText(this.shareUrl()).then(() => {
 			this._messageService.add({
 				severity: 'success',
-				detail: this.translateService.translate('Посилання скопійовано')(),
+				detail: this.translateService.translate(
+					'Посилання скопійовано',
+				)(),
 			});
 		});
 	}

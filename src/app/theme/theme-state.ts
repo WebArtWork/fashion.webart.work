@@ -11,7 +11,14 @@ const MODES: ThemeMode[] = ['light', 'dark'];
 const DENSITIES: ThemeDensity[] = ['comfortable', 'compact'];
 const RADIUSES: ThemeRadius[] = ['rounded', 'square'];
 
-const ROUNDED_SCALE = { none: '0', xs: '2px', sm: '4px', md: '6px', lg: '8px', xl: '12px' };
+const ROUNDED_SCALE = {
+	none: '0',
+	xs: '2px',
+	sm: '4px',
+	md: '6px',
+	lg: '8px',
+	xl: '12px',
+};
 const SQUARE_SCALE = { none: '0', xs: '0', sm: '0', md: '0', lg: '0', xl: '0' };
 
 interface PersistedTheme {
@@ -80,7 +87,12 @@ export class ThemeState {
 	setRadius(radius: ThemeRadius): void {
 		this.radius.set(radius);
 		document.documentElement.setAttribute('data-radius', radius);
-		updatePreset({ primitive: { borderRadius: radius === 'square' ? SQUARE_SCALE : ROUNDED_SCALE } });
+		updatePreset({
+			primitive: {
+				borderRadius:
+					radius === 'square' ? SQUARE_SCALE : ROUNDED_SCALE,
+			},
+		});
 		this.persist();
 	}
 
@@ -93,7 +105,11 @@ export class ThemeState {
 			stored = null;
 		}
 
-		const mode = stored?.mode ?? (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		const mode =
+			stored?.mode ??
+			(window.matchMedia?.('(prefers-color-scheme: dark)').matches
+				? 'dark'
+				: 'light');
 		const density = stored?.density ?? 'comfortable';
 		const radius = stored?.radius ?? 'rounded';
 
@@ -113,7 +129,11 @@ export class ThemeState {
 		try {
 			localStorage.setItem(
 				STORAGE_KEY,
-				JSON.stringify({ mode: this.mode(), density: this.density(), radius: this.radius() }),
+				JSON.stringify({
+					mode: this.mode(),
+					density: this.density(),
+					radius: this.radius(),
+				}),
 			);
 		} catch {
 			// ignore write failures (e.g. storage disabled/full)

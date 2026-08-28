@@ -6,7 +6,7 @@
 	<layout-topbar class="user__topbar" [sidebarToggler]="true" />
 
 	@if (sidebar.anySidebarVisible()) {
-		<layout-sidebar class="user__sidebar" />
+	<layout-sidebar class="user__sidebar" />
 	}
 
 	<layout-mobile-nav />
@@ -15,7 +15,7 @@
 		<router-outlet />
 
 		@if (isLandingPage()) {
-			<layout-footer />
+		<layout-footer />
 		}
 	</div>
 </div>

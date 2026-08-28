@@ -1,48 +1,84 @@
 @if (showForm()) {
-	<div class="landing-page">
-		<header class="landing-page__hero">
-			<h1>{{ translateService.translate('Приєднатися до Fashion')() }}</h1>
-		</header>
+<div class="landing-page">
+	<header class="landing-page__hero">
+		<h1>{{ translateService.translate('Приєднатися до Fashion')() }}</h1>
+	</header>
 
-		<app-lead-form kind="user" [submitLabel]="translateService.translate('Надіслати заявку')()" />
-	</div>
+	<app-lead-form
+		kind="user"
+		[submitLabel]="translateService.translate('Надіслати заявку')()"
+	/>
+</div>
 } @else {
-	<div class="landing-page">
-		<header class="landing-page__hero">
-			<h1>{{ translateService.translate('Знаходьте ідеальний образ для кожної події')() }}</h1>
-			<p>{{ translateService.translate('Fashion показує цифровий паспорт кожної речі: реальну історію рішень клієнтів, перевірених стилістів і актуальні пропозиції.')() }}</p>
-			<button pButton type="button" (click)="showForm.set(true)">{{ translateService.translate('Приєднатися')() }}</button>
-		</header>
+<div class="landing-page">
+	<header class="landing-page__hero">
+		<h1>
+			{{ translateService.translate('Знаходьте ідеальний образ для кожної
+			події')() }}
+		</h1>
+		<p>
+			{{ translateService.translate('Fashion показує цифровий паспорт
+			кожної речі: реальну історію рішень клієнтів, перевірених стилістів
+			і актуальні пропозиції.')() }}
+		</p>
+		<button pButton type="button" (click)="showForm.set(true)">
+			{{ translateService.translate('Приєднатися')() }}
+		</button>
+	</header>
 
-		<section class="landing-page__section">
-			<h2>{{ translateService.translate('Як це працює')() }}</h2>
-			<ul class="landing-page__list">
-				<li>{{ translateService.translate('Шукайте й фільтруйте пропозиції за типом, ціною та брендом.')() }}</li>
-				<li>{{ translateService.translate('Переглядайте цифровий паспорт речі — історію рішень клієнтів.')() }}</li>
-				<li>{{ translateService.translate('Зв’язуйтеся напряму зі стилістом, бутіком чи брендом.')() }}</li>
-				<li>{{ translateService.translate('Пов’язуйте кожне рішення з подією, для якої воно приймалось.')() }}</li>
-			</ul>
-		</section>
+	<section class="landing-page__section">
+		<h2>{{ translateService.translate('Як це працює')() }}</h2>
+		<ul class="landing-page__list">
+			<li>
+				{{ translateService.translate('Шукайте й фільтруйте пропозиції
+				за типом, ціною та брендом.')() }}
+			</li>
+			<li>
+				{{ translateService.translate('Переглядайте цифровий паспорт
+				речі — історію рішень клієнтів.')() }}
+			</li>
+			<li>
+				{{ translateService.translate('Зв’язуйтеся напряму зі стилістом,
+				бутіком чи брендом.')() }}
+			</li>
+			<li>
+				{{ translateService.translate('Пов’язуйте кожне рішення з
+				подією, для якої воно приймалось.')() }}
+			</li>
+		</ul>
+	</section>
 
-		<section class="landing-page__section">
-			<h2>{{ translateService.translate('Чому Fashion')() }}</h2>
-			<p>{{ translateService.translate('Ми об’єднуємо перевірені дані про речі та рішення клієнтів в одному місці, щоб ви обирали образ на основі фактів, а не обіцянок.')() }}</p>
-		</section>
+	<section class="landing-page__section">
+		<h2>{{ translateService.translate('Чому Fashion')() }}</h2>
+		<p>
+			{{ translateService.translate('Ми об’єднуємо перевірені дані про
+			речі та рішення клієнтів в одному місці, щоб ви обирали образ на
+			основі фактів, а не обіцянок.')() }}
+		</p>
+	</section>
 
-		<section class="landing-page__section">
-			<h2>{{ translateService.translate('Питання')() }}</h2>
-			<p-accordion [multiple]="true">
-				@for (item of faq; track item.question) {
-					<p-accordionpanel [value]="item.question">
-						<p-accordionheader>{{ translateService.translate(item.question)() }}</p-accordionheader>
-						<p-accordioncontent>{{ translateService.translate(item.answer)() }}</p-accordioncontent>
-					</p-accordionpanel>
-				}
-			</p-accordion>
-		</section>
+	<section class="landing-page__section">
+		<h2>{{ translateService.translate('Питання')() }}</h2>
+		<p-accordion [multiple]="true">
+			@for (item of faq; track item.question) {
+			<p-accordionpanel [value]="item.question">
+				<p-accordionheader
+					>{{ translateService.translate(item.question)()
+					}}</p-accordionheader
+				>
+				<p-accordioncontent
+					>{{ translateService.translate(item.answer)()
+					}}</p-accordioncontent
+				>
+			</p-accordionpanel>
+			}
+		</p-accordion>
+	</section>
 
-		<footer class="landing-page__cta">
-			<button pButton type="button" (click)="showForm.set(true)">{{ translateService.translate('Приєднатися')() }}</button>
-		</footer>
-	</div>
+	<footer class="landing-page__cta">
+		<button pButton type="button" (click)="showForm.set(true)">
+			{{ translateService.translate('Приєднатися')() }}
+		</button>
+	</footer>
+</div>
 }

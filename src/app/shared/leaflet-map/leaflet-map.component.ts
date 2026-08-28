@@ -1,6 +1,5 @@
 import {
 	AfterViewInit,
-	ChangeDetectionStrategy,
 	Component,
 	ElementRef,
 	OnDestroy,
@@ -46,11 +45,11 @@ const DEFAULT_SHADOW_URL = 'assets/leaflet/marker-shadow.png';
 			}
 		`,
 	],
-	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeafletMapComponent implements AfterViewInit, OnDestroy {
 	private readonly _platformId = inject(PLATFORM_ID);
-	private readonly _mapHost = viewChild.required<ElementRef<HTMLElement>>('mapHost');
+	private readonly _mapHost =
+		viewChild.required<ElementRef<HTMLElement>>('mapHost');
 
 	readonly center = input.required<{ lat: number; lng: number }>();
 	readonly zoom = input(13);
@@ -93,10 +92,12 @@ export class LeafletMapComponent implements AfterViewInit, OnDestroy {
 			zoom: this.zoom(),
 		});
 
-		leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '&copy; OpenStreetMap contributors',
-			maxZoom: 19,
-		}).addTo(this._map);
+		leaflet
+			.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; OpenStreetMap contributors',
+				maxZoom: 19,
+			})
+			.addTo(this._map);
 
 		this._markerLayer = leaflet.layerGroup().addTo(this._map);
 		this._renderMarkers(this.markers());
@@ -115,9 +116,12 @@ export class LeafletMapComponent implements AfterViewInit, OnDestroy {
 		layer.clearLayers();
 
 		for (const marker of markers) {
-			const leafletMarker = leaflet.marker([marker.position.lat, marker.position.lng], {
-				title: marker.title,
-			});
+			const leafletMarker = leaflet.marker(
+				[marker.position.lat, marker.position.lng],
+				{
+					title: marker.title,
+				},
+			);
 
 			if (marker.label) {
 				leafletMarker.bindTooltip(marker.label, { permanent: false });

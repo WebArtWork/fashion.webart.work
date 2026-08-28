@@ -6,7 +6,10 @@ import { StylistIconComponent } from '../../../components/stylist/stylist-icon/s
 import { BrandIconComponent } from '../../../components/brand/brand-icon/brand-icon.component';
 import { Offering } from '../../../offering/offering.interface';
 import { offerings } from '../../../offering/offering.data';
-import { OfferingRelations, relationsForOffering } from '../../../offering/offering-relations';
+import {
+	OfferingRelations,
+	relationsForOffering,
+} from '../../../offering/offering-relations';
 import { OfferingRelationType } from '../../../components/offering/offering-short/offering-short.component';
 
 type FeedAction = 'favourite' | 'ignore';
@@ -15,7 +18,12 @@ type FeedAction = 'favourite' | 'ignore';
 const DEFAULT_PHOTO = '/item-default.svg';
 
 @Component({
-	imports: [ButtonModule, StylistIconComponent, BoutiqueIconComponent, BrandIconComponent],
+	imports: [
+		ButtonModule,
+		StylistIconComponent,
+		BoutiqueIconComponent,
+		BrandIconComponent,
+	],
 	templateUrl: './feed.component.html',
 	styleUrl: './feed.component.scss',
 })
@@ -25,12 +33,19 @@ export class FeedComponent {
 	readonly favouritedIds = signal<Set<string>>(this._restore('favourited'));
 	readonly ignoredIds = signal<Set<string>>(this._restore('ignored'));
 
-	readonly feed = computed<{ offering: Offering; relations: OfferingRelations }[]>(() => {
+	readonly feed = computed<
+		{ offering: Offering; relations: OfferingRelations }[]
+	>(() => {
 		const favourited = this.favouritedIds();
 		const ignored = this.ignoredIds();
 		return offerings
-			.filter((item) => !favourited.has(item._id) && !ignored.has(item._id))
-			.map((offering) => ({ offering, relations: relationsForOffering(offering) }));
+			.filter(
+				(item) => !favourited.has(item._id) && !ignored.has(item._id),
+			)
+			.map((offering) => ({
+				offering,
+				relations: relationsForOffering(offering),
+			}));
 	});
 
 	/** Navigates to the offering's detail page. */

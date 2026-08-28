@@ -8,15 +8,26 @@ const rawCompanyProfile = companyData as RawCompanyProfile;
 export const companyProfile: CompanyProfile = {
 	_id: _stringOrFallback(rawCompanyProfile._id),
 	name: _stringOrFallback(rawCompanyProfile.name, 'Company'),
-	title: _stringOrFallback(rawCompanyProfile.title, rawCompanyProfile.name ?? 'Company'),
+	title: _stringOrFallback(
+		rawCompanyProfile.title,
+		rawCompanyProfile.name ?? 'Company',
+	),
 	description: _stringOrFallback(rawCompanyProfile.description),
 	image: _stringOrFallback(rawCompanyProfile.image),
-	favicon: _stringOrFallback(rawCompanyProfile.favicon, rawCompanyProfile.image ?? ''),
+	favicon: _stringOrFallback(
+		rawCompanyProfile.favicon,
+		rawCompanyProfile.image ?? '',
+	),
 	siteUrl: _trimTrailingSlash(_stringOrFallback(rawCompanyProfile.siteUrl)),
 };
 
-function _stringOrFallback(value: string | null | undefined, fallback = ''): string {
-	return typeof value === 'string' && value.trim().length > 0 ? value.trim() : fallback;
+function _stringOrFallback(
+	value: string | null | undefined,
+	fallback = '',
+): string {
+	return typeof value === 'string' && value.trim().length > 0
+		? value.trim()
+		: fallback;
 }
 
 function _trimTrailingSlash(value: string): string {

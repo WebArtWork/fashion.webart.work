@@ -1,14 +1,22 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, input, inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {
+	FormBuilder,
+	FormGroup,
+	ReactiveFormsModule,
+	Validators,
+} from '@angular/forms';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { SelectModule } from '@wawjs/ngx-prime/select';
 import { TextareaModule } from '@wawjs/ngx-prime/textarea';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-import { Offering, OfferingStatus, OfferingType } from '../../../offering/offering.interface';
+import {
+	Offering,
+	OfferingStatus,
+	OfferingType,
+} from '../../../offering/offering.interface';
 
 const OFFERING_TYPE_OPTIONS: { value: OfferingType; label: string }[] = [
 	{ value: 'sale', label: 'Продаж' },
@@ -32,7 +40,10 @@ const OFFERING_STATUS_OPTIONS: { value: OfferingStatus; label: string }[] = [
 	{ value: 'archived', label: 'Архівоване' },
 ];
 
-const RENTAL_PERIOD_OPTIONS: { value: 'per-event' | 'weekly' | 'monthly'; label: string }[] = [
+const RENTAL_PERIOD_OPTIONS: {
+	value: 'per-event' | 'weekly' | 'monthly';
+	label: string;
+}[] = [
 	{ value: 'per-event', label: 'За подію' },
 	{ value: 'weekly', label: 'Щотижнево' },
 	{ value: 'monthly', label: 'Щомісячно' },
@@ -40,9 +51,7 @@ const RENTAL_PERIOD_OPTIONS: { value: 'per-event' | 'weekly' | 'monthly'; label:
 
 @Component({
 	selector: 'app-offering-form',
-	standalone: true,
 	imports: [
-		CommonModule,
 		ReactiveFormsModule,
 		ButtonModule,
 		InputTextModule,
@@ -55,14 +64,16 @@ const RENTAL_PERIOD_OPTIONS: { value: 'per-event' | 'weekly' | 'monthly'; label:
 	styleUrl: './offering-form.component.scss',
 })
 export class OfferingFormComponent {
-	@Input() entity?: Offering;
+	private readonly fb = inject(FormBuilder);
+
+	readonly entity = input<Offering>();
 
 	readonly form: FormGroup;
 	readonly offeringTypeOptions = OFFERING_TYPE_OPTIONS;
 	readonly statusOptions = OFFERING_STATUS_OPTIONS;
 	readonly rentalPeriodOptions = RENTAL_PERIOD_OPTIONS;
 
-	constructor(private readonly fb: FormBuilder) {
+	constructor() {
 		this.form = this.fb.group({
 			offeringType: ['sale', Validators.required],
 			title: ['', Validators.required],
@@ -78,8 +89,9 @@ export class OfferingFormComponent {
 	}
 
 	ngOnInit(): void {
-		if (this.entity) {
-			this.form.patchValue(this.entity);
+		const entity = this.entity();
+		if (entity) {
+			this.form.patchValue(entity);
 		}
 	}
 }

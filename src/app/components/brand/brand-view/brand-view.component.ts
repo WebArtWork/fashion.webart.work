@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, computed, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Brand } from '../../../brand/brand.interface';
 import { Collection } from '../../../collection/collection.interface';
@@ -12,32 +11,45 @@ import { CollectionShortComponent } from '../../collection/collection-short/coll
 import { ItemShortComponent } from '../../item/item-short/item-short.component';
 import { OfferingShortComponent } from '../../offering/offering-short/offering-short.component';
 
-const _collectionById = new Map<string, Collection>(collections.map((c) => [c._id, c]));
+const _collectionById = new Map<string, Collection>(
+	collections.map((c) => [c._id, c]),
+);
 const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
-const _offeringById = new Map<string, Offering>(offerings.map((l) => [l._id, l]));
+const _offeringById = new Map<string, Offering>(
+	offerings.map((l) => [l._id, l]),
+);
 
 @Component({
 	selector: 'app-brand-view',
-	standalone: true,
-	imports: [CommonModule, CollectionShortComponent, ItemShortComponent, OfferingShortComponent],
+	imports: [
+		CollectionShortComponent,
+		ItemShortComponent,
+		OfferingShortComponent,
+	],
 	templateUrl: './brand-view.component.html',
 	styleUrl: './brand-view.component.scss',
 })
 export class BrandViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: Brand;
+	readonly entity = input.required<Brand>();
 
 	readonly relatedCollections = computed<Collection[]>(() =>
-		this.entity.collectionIds.map((id) => _collectionById.get(id)).filter((c): c is Collection => !!c),
+		this.entity()
+			.collectionIds.map((id) => _collectionById.get(id))
+			.filter((c): c is Collection => !!c),
 	);
 
 	readonly relatedItems = computed<Item[]>(() =>
-		this.entity.itemIds.map((id) => _itemById.get(id)).filter((p): p is Item => !!p),
+		this.entity()
+			.itemIds.map((id) => _itemById.get(id))
+			.filter((p): p is Item => !!p),
 	);
 
 	readonly relatedOfferings = computed<Offering[]>(() =>
-		this.entity.offeringIds.map((id) => _offeringById.get(id)).filter((l): l is Offering => !!l),
+		this.entity()
+			.offeringIds.map((id) => _offeringById.get(id))
+			.filter((l): l is Offering => !!l),
 	);
 
 	viewCollection(collection: Collection): void {

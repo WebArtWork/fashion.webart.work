@@ -1,8 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from '../../../event/event.interface';
-import { EVENT_STATUS_LABELS, EVENT_TYPE_LABELS } from '../../../event/event-labels';
+import {
+	EVENT_STATUS_LABELS,
+	EVENT_TYPE_LABELS,
+} from '../../../event/event-labels';
 import { Item } from '../../../item/item.interface';
 import { Model } from '../../../model/model.interface';
 import { ItemDecision } from '../../../decision/decision.interface';
@@ -14,25 +16,30 @@ import { UserIconComponent } from '../../user/user-icon/user-icon.component';
 
 @Component({
 	selector: 'app-event-view',
-	standalone: true,
-	imports: [CommonModule, ItemShortComponent, ModelShortComponent, DecisionShortComponent, UserIconComponent],
+	imports: [
+		ItemShortComponent,
+		ModelShortComponent,
+		DecisionShortComponent,
+		UserIconComponent,
+	],
 	templateUrl: './event-view.component.html',
 	styleUrl: './event-view.component.scss',
 })
 export class EventViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: Event;
-	@Input() client?: User | null;
-	@Input() items: Item[] = [];
-	@Input() models: Model[] = [];
-	@Input() decisions: ItemDecision[] = [];
+	readonly entity = input.required<Event>();
+	readonly client = input<User | null>();
+	readonly items = input<Item[]>([]);
+	readonly models = input<Model[]>([]);
+	readonly decisions = input<ItemDecision[]>([]);
 
 	readonly typeLabels = EVENT_TYPE_LABELS;
 	readonly statusLabels = EVENT_STATUS_LABELS;
 
 	viewClient(): void {
-		if (this.client) this._router.navigate(['/client', this.client._id]);
+		const client = this.client();
+		if (client) this._router.navigate(['/client', client._id]);
 	}
 
 	viewItem(item: Item): void {

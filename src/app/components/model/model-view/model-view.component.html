@@ -1,46 +1,66 @@
 <article class="card">
-	@if (entity.photo) {
-		<img class="card__photo" style="width:100%;height:auto" [src]="entity.photo" alt="" />
+	@if (entity().photo) {
+	<img
+		class="card__photo"
+		style="width: 100%; height: auto"
+		[src]="entity().photo"
+		alt=""
+	/>
 	}
 
-	<h2 class="card__title">{{ entity.name }}</h2>
+	<h2 class="card__title">{{ entity().name }}</h2>
 
-	<p>{{ entity.bio }}</p>
+	<p>{{ entity().bio }}</p>
 
-		<div class="card__row"><dt>Розташування</dt><dd>{{ entity.city }}, {{ entity.country }}</dd></div>
-		<div class="card__row"><dt>Зріст</dt><dd>{{ entity.measurements.heightCm }} см</dd></div>
-		@if (entity.measurements.bust !== null) {
-			<div class="card__row"><dt>Обхват грудей</dt><dd>{{ entity.measurements.bust }}</dd></div>
+	<div class="card__row">
+		<dt>Розташування</dt>
+		<dd>{{ entity().city }}, {{ entity().country }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Зріст</dt>
+		<dd>{{ entity().measurements.heightCm }} см</dd>
+	</div>
+	@if (entity().measurements.bust !== null) {
+	<div class="card__row">
+		<dt>Обхват грудей</dt>
+		<dd>{{ entity().measurements.bust }}</dd>
+	</div>
+	} @if (entity().measurements.waist !== null) {
+	<div class="card__row">
+		<dt>Обхват талії</dt>
+		<dd>{{ entity().measurements.waist }}</dd>
+	</div>
+	} @if (entity().measurements.hips !== null) {
+	<div class="card__row">
+		<dt>Обхват стегон</dt>
+		<dd>{{ entity().measurements.hips }}</dd>
+	</div>
+	} @if (entity().measurements.shoeSize !== null) {
+	<div class="card__row">
+		<dt>Розмір взуття</dt>
+		<dd>{{ entity().measurements.shoeSize }}</dd>
+	</div>
+	} @if (events().length) {
+	<h3 class="card__section-title">Події</h3>
+	<div class="card__list">
+		@for (event of events(); track event._id) {
+		<button
+			type="button"
+			class="card__list-item"
+			(click)="viewEvent(event)"
+		>
+			<app-event-short [entity]="event" />
+		</button>
 		}
-		@if (entity.measurements.waist !== null) {
-			<div class="card__row"><dt>Обхват талії</dt><dd>{{ entity.measurements.waist }}</dd></div>
+	</div>
+	} @if (items().length) {
+	<h3 class="card__section-title">Речі</h3>
+	<div class="card__list">
+		@for (item of items(); track item._id) {
+		<button type="button" class="card__list-item" (click)="viewItem(item)">
+			<app-item-short [entity]="item" />
+		</button>
 		}
-		@if (entity.measurements.hips !== null) {
-			<div class="card__row"><dt>Обхват стегон</dt><dd>{{ entity.measurements.hips }}</dd></div>
-		}
-		@if (entity.measurements.shoeSize !== null) {
-			<div class="card__row"><dt>Розмір взуття</dt><dd>{{ entity.measurements.shoeSize }}</dd></div>
-		}
-
-	@if (events.length) {
-		<h3 class="card__section-title">Події</h3>
-		<div class="card__list">
-			@for (event of events; track event._id) {
-				<button type="button" class="card__list-item" (click)="viewEvent(event)">
-					<app-event-short [entity]="event" />
-				</button>
-			}
-		</div>
-	}
-
-	@if (items.length) {
-		<h3 class="card__section-title">Речі</h3>
-		<div class="card__list">
-			@for (item of items; track item._id) {
-				<button type="button" class="card__list-item" (click)="viewItem(item)">
-					<app-item-short [entity]="item" />
-				</button>
-			}
-		</div>
+	</div>
 	}
 </article>

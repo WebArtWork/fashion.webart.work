@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemDecision } from '../../../decision/decision.interface';
 import {
@@ -16,30 +15,31 @@ import { EventShortComponent } from '../../event/event-short/event-short.compone
 
 @Component({
 	selector: 'app-decision-view',
-	standalone: true,
-	imports: [CommonModule, ItemShortComponent, UserIconComponent, EventShortComponent],
+	imports: [ItemShortComponent, UserIconComponent, EventShortComponent],
 	templateUrl: './decision-view.component.html',
 	styleUrl: './decision-view.component.scss',
 })
 export class DecisionViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: ItemDecision;
-	@Input() item?: Item | null;
-	@Input() event?: Event | null;
-	@Input() author?: User | null;
-	@Input() involvedUsers: User[] = [];
+	readonly entity = input.required<ItemDecision>();
+	readonly item = input<Item | null>();
+	readonly event = input<Event | null>();
+	readonly author = input<User | null>();
+	readonly involvedUsers = input<User[]>([]);
 
 	readonly typeLabels = DECISION_TYPE_LABELS;
 	readonly statusLabels = DECISION_STATUS_LABELS;
 	readonly visibilityLabels = DECISION_VISIBILITY_LABELS;
 
 	viewItem(): void {
-		if (this.item) this._router.navigate(['/item', this.item._id]);
+		const item = this.item();
+		if (item) this._router.navigate(['/item', item._id]);
 	}
 
 	viewEvent(): void {
-		if (this.event) this._router.navigate(['/event', this.event._id]);
+		const event = this.event();
+		if (event) this._router.navigate(['/event', event._id]);
 	}
 
 	viewUser(user: User): void {

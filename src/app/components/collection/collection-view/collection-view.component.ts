@@ -1,7 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, computed, inject } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Collection, CollectionStatus } from '../../../collection/collection.interface';
+import {
+	Collection,
+	CollectionStatus,
+} from '../../../collection/collection.interface';
 import { Brand } from '../../../brand/brand.interface';
 import { brands } from '../../../brand/brand.data';
 import { Item } from '../../../item/item.interface';
@@ -24,14 +26,16 @@ const STATUS_LABELS: Record<CollectionStatus, string> = {
 
 const _brandById = new Map<string, Brand>(brands.map((d) => [d._id, d]));
 const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
-const _offeringById = new Map<string, Offering>(offerings.map((l) => [l._id, l]));
-const _decisionById = new Map<string, ItemDecision>(decisions.map((r) => [r._id, r]));
+const _offeringById = new Map<string, Offering>(
+	offerings.map((l) => [l._id, l]),
+);
+const _decisionById = new Map<string, ItemDecision>(
+	decisions.map((r) => [r._id, r]),
+);
 
 @Component({
 	selector: 'app-collection-view',
-	standalone: true,
 	imports: [
-		CommonModule,
 		BrandIconComponent,
 		ItemShortComponent,
 		OfferingShortComponent,
@@ -43,24 +47,31 @@ const _decisionById = new Map<string, ItemDecision>(decisions.map((r) => [r._id,
 export class CollectionViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: Collection;
+	readonly entity = input.required<Collection>();
 
 	readonly statusLabels = STATUS_LABELS;
 
-	readonly brand = computed<Brand | null>(
-		() => (this.entity.brandId ? (_brandById.get(this.entity.brandId) ?? null) : null),
-	);
+	readonly brand = computed<Brand | null>(() => {
+		const entity = this.entity();
+		return entity.brandId ? (_brandById.get(entity.brandId) ?? null) : null;
+	});
 
 	readonly relatedItems = computed<Item[]>(() =>
-		this.entity.itemIds.map((id) => _itemById.get(id)).filter((p): p is Item => !!p),
+		this.entity()
+			.itemIds.map((id) => _itemById.get(id))
+			.filter((p): p is Item => !!p),
 	);
 
 	readonly relatedOfferings = computed<Offering[]>(() =>
-		this.entity.offeringIds.map((id) => _offeringById.get(id)).filter((l): l is Offering => !!l),
+		this.entity()
+			.offeringIds.map((id) => _offeringById.get(id))
+			.filter((l): l is Offering => !!l),
 	);
 
 	readonly relatedDecisions = computed<ItemDecision[]>(() =>
-		this.entity.decisionIds.map((id) => _decisionById.get(id)).filter((r): r is ItemDecision => !!r),
+		this.entity()
+			.decisionIds.map((id) => _decisionById.get(id))
+			.filter((r): r is ItemDecision => !!r),
 	);
 
 	viewBrand(): void {

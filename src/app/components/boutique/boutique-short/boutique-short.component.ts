@@ -1,22 +1,20 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, input } from '@angular/core';
+
 import { Boutique } from '../../../boutique/boutique.interface';
 
 const DEFAULT_PHOTO = '/default-boutique.png';
 
 @Component({
 	selector: 'app-boutique-short',
-	standalone: true,
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: './boutique-short.component.html',
 	styleUrl: './boutique-short.component.scss',
 })
 export class BoutiqueShortComponent {
-	@Input() entity!: Boutique;
+	readonly entity = input.required<Boutique>();
 
 	get photo(): string {
-		return this.entity.logo || DEFAULT_PHOTO;
+		return this.entity().logo || DEFAULT_PHOTO;
 	}
 
 	onPhotoError(event: Event): void {

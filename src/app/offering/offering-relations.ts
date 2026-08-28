@@ -51,9 +51,13 @@ export interface OfferingRelations {
 }
 
 const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
-const _collectionById = new Map<string, Collection>(collections.map((c) => [c._id, c]));
+const _collectionById = new Map<string, Collection>(
+	collections.map((c) => [c._id, c]),
+);
 const _brandById = new Map<string, Brand>(brands.map((d) => [d._id, d]));
-const _boutiqueById = new Map<string, Boutique>(boutiques.map((a) => [a._id, a]));
+const _boutiqueById = new Map<string, Boutique>(
+	boutiques.map((a) => [a._id, a]),
+);
 const _stylistById = new Map<string, Stylist>(stylists.map((a) => [a._id, a]));
 
 export function itemForOffering(offering: Offering): Item | null {
@@ -65,9 +69,15 @@ export function relationsForOffering(offering: Offering): OfferingRelations {
 
 	return {
 		item,
-		collection: item?.collectionId ? (_collectionById.get(item.collectionId) ?? null) : null,
+		collection: item?.collectionId
+			? (_collectionById.get(item.collectionId) ?? null)
+			: null,
 		brand: item?.brandId ? (_brandById.get(item.brandId) ?? null) : null,
-		boutique: item?.boutiqueId ? (_boutiqueById.get(item.boutiqueId) ?? null) : null,
-		stylist: item?.stylistId ? (_stylistById.get(item.stylistId) ?? null) : null,
+		boutique: item?.boutiqueId
+			? (_boutiqueById.get(item.boutiqueId) ?? null)
+			: null,
+		stylist: item?.stylistId
+			? (_stylistById.get(item.stylistId) ?? null)
+			: null,
 	};
 }

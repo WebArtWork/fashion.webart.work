@@ -1,12 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Boutique } from '../../../boutique/boutique.interface';
 import { Stylist } from '../../../stylist/stylist.interface';
 import { Collection } from '../../../collection/collection.interface';
 import { Brand } from '../../../brand/brand.interface';
 import { Offering } from '../../../offering/offering.interface';
-import { OFFERING_STATUS_LABELS, OFFERING_TYPE_LABELS } from '../../../offering/offering-relations';
+import {
+	OFFERING_STATUS_LABELS,
+	OFFERING_TYPE_LABELS,
+} from '../../../offering/offering-relations';
 import { Item } from '../../../item/item.interface';
 import { BoutiqueIconComponent } from '../../boutique/boutique-icon/boutique-icon.component';
 import { StylistIconComponent } from '../../stylist/stylist-icon/stylist-icon.component';
@@ -16,9 +18,7 @@ import { ItemShortComponent } from '../../item/item-short/item-short.component';
 
 @Component({
 	selector: 'app-offering-view',
-	standalone: true,
 	imports: [
-		CommonModule,
 		BoutiqueIconComponent,
 		StylistIconComponent,
 		CollectionIconComponent,
@@ -31,33 +31,38 @@ import { ItemShortComponent } from '../../item/item-short/item-short.component';
 export class OfferingViewComponent {
 	private readonly _router = inject(Router);
 
-	@Input() entity!: Offering;
-	@Input() item?: Item | null;
-	@Input() collection?: Collection | null;
-	@Input() brand?: Brand | null;
-	@Input() boutique?: Boutique | null;
-	@Input() stylist?: Stylist | null;
+	readonly entity = input.required<Offering>();
+	readonly item = input<Item | null>();
+	readonly collection = input<Collection | null>();
+	readonly brand = input<Brand | null>();
+	readonly boutique = input<Boutique | null>();
+	readonly stylist = input<Stylist | null>();
 
 	readonly typeLabels = OFFERING_TYPE_LABELS;
 	readonly statusLabels = OFFERING_STATUS_LABELS;
 
 	viewItem(): void {
-		if (this.item) this._router.navigate(['/item', this.item._id]);
+		const item = this.item();
+		if (item) this._router.navigate(['/item', item._id]);
 	}
 
 	viewCollection(): void {
-		if (this.collection) this._router.navigate(['/collection', this.collection._id]);
+		const collection = this.collection();
+		if (collection) this._router.navigate(['/collection', collection._id]);
 	}
 
 	viewBrand(): void {
-		if (this.brand) this._router.navigate(['/brand', this.brand._id]);
+		const brand = this.brand();
+		if (brand) this._router.navigate(['/brand', brand._id]);
 	}
 
 	viewBoutique(): void {
-		if (this.boutique) this._router.navigate(['/boutique', this.boutique._id]);
+		const boutique = this.boutique();
+		if (boutique) this._router.navigate(['/boutique', boutique._id]);
 	}
 
 	viewStylist(): void {
-		if (this.stylist) this._router.navigate(['/stylist', this.stylist._id]);
+		const stylist = this.stylist();
+		if (stylist) this._router.navigate(['/stylist', stylist._id]);
 	}
 }

@@ -1,4 +1,5 @@
-export type UserRole = 'owner' | 'client' | 'stylist' | 'boutique-rep' | 'brand-rep' | 'buyer';
+export type UserRole =
+	'owner' | 'client' | 'stylist' | 'boutique-rep' | 'brand-rep' | 'buyer';
 
 export interface UserContact {
 	email: string;

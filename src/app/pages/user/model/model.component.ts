@@ -6,7 +6,10 @@ import { CardModule } from '@wawjs/ngx-prime/card';
 import { ModelViewComponent } from '../../../components/model/model-view/model-view.component';
 import { Model } from '../../../model/model.interface';
 import { models } from '../../../model/model.data';
-import { ModelRelations, relationsForModel } from '../../../model/model-relations';
+import {
+	ModelRelations,
+	relationsForModel,
+} from '../../../model/model-relations';
 
 @Component({
 	imports: [ModelViewComponent, CardModule],

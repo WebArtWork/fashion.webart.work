@@ -1,9 +1,4 @@
-import {
-	Component,
-	computed,
-	inject,
-	signal,
-} from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormField, form, submit } from '@angular/forms/signals';
 import { FileComponent } from '@wawjs/ngx-bos';

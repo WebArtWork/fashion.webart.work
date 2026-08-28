@@ -1,60 +1,79 @@
 <article class="card">
-	@if (entity.coverImage) {
-		<img class="card__photo" style="width:100%;height:auto" [src]="entity.coverImage" alt="" />
+	@if (entity().coverImage) {
+	<img
+		class="card__photo"
+		style="width: 100%; height: auto"
+		[src]="entity().coverImage"
+		alt=""
+	/>
 	}
 
-	<h2 class="card__title">{{ entity.title }}</h2>
+	<h2 class="card__title">{{ entity().title }}</h2>
 
 	<div class="card__meta">
-		<span class="card__badge">{{ typeLabels[entity.type] }}</span>
-		<span class="card__badge">{{ statusLabels[entity.status] }}</span>
+		<span class="card__badge">{{ typeLabels[entity().type] }}</span>
+		<span class="card__badge">{{ statusLabels[entity().status] }}</span>
 	</div>
 
-	<p>{{ entity.description }}</p>
+	<p>{{ entity().description }}</p>
 
-		<div class="card__row"><dt>Дата</dt><dd>{{ entity.date }}</dd></div>
-		<div class="card__row"><dt>Місце</dt><dd>{{ entity.venue }}, {{ entity.city }}, {{ entity.country }}</dd></div>
-		@if (entity.dressCode) {
-			<div class="card__row"><dt>Дрес-код</dt><dd>{{ entity.dressCode }}</dd></div>
+	<div class="card__row">
+		<dt>Дата</dt>
+		<dd>{{ entity().date }}</dd>
+	</div>
+	<div class="card__row">
+		<dt>Місце</dt>
+		<dd>
+			{{ entity().venue }}, {{ entity().city }}, {{ entity().country }}
+		</dd>
+	</div>
+	@if (entity().dressCode) {
+	<div class="card__row">
+		<dt>Дрес-код</dt>
+		<dd>{{ entity().dressCode }}</dd>
+	</div>
+	} @if (entity().styleNotes) {
+	<div class="card__row">
+		<dt>Стильові нотатки</dt>
+		<dd>{{ entity().styleNotes }}</dd>
+	</div>
+	} @if (client(); as c) {
+	<div class="card__row">
+		<dt>Клієнт</dt>
+		<dd>
+			<button type="button" class="card__relation" (click)="viewClient()">
+				<app-user-icon [entity]="c" />
+			</button>
+		</dd>
+	</div>
+	} @if (items().length) {
+	<h3 class="card__section-title">Речі на подію</h3>
+	<div class="card__list">
+		@for (item of items(); track item._id) {
+		<button type="button" class="card__list-item" (click)="viewItem(item)">
+			<app-item-short [entity]="item" />
+		</button>
 		}
-		@if (entity.styleNotes) {
-			<div class="card__row"><dt>Стильові нотатки</dt><dd>{{ entity.styleNotes }}</dd></div>
+	</div>
+	} @if (models().length) {
+	<h3 class="card__section-title">Моделі</h3>
+	<div class="card__list">
+		@for (model of models(); track model._id) {
+		<app-model-short [entity]="model" />
 		}
-		@if (client) {
-			<div class="card__row">
-				<dt>Клієнт</dt>
-				<dd><button type="button" class="card__relation" (click)="viewClient()"><app-user-icon [entity]="client" /></button></dd>
-			</div>
+	</div>
+	} @if (decisions().length) {
+	<h3 class="card__section-title">Рішення клієнтів</h3>
+	<div class="card__list">
+		@for (decision of decisions(); track decision._id) {
+		<button
+			type="button"
+			class="card__list-item"
+			(click)="viewDecision(decision)"
+		>
+			<app-decision-short [entity]="decision" />
+		</button>
 		}
-
-	@if (items.length) {
-		<h3 class="card__section-title">Речі на подію</h3>
-		<div class="card__list">
-			@for (item of items; track item._id) {
-				<button type="button" class="card__list-item" (click)="viewItem(item)">
-					<app-item-short [entity]="item" />
-				</button>
-			}
-		</div>
-	}
-
-	@if (models.length) {
-		<h3 class="card__section-title">Моделі</h3>
-		<div class="card__list">
-			@for (model of models; track model._id) {
-				<app-model-short [entity]="model" />
-			}
-		</div>
-	}
-
-	@if (decisions.length) {
-		<h3 class="card__section-title">Рішення клієнтів</h3>
-		<div class="card__list">
-			@for (decision of decisions; track decision._id) {
-				<button type="button" class="card__list-item" (click)="viewDecision(decision)">
-					<app-decision-short [entity]="decision" />
-				</button>
-			}
-		</div>
+	</div>
 	}
 </article>

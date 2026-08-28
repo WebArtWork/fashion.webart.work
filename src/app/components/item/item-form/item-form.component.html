@@ -1,84 +1,183 @@
 <form class="form" [formGroup]="form">
-		<div class="form__field">
-			<label class="form__label" for="type" translate>Тип</label>
-			<p-select id="type" formControlName="type" [options]="typeOptions" optionLabel="label" optionValue="value" appendTo="body" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="country" translate>Країна</label>
-			<input id="country" pInputText class="form__control" type="text" [formControlName]="'country'" [class._invalid]="form.get('country')?.invalid && form.get('country')?.touched" />
-			@if (form.get('country')?.hasError('required') && form.get('country')?.touched) {
-				<span class="form__error" translate>Країна обов'язкова</span>
-			}
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="city" translate>Місто</label>
-			<input id="city" pInputText class="form__control" type="text" [formControlName]="'city'" [class._invalid]="form.get('city')?.invalid && form.get('city')?.touched" />
-			@if (form.get('city')?.hasError('required') && form.get('city')?.touched) {
-				<span class="form__error" translate>Місто обов'язкове</span>
-			}
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="address" translate>Адреса</label>
-			<input id="address" pInputText class="form__control" type="text" [formControlName]="'address'" [class._invalid]="form.get('address')?.invalid && form.get('address')?.touched" />
-			@if (form.get('address')?.hasError('required') && form.get('address')?.touched) {
-				<span class="form__error" translate>Адреса обов'язкова</span>
-			}
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="boutiqueLocationInfo" translate>Розташування в бутіку</label>
-			<input id="boutiqueLocationInfo" pInputText class="form__control" type="text" [formControlName]="'boutiqueLocationInfo'" [class._invalid]="form.get('boutiqueLocationInfo')?.invalid && form.get('boutiqueLocationInfo')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="sku" translate>Артикул (SKU)</label>
-			<input id="sku" pInputText class="form__control" type="text" [formControlName]="'sku'" [class._invalid]="form.get('sku')?.invalid && form.get('sku')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="sizeCategory" translate>Розмір</label>
-			<input id="sizeCategory" pInputText class="form__control" type="text" [formControlName]="'sizeCategory'" [class._invalid]="form.get('sizeCategory')?.invalid && form.get('sizeCategory')?.touched" />
-			@if (form.get('sizeCategory')?.hasError('required') && form.get('sizeCategory')?.touched) {
-				<span class="form__error" translate>Розмір обов'язковий</span>
-			}
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="sizeEu" translate>Розмір (EU)</label>
-			<p-inputnumber id="sizeEu" formControlName="sizeEu" [min]="0" [invalid]="form.get('sizeEu')?.invalid && form.get('sizeEu')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="color" translate>Колір</label>
-			<input id="color" pInputText class="form__control" type="text" [formControlName]="'color'" [class._invalid]="form.get('color')?.invalid && form.get('color')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="material" translate>Матеріал</label>
-			<input id="material" pInputText class="form__control" type="text" [formControlName]="'material'" [class._invalid]="form.get('material')?.invalid && form.get('material')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="season" translate>Сезон</label>
-			<input id="season" pInputText class="form__control" type="text" [formControlName]="'season'" [class._invalid]="form.get('season')?.invalid && form.get('season')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="fit" translate>Крій</label>
-			<input id="fit" pInputText class="form__control" type="text" [formControlName]="'fit'" [class._invalid]="form.get('fit')?.invalid && form.get('fit')?.touched" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="status" translate>Статус</label>
-			<p-select id="status" formControlName="status" [options]="statusOptions" optionLabel="label" optionValue="value" appendTo="body" />
-
-		</div>
-		<div class="form__field">
-			<label class="form__label" for="visibility" translate>Видимість</label>
-			<p-select id="visibility" formControlName="visibility" [options]="visibilityOptions" optionLabel="label" optionValue="value" appendTo="body" />
-
-		</div>
+	<div class="form__field">
+		<label class="form__label" for="type" translate>Тип</label>
+		<p-select
+			id="type"
+			formControlName="type"
+			[options]="typeOptions"
+			optionLabel="label"
+			optionValue="value"
+			appendTo="body"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="country" translate>Країна</label>
+		<input
+			id="country"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'country'"
+			[class._invalid]="form.get('country')?.invalid && form.get('country')?.touched"
+		/>
+		@if (form.get('country')?.hasError('required') &&
+		form.get('country')?.touched) {
+		<span class="form__error" translate>Країна обов'язкова</span>
+		}
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="city" translate>Місто</label>
+		<input
+			id="city"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'city'"
+			[class._invalid]="form.get('city')?.invalid && form.get('city')?.touched"
+		/>
+		@if (form.get('city')?.hasError('required') &&
+		form.get('city')?.touched) {
+		<span class="form__error" translate>Місто обов'язкове</span>
+		}
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="address" translate>Адреса</label>
+		<input
+			id="address"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'address'"
+			[class._invalid]="form.get('address')?.invalid && form.get('address')?.touched"
+		/>
+		@if (form.get('address')?.hasError('required') &&
+		form.get('address')?.touched) {
+		<span class="form__error" translate>Адреса обов'язкова</span>
+		}
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="boutiqueLocationInfo" translate
+			>Розташування в бутіку</label
+		>
+		<input
+			id="boutiqueLocationInfo"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'boutiqueLocationInfo'"
+			[class._invalid]="form.get('boutiqueLocationInfo')?.invalid && form.get('boutiqueLocationInfo')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="sku" translate>Артикул (SKU)</label>
+		<input
+			id="sku"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'sku'"
+			[class._invalid]="form.get('sku')?.invalid && form.get('sku')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="sizeCategory" translate>Розмір</label>
+		<input
+			id="sizeCategory"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'sizeCategory'"
+			[class._invalid]="form.get('sizeCategory')?.invalid && form.get('sizeCategory')?.touched"
+		/>
+		@if (form.get('sizeCategory')?.hasError('required') &&
+		form.get('sizeCategory')?.touched) {
+		<span class="form__error" translate>Розмір обов'язковий</span>
+		}
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="sizeEu" translate>Розмір (EU)</label>
+		<p-inputnumber
+			id="sizeEu"
+			formControlName="sizeEu"
+			[min]="0"
+			[invalid]="form.get('sizeEu')?.invalid && form.get('sizeEu')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="color" translate>Колір</label>
+		<input
+			id="color"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'color'"
+			[class._invalid]="form.get('color')?.invalid && form.get('color')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="material" translate>Матеріал</label>
+		<input
+			id="material"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'material'"
+			[class._invalid]="form.get('material')?.invalid && form.get('material')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="season" translate>Сезон</label>
+		<input
+			id="season"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'season'"
+			[class._invalid]="form.get('season')?.invalid && form.get('season')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="fit" translate>Крій</label>
+		<input
+			id="fit"
+			pInputText
+			class="form__control"
+			type="text"
+			[formControlName]="'fit'"
+			[class._invalid]="form.get('fit')?.invalid && form.get('fit')?.touched"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="status" translate>Статус</label>
+		<p-select
+			id="status"
+			formControlName="status"
+			[options]="statusOptions"
+			optionLabel="label"
+			optionValue="value"
+			appendTo="body"
+		/>
+	</div>
+	<div class="form__field">
+		<label class="form__label" for="visibility" translate>Видимість</label>
+		<p-select
+			id="visibility"
+			formControlName="visibility"
+			[options]="visibilityOptions"
+			optionLabel="label"
+			optionValue="value"
+			appendTo="body"
+		/>
+	</div>
 
 	<div class="form__actions">
-		<button type="button" pButton class="form__submit" [disabled]="form.invalid"><span translate>Зберегти</span></button>
+		<button
+			type="button"
+			pButton
+			class="form__submit"
+			[disabled]="form.invalid"
+		>
+			<span translate>Зберегти</span>
+		</button>
 	</div>
 </form>

@@ -11,7 +11,13 @@ import { TopbarComponent } from '../topbar/topbar.component';
 @Component({
 	templateUrl: './user.component.html',
 	styleUrl: './user.component.scss',
-	imports: [RouterOutlet, TopbarComponent, SidebarComponent, MobileNavComponent, FooterComponent],
+	imports: [
+		RouterOutlet,
+		TopbarComponent,
+		SidebarComponent,
+		MobileNavComponent,
+		FooterComponent,
+	],
 })
 export class UserComponent {
 	readonly sidebar = inject(SidebarService);
@@ -20,7 +26,10 @@ export class UserComponent {
 	/** Footer only appears on the landing page, not on every other page. */
 	readonly isLandingPage = toSignal(
 		this._router.events.pipe(
-			filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+			filter(
+				(event): event is NavigationEnd =>
+					event instanceof NavigationEnd,
+			),
 			map((event) => event.urlAfterRedirects === '/'),
 			startWith(this._router.url === '/'),
 		),

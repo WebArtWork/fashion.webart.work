@@ -31,20 +31,36 @@ export interface ItemRelations {
 	comments: EntityComment[];
 }
 
-const _collectionById = new Map<string, Collection>(collections.map((c) => [c._id, c]));
+const _collectionById = new Map<string, Collection>(
+	collections.map((c) => [c._id, c]),
+);
 const _brandById = new Map<string, Brand>(brands.map((d) => [d._id, d]));
-const _boutiqueById = new Map<string, Boutique>(boutiques.map((a) => [a._id, a]));
+const _boutiqueById = new Map<string, Boutique>(
+	boutiques.map((a) => [a._id, a]),
+);
 const _stylistById = new Map<string, Stylist>(stylists.map((a) => [a._id, a]));
-const _offeringById = new Map<string, Offering>(offerings.map((l) => [l._id, l]));
-const _decisionById = new Map<string, ItemDecision>(decisions.map((r) => [r._id, r]));
-const _commentById = new Map<string, EntityComment>(comments.map((c) => [c._id, c]));
+const _offeringById = new Map<string, Offering>(
+	offerings.map((l) => [l._id, l]),
+);
+const _decisionById = new Map<string, ItemDecision>(
+	decisions.map((r) => [r._id, r]),
+);
+const _commentById = new Map<string, EntityComment>(
+	comments.map((c) => [c._id, c]),
+);
 
 export function relationsForItem(item: Item): ItemRelations {
 	return {
-		collection: item.collectionId ? (_collectionById.get(item.collectionId) ?? null) : null,
+		collection: item.collectionId
+			? (_collectionById.get(item.collectionId) ?? null)
+			: null,
 		brand: item.brandId ? (_brandById.get(item.brandId) ?? null) : null,
-		boutique: item.boutiqueId ? (_boutiqueById.get(item.boutiqueId) ?? null) : null,
-		stylist: item.stylistId ? (_stylistById.get(item.stylistId) ?? null) : null,
+		boutique: item.boutiqueId
+			? (_boutiqueById.get(item.boutiqueId) ?? null)
+			: null,
+		stylist: item.stylistId
+			? (_stylistById.get(item.stylistId) ?? null)
+			: null,
 		offerings: item.offeringIds
 			.map((id) => _offeringById.get(id))
 			.filter((l): l is Offering => !!l),

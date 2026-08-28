@@ -22,13 +22,19 @@ export interface EventRelations {
 const _userById = new Map<string, User>(users.map((u) => [u._id, u]));
 const _itemById = new Map<string, Item>(items.map((p) => [p._id, p]));
 const _modelById = new Map<string, Model>(models.map((m) => [m._id, m]));
-const _decisionById = new Map<string, ItemDecision>(decisions.map((d) => [d._id, d]));
+const _decisionById = new Map<string, ItemDecision>(
+	decisions.map((d) => [d._id, d]),
+);
 
 export function relationsForEvent(event: Event): EventRelations {
 	return {
 		client: _userById.get(event.clientId) ?? null,
-		items: event.itemIds.map((id) => _itemById.get(id)).filter((p): p is Item => !!p),
-		models: event.modelIds.map((id) => _modelById.get(id)).filter((m): m is Model => !!m),
+		items: event.itemIds
+			.map((id) => _itemById.get(id))
+			.filter((p): p is Item => !!p),
+		models: event.modelIds
+			.map((id) => _modelById.get(id))
+			.filter((m): m is Model => !!m),
 		decisions: event.decisionIds
 			.map((id) => _decisionById.get(id))
 			.filter((d): d is ItemDecision => !!d),

@@ -1,9 +1,4 @@
-import {
-	Component,
-	computed,
-	inject,
-} from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserService } from '@wawjs/ngx-bos';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
@@ -14,7 +9,7 @@ import { SidebarService } from './sidebar.service';
 	selector: 'layout-sidebar',
 	templateUrl: './sidebar.component.html',
 	styleUrl: './sidebar.component.scss',
-	imports: [RouterLink, TranslateDirective, NavIconComponent, NgClass],
+	imports: [RouterLink, TranslateDirective, NavIconComponent],
 })
 export class SidebarComponent {
 	readonly userService = inject(UserService);
