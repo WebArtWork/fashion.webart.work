@@ -122,8 +122,8 @@
 
 	<app-nav-icon
 		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Для агентів')() : ''"
-		[ariaLabel]="translateService.translate('Для агентів')()"
+		[name]="showNames() ? translateService.translate('Для стилістів')() : ''"
+		[ariaLabel]="translateService.translate('Для стилістів')()"
 		(click)="closeIfOverlay()"
 		routerLink="/for-stylists"
 		icon="id-card"
@@ -131,8 +131,8 @@
 
 	<app-nav-icon
 		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Для забудовників')() : ''"
-		[ariaLabel]="translateService.translate('Для забудовників')()"
+		[name]="showNames() ? translateService.translate('Для брендів')() : ''"
+		[ariaLabel]="translateService.translate('Для брендів')()"
 		(click)="closeIfOverlay()"
 		routerLink="/for-brands"
 		icon="building"
@@ -140,8 +140,8 @@
 
 	<app-nav-icon
 		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Для агентств')() : ''"
-		[ariaLabel]="translateService.translate('Для агентств')()"
+		[name]="showNames() ? translateService.translate('Для бутіків')() : ''"
+		[ariaLabel]="translateService.translate('Для бутіків')()"
 		(click)="closeIfOverlay()"
 		routerLink="/for-boutiques"
 		icon="briefcase"
