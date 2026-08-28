@@ -23,6 +23,16 @@ export class SidebarComponent {
 	readonly isMobile = this.sidebarService.isMobile;
 
 	readonly isOverlay = computed(() => this.isMobile() || this.isPreview());
+
+	readonly hostPositionClass = computed(() => {
+		if (this.isMobile()) {
+			return 'fixed right-0 top-0 bottom-[var(--topbar-h)] h-[calc(100dvh-var(--topbar-h))]';
+		}
+		if (this.isPreview()) {
+			return 'md:fixed md:right-0 md:top-14 md:h-[calc(100dvh-56px)]';
+		}
+		return 'md:sticky md:top-14 md:h-[calc(100dvh-56px)]';
+	});
 	readonly isMinimized = computed(
 		() =>
 			!this.isMobile() &&
