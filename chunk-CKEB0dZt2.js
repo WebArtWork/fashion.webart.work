@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-BFafu2t-.js`).then(o=>o.BrandComponent)}];export{t as routes};

@@ -1,0 +1,1 @@
+var o=[{path:``,loadComponent:()=>import(`./chunk-CPrsnWDJ2.js`).then(t=>t.StylistComponent)}];export{o as routes};

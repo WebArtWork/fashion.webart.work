@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DX_DmyXt2.js`).then(o=>o.ForUsersPageComponent)}];export{t as routes};

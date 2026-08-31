@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-BtDH_OzR.js`).then(o=>o.ItemComponent)}];export{t as routes};

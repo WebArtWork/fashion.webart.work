@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-CPgJT47k2.js`).then(o=>o.ForStylistsPageComponent)}];export{t as routes};
