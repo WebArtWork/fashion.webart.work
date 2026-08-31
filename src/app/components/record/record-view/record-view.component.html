@@ -1,0 +1,63 @@
+<article class="card">
+	@if (client(); as c) {
+		<div class="card__list-item" (click)="viewClient()">
+			<app-user-icon [entity]="c" />
+		</div>
+	}
+
+	<h2 class="card__title">{{ entity().title }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">{{ typeLabels[entity().recordType] }}</span>
+		<span class="card__badge">{{ statusLabels[entity().status] }}</span>
+		<span class="card__badge">{{ visibilityLabels[entity().visibility] }}</span>
+		@if (entity().verified) {
+			<span class="card__badge">Перевірено</span>
+		}
+	</div>
+
+	<p>{{ entity().description }}</p>
+
+		<div class="card__row"><dt>Дата події</dt><dd>{{ entity().eventDate }}</dd></div>
+		<div class="card__row"><dt>Створено</dt><dd>{{ entity().creationDate }}</dd></div>
+		@if (author(); as a) {
+			<div class="card__row">
+				<dt>Автор</dt>
+				<dd><button type="button" class="card__relation" (click)="viewUser(a)"><app-user-icon [entity]="a" /></button></dd>
+			</div>
+		}
+		@if (item(); as it) {
+			<div class="card__row"><dt>Виріб</dt><dd><button type="button" class="card__relation" (click)="viewItem()">{{ it.sku }}</button></dd></div>
+		}
+		@if (stylist(); as st) {
+			<div class="card__row"><dt>Стиліст</dt><dd><button type="button" class="card__relation" (click)="viewStylist()">{{ st.displayName }}</button></dd></div>
+		}
+		@if (boutique(); as b) {
+			<div class="card__row"><dt>Бутік</dt><dd><button type="button" class="card__relation" (click)="viewBoutique()">{{ b.name }}</button></dd></div>
+		}
+		@if (entity().cost !== null) {
+			<div class="card__row"><dt>Вартість</dt><dd>{{ entity().cost }} {{ entity().currency }}</dd></div>
+		}
+		@if (entity().quantity !== null) {
+			<div class="card__row"><dt>Кількість</dt><dd>{{ entity().quantity }} {{ entity().units }}</dd></div>
+		}
+		@if (entity().occasion) {
+			<div class="card__row"><dt>Подія</dt><dd>{{ entity().occasion }}</dd></div>
+		}
+
+	@if (involvedUsers().length) {
+		<div class="card__meta">
+			@for (user of involvedUsers(); track user._id) {
+				<button type="button" class="card__relation" (click)="viewUser(user)"><app-user-icon [entity]="user" /></button>
+			}
+		</div>
+	}
+
+	@if (entity().attachments.length) {
+		<div class="card__photos">
+			@for (a of entity().attachments; track a.url) {
+				<span class="card__badge">{{ a.type }}: {{ a.url }}</span>
+			}
+		</div>
+	}
+</article>

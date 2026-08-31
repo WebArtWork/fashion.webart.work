@@ -128,6 +128,21 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'feedback',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Відгук',
+						description: 'Поділіться відгуком або повідомте про помилку в Fashion.',
+						index: false,
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/feedback/feedback.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'share',
 				canActivate: [MetaGuard],
 				data: {
@@ -333,6 +348,21 @@ export const routes: Routes = [
 				},
 				loadChildren: () =>
 					import('./pages/user/item/item.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'records/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Запис історії речі',
+						description:
+							'Запис з цифрового паспорта речі: носіння, підгонка, чищення або стилізація.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/records/records.routes').then(
 						(m) => m.routes,
 					),
 			},
