@@ -8,19 +8,19 @@ import { SelectModule } from '@wawjs/ngx-prime/select';
 import {
 	OfferingRelationType,
 	OfferingShortComponent,
-} from '../../../components/offering/offering-short/offering-short.component';
+} from '../../../features/offering/offering-short/offering-short.component';
 import {
 	Offering,
 	OfferingStatus,
 	OfferingType,
-} from '../../../offering/offering.interface';
-import { offerings } from '../../../offering/offering.data';
+} from '../../../features/offering/offering.interface';
+import { offerings } from '../../../features/offering/offering.data';
 import {
 	OfferingRelations,
 	itemForOffering,
 	relationsForOffering,
-} from '../../../offering/offering-relations';
-import { ItemType } from '../../../item/item.interface';
+} from '../../../features/offering/offering-relations';
+import { ItemType } from '../../../features/item/item.interface';
 
 interface SelectOption<T> {
 	label: string;

@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
-import { ModelShortComponent } from '../../../components/model/model-short/model-short.component';
-import { Model } from '../../../model/model.interface';
-import { models } from '../../../model/model.data';
+import { ModelShortComponent } from '../../../features/model/model-short/model-short.component';
+import { Model } from '../../../features/model/model.interface';
+import { models } from '../../../features/model/model.data';
 
 @Component({
 	imports: [ModelShortComponent, FormsModule, CardModule, InputTextModule],

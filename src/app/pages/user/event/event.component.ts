@@ -3,13 +3,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { EventViewComponent } from '../../../components/event/event-view/event-view.component';
-import { Event } from '../../../event/event.interface';
-import { events } from '../../../event/event.data';
+import { EventViewComponent } from '../../../features/event/event-view/event-view.component';
+import { Event } from '../../../features/event/event.interface';
+import { events } from '../../../features/event/event.data';
 import {
 	EventRelations,
 	relationsForEvent,
-} from '../../../event/event-relations';
+} from '../../../features/event/event-relations';
 
 @Component({
 	imports: [EventViewComponent, CardModule],

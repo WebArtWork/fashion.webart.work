@@ -6,9 +6,9 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateService } from '@wawjs/ngx-translate';
-import { StylistViewComponent } from '../../../components/stylist/stylist-view/stylist-view.component';
-import { Stylist } from '../../../stylist/stylist.interface';
-import { stylists } from '../../../stylist/stylist.data';
+import { StylistViewComponent } from '../../../features/stylist/stylist-view/stylist-view.component';
+import { Stylist } from '../../../features/stylist/stylist.interface';
+import { stylists } from '../../../features/stylist/stylist.data';
 
 @Component({
 	imports: [StylistViewComponent, CardModule, ButtonModule],

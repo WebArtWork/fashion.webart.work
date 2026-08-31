@@ -3,13 +3,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { OfferingViewComponent } from '../../../components/offering/offering-view/offering-view.component';
-import { Offering } from '../../../offering/offering.interface';
-import { offerings } from '../../../offering/offering.data';
+import { OfferingViewComponent } from '../../../features/offering/offering-view/offering-view.component';
+import { Offering } from '../../../features/offering/offering.interface';
+import { offerings } from '../../../features/offering/offering.data';
 import {
 	OfferingRelations,
 	relationsForOffering,
-} from '../../../offering/offering-relations';
+} from '../../../features/offering/offering-relations';
 
 @Component({
 	imports: [OfferingViewComponent, CardModule],

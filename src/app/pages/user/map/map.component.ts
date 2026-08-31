@@ -2,13 +2,13 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { ItemShortComponent } from '../../../components/item/item-short/item-short.component';
+import { ItemShortComponent } from '../../../features/item/item-short/item-short.component';
 import {
 	LeafletMapComponent,
 	LeafletMapMarker,
 } from '../../../shared/leaflet-map/leaflet-map.component';
-import { Item } from '../../../item/item.interface';
-import { items } from '../../../item/item.data';
+import { Item } from '../../../features/item/item.interface';
+import { items } from '../../../features/item/item.data';
 
 type MapCategory = 'items' | 'boutiques' | 'brands';
 

@@ -3,10 +3,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { ItemViewComponent } from '../../../components/item/item-view/item-view.component';
-import { Item } from '../../../item/item.interface';
-import { items } from '../../../item/item.data';
-import { ItemRelations, relationsForItem } from '../../../item/item-relations';
+import { ItemViewComponent } from '../../../features/item/item-view/item-view.component';
+import { Item } from '../../../features/item/item.interface';
+import { items } from '../../../features/item/item.data';
+import { ItemRelations, relationsForItem } from '../../../features/item/item-relations';
 
 @Component({
 	imports: [ItemViewComponent, CardModule],

@@ -2,9 +2,9 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
-import { BrandShortComponent } from '../../../components/brand/brand-short/brand-short.component';
-import { Brand } from '../../../brand/brand.interface';
-import { brands } from '../../../brand/brand.data';
+import { BrandShortComponent } from '../../../features/brand/brand-short/brand-short.component';
+import { Brand } from '../../../features/brand/brand.interface';
+import { brands } from '../../../features/brand/brand.data';
 
 @Component({
 	imports: [BrandShortComponent, FormsModule, InputTextModule],
