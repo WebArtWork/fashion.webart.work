@@ -14,13 +14,14 @@ import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { TranslateService } from '@wawjs/ngx-translate';
 import { ContactService } from '../../contact.service';
 
-export type LeadFormKind = 'user' | 'stylist' | 'brand' | 'boutique';
+export type LeadFormKind = 'user' | 'stylist' | 'brand' | 'boutique' | 'designer';
 
 const KIND_LABELS: Record<LeadFormKind, string> = {
 	user: 'Заявка користувача',
 	stylist: 'Заявка агента',
 	brand: 'Заявка забудовника',
 	boutique: 'Заявка агентства',
+	designer: 'Заявка дизайнера',
 };
 
 /** Inline lead-capture form used on the /for-* landing pages. Sends to the Fashion Telegram contact channel. */

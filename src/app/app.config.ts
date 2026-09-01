@@ -20,7 +20,27 @@ import { provideNgxSocket } from '@wawjs/ngx-socket';
 import { provideNgxTinymce } from '@wawjs/ngx-tinymce';
 import { provideTranslate } from '@wawjs/ngx-translate';
 import { provideNgxPrime } from '@wawjs/ngx-prime/config';
+import { definePreset } from '@wawjs/css-prime-styled';
 import Aura from '@wawjs/css-prime-themes/aura';
+
+/** Fashion brand plum, matched to the logo's gown color. */
+const FashionPreset = definePreset(Aura, {
+	semantic: {
+		primary: {
+			50: '#f7eef4',
+			100: '#ecd6e4',
+			200: '#d7aec9',
+			300: '#bb7ea8',
+			400: '#995685',
+			500: '#7a3868',
+			600: '#5e2a50',
+			700: '#4a2140',
+			800: '#3d1c35',
+			900: '#33192d',
+			950: '#1a0c17',
+		},
+	},
+});
 import { NgxBosConfig, ngxBosProvide } from '@wawjs/ngx-bos';
 import { io } from 'socket.io-client';
 import { environment } from '@env';
@@ -78,7 +98,7 @@ export const appConfig: ApplicationConfig = {
 		}),
 		provideNgxPrime({
 			theme: {
-				preset: Aura,
+				preset: FashionPreset,
 				options: { darkModeSelector: "[data-mode='dark']" },
 			},
 		}),

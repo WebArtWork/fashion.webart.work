@@ -219,6 +219,21 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'for-designers',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для дизайнерів',
+						description:
+							'Показуйте свої колекції та отримуйте запити на індивідуальний пошив на Fashion.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/for-designers/for-designers.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'feed',
 				canActivate: [MetaGuard],
 				data: {
