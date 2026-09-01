@@ -6,9 +6,9 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateService } from '@wawjs/ngx-translate';
-import { BoutiqueViewComponent } from '../../../components/boutique/boutique-view/boutique-view.component';
-import { Boutique } from '../../../boutique/boutique.interface';
-import { boutiques } from '../../../boutique/boutique.data';
+import { BoutiqueViewComponent } from '../../../features/boutique/boutique-view/boutique-view.component';
+import { Boutique } from '../../../features/boutique/boutique.interface';
+import { boutiques } from '../../../features/boutique/boutique.data';
 
 @Component({
 	imports: [BoutiqueViewComponent, CardModule, ButtonModule],

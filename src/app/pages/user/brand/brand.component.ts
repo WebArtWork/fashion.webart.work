@@ -6,9 +6,9 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateService } from '@wawjs/ngx-translate';
-import { BrandViewComponent } from '../../../components/brand/brand-view/brand-view.component';
-import { Brand } from '../../../brand/brand.interface';
-import { brands } from '../../../brand/brand.data';
+import { BrandViewComponent } from '../../../features/brand/brand-view/brand-view.component';
+import { Brand } from '../../../features/brand/brand.interface';
+import { brands } from '../../../features/brand/brand.data';
 
 @Component({
 	imports: [BrandViewComponent, CardModule, ButtonModule],

@@ -4,13 +4,13 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { SelectButtonModule } from '@wawjs/ngx-prime/selectbutton';
-import { BoutiqueFormComponent } from '../../../components/boutique/boutique-form/boutique-form.component';
-import { StylistFormComponent } from '../../../components/stylist/stylist-form/stylist-form.component';
-import { CollectionFormComponent } from '../../../components/collection/collection-form/collection-form.component';
-import { BrandFormComponent } from '../../../components/brand/brand-form/brand-form.component';
-import { OfferingFormComponent } from '../../../components/offering/offering-form/offering-form.component';
-import { ItemFormComponent } from '../../../components/item/item-form/item-form.component';
-import { DecisionFormComponent } from '../../../components/decision/decision-form/decision-form.component';
+import { BoutiqueFormComponent } from '../../../features/boutique/boutique-form/boutique-form.component';
+import { StylistFormComponent } from '../../../features/stylist/stylist-form/stylist-form.component';
+import { CollectionFormComponent } from '../../../features/collection/collection-form/collection-form.component';
+import { BrandFormComponent } from '../../../features/brand/brand-form/brand-form.component';
+import { OfferingFormComponent } from '../../../features/offering/offering-form/offering-form.component';
+import { ItemFormComponent } from '../../../features/item/item-form/item-form.component';
+import { DecisionFormComponent } from '../../../features/decision/decision-form/decision-form.component';
 
 type EntityType =
 	| 'item'

@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { UserService } from '@wawjs/ngx-bos';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-import { CompanyService } from '../../company/company.service';
+import { CompanyService } from '../../features/company/company.service';
 import {
 	ThemeDensity,
 	ThemeMode,

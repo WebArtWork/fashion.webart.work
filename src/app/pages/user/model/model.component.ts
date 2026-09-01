@@ -3,13 +3,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { ModelViewComponent } from '../../../components/model/model-view/model-view.component';
-import { Model } from '../../../model/model.interface';
-import { models } from '../../../model/model.data';
+import { ModelViewComponent } from '../../../features/model/model-view/model-view.component';
+import { Model } from '../../../features/model/model.interface';
+import { models } from '../../../features/model/model.data';
 import {
 	ModelRelations,
 	relationsForModel,
-} from '../../../model/model-relations';
+} from '../../../features/model/model-relations';
 
 @Component({
 	imports: [ModelViewComponent, CardModule],

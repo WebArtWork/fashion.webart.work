@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
-import { EventShortComponent } from '../../../components/event/event-short/event-short.component';
-import { Event } from '../../../event/event.interface';
-import { events } from '../../../event/event.data';
+import { EventShortComponent } from '../../../features/event/event-short/event-short.component';
+import { Event } from '../../../features/event/event.interface';
+import { events } from '../../../features/event/event.data';
 
 @Component({
 	imports: [EventShortComponent, FormsModule, CardModule, InputTextModule],

@@ -3,9 +3,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { CollectionViewComponent } from '../../../components/collection/collection-view/collection-view.component';
-import { Collection } from '../../../collection/collection.interface';
-import { collections } from '../../../collection/collection.data';
+import { CollectionViewComponent } from '../../../features/collection/collection-view/collection-view.component';
+import { Collection } from '../../../features/collection/collection.interface';
+import { collections } from '../../../features/collection/collection.data';
 
 @Component({
 	imports: [CollectionViewComponent, CardModule],

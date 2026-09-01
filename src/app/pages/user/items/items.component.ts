@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
-import { ItemShortComponent } from '../../../components/item/item-short/item-short.component';
-import { Item } from '../../../item/item.interface';
-import { items } from '../../../item/item.data';
+import { ItemShortComponent } from '../../../features/item/item-short/item-short.component';
+import { Item } from '../../../features/item/item.interface';
+import { items } from '../../../features/item/item.data';
 
 @Component({
 	imports: [

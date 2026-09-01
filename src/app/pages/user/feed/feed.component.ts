@@ -1,16 +1,16 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
-import { BoutiqueIconComponent } from '../../../components/boutique/boutique-icon/boutique-icon.component';
-import { StylistIconComponent } from '../../../components/stylist/stylist-icon/stylist-icon.component';
-import { BrandIconComponent } from '../../../components/brand/brand-icon/brand-icon.component';
-import { Offering } from '../../../offering/offering.interface';
-import { offerings } from '../../../offering/offering.data';
+import { BoutiqueIconComponent } from '../../../features/boutique/boutique-icon/boutique-icon.component';
+import { StylistIconComponent } from '../../../features/stylist/stylist-icon/stylist-icon.component';
+import { BrandIconComponent } from '../../../features/brand/brand-icon/brand-icon.component';
+import { Offering } from '../../../features/offering/offering.interface';
+import { offerings } from '../../../features/offering/offering.data';
 import {
 	OfferingRelations,
 	relationsForOffering,
-} from '../../../offering/offering-relations';
-import { OfferingRelationType } from '../../../components/offering/offering-short/offering-short.component';
+} from '../../../features/offering/offering-relations';
+import { OfferingRelationType } from '../../../features/offering/offering-short/offering-short.component';
 
 type FeedAction = 'favourite' | 'ignore';
 
