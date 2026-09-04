@@ -61,11 +61,11 @@
 		<p-accordion [multiple]="true">
 			@for (item of faq; track item.question) {
 			<p-accordionpanel [value]="item.question">
-				<p-accordionheader
+				<p-accordionheader [panel]="$any(content)"
 					>{{ translateService.translate(item.question)()
 					}}</p-accordionheader
 				>
-				<p-accordioncontent
+				<p-accordioncontent #content="ngAccordionPanel"
 					>{{ translateService.translate(item.answer)()
 					}}</p-accordioncontent
 				>
