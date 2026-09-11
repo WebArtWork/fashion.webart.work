@@ -1,0 +1,29 @@
+.stylists {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-4);
+}
+
+.stylists__header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-2);
+}
+
+.stylists__title {
+	margin: 0;
+}
+
+.stylists__subtitle {
+	margin: 0;
+	color: var(--c-text-muted);
+}
+
+.stylists__empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--sp-6) 0;
+	text-align: center;
+	color: var(--c-text-muted);
+}

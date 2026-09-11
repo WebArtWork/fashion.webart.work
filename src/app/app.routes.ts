@@ -294,6 +294,21 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'stylists',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Стилісти',
+						description:
+							'Перегляньте всіх стилістів, представлених у Fashion.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/stylists/stylists.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'events',
 				canActivate: [MetaGuard],
 				data: {

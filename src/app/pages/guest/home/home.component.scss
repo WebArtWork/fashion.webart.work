@@ -1,3 +1,130 @@
-.home__feature-card {
+:host {
+	display: block;
+	margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) 0;
+
+	@media (min-width: 768px) {
+		margin: calc(-1 * var(--sp-5)) calc(-1 * var(--sp-5)) 0;
+	}
+}
+
+.home-reveal {
+	animation-duration: 0.6s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+
+	&--slow {
+		animation-duration: 0.8s;
+	}
+
+	&--slower {
+		animation-duration: 1s;
+	}
+
+	&.home-reveal--in {
+		animation-name: home-reveal-in;
+	}
+}
+
+@keyframes home-reveal-in {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.home__eyebrow-dot {
+	width: 7px;
+	height: 7px;
+	background: var(--c-primary);
+	display: inline-block;
+}
+
+.home__hero-visual {
+	aspect-ratio: 4 / 3;
+
+	@media (min-width: 1024px) {
+		aspect-ratio: 1 / 1.05;
+	}
+}
+
+.home__hero-panel {
 	height: 100%;
+	background: linear-gradient(
+		160deg,
+		var(--c-bg-tertiary) 0%,
+		color-mix(in srgb, var(--c-primary) 10%, var(--c-bg-tertiary)) 100%
+	);
+	box-shadow: var(--shadow-md);
+	overflow: hidden;
+}
+
+.home__hero-watermark {
+	font-size: 12rem;
+	color: color-mix(in srgb, var(--c-primary) 16%, transparent);
+}
+
+.home__hero-label {
+	background: color-mix(in srgb, var(--c-bg-tertiary) 92%, transparent);
+	padding: var(--sp-2) var(--sp-3);
+	border-radius: var(--radius);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: var(--c-text-secondary);
+}
+
+.home__passport-preview {
+	background: var(--c-bg-tertiary);
+	border-radius: var(--radius-card);
+	padding: var(--sp-5) var(--sp-6);
+	box-shadow: var(--shadow-md);
+	color: var(--c-text-secondary);
+	margin-inline: var(--sp-4);
+}
+
+.home__document-icon {
+	background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+	color: var(--c-primary);
+	border-radius: var(--radius);
+	width: 42px;
+	height: 46px;
+	display: grid;
+	place-items: center;
+	font-size: 1.3rem;
+	flex-shrink: 0;
+}
+
+.home__feature-card {
+	display: block;
+	height: 100%;
+	cursor: pointer;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+}
+
+.home__audience-row:hover h3,
+.home__audience-row:hover i {
+	color: var(--c-primary);
+}
+
+.home__text-link:hover {
+	color: var(--c-primary);
+}
+
+.home__cta-panel {
+	background: linear-gradient(
+		135deg,
+		var(--c-primary) 0%,
+		var(--c-primary-hover) 100%
+	);
 }

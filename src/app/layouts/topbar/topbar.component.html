@@ -30,37 +30,10 @@
 
 		<li class="inline-flex items-center max-md:hidden">
 			<app-nav-icon
-				routerLink="/items"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Items')()"
-				[ariaLabel]="translateService.translate('Items')()"
-				icon="building"
-			/>
-		</li>
-
-		<li class="inline-flex items-center max-md:hidden">
-			<app-nav-icon
 				routerLink="/boutiques"
 				[name]="viewport() === 'mobile' ? '' : translateService.translate('Boutiques')()"
 				[ariaLabel]="translateService.translate('Boutiques')()"
-				icon="briefcase"
-			/>
-		</li>
-
-		<li class="inline-flex items-center max-md:hidden">
-			<app-nav-icon
-				routerLink="/events"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Events')()"
-				[ariaLabel]="translateService.translate('Events')()"
-				icon="calendar"
-			/>
-		</li>
-
-		<li class="inline-flex items-center max-md:hidden">
-			<app-nav-icon
-				routerLink="/models"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Models')()"
-				[ariaLabel]="translateService.translate('Models')()"
-				icon="users"
+				icon="shop"
 			/>
 		</li>
 
@@ -69,7 +42,16 @@
 				routerLink="/brands"
 				[name]="viewport() === 'mobile' ? '' : translateService.translate('Brands')()"
 				[ariaLabel]="translateService.translate('Brands')()"
-				icon="users"
+				icon="tag"
+			/>
+		</li>
+
+		<li class="inline-flex items-center max-md:hidden">
+			<app-nav-icon
+				routerLink="/stylists"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Stylists')()"
+				[ariaLabel]="translateService.translate('Stylists')()"
+				icon="id-card"
 			/>
 		</li>
 
