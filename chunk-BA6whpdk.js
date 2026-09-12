@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-Cu_soijU.js`).then(o=>o.ForStylistsPageComponent)}];export{t as routes};

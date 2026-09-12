@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-BBLVEBAx.js`).then(o=>o.OfferingComponent)}];export{t as routes};

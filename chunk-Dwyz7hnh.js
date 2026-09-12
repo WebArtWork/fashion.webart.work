@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-ll8DP2ht2.js`).then(o=>o.ClientComponent)}];export{t as routes};

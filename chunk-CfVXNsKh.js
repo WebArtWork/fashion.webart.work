@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-C12ltMNr.js`).then(o=>o.BrandComponent)}];export{t as routes};

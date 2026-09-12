@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-bVK2Ins32.js`).then(o=>o.EventComponent)}];export{t as routes};

@@ -1,0 +1,1 @@
+var o=[{path:``,loadComponent:()=>import(`./chunk-Cq7HkGcc.js`).then(t=>t.StylistsComponent)}];export{o as routes};

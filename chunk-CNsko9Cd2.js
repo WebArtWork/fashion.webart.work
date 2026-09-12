@@ -1,0 +1,1 @@
+var e=[{path:``,loadComponent:()=>import(`./chunk-D42VMvFP2.js`).then(o=>o.ForDesignersPageComponent)}];export{e as routes};
